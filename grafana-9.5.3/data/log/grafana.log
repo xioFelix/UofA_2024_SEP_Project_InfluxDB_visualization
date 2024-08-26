@@ -1,0 +1,1028 @@
+logger=settings t=2024-08-26T14:22:49.1001987+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:22:49.1001987+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:22:49.1001987+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:22:49.1001987+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:22:49.1001987+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:22:49.1001987+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:22:49.103247+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:22:49.103247+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:22:49.103247+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:22:49.103247+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:22:49.103247+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:22:49.103247+09:30 level=info msg="Creating SQLite database file" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db
+logger=migrator t=2024-08-26T14:22:49.1372407+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:22:49.1378219+09:30 level=info msg="Executing migration" id="create migration_log table"
+logger=migrator t=2024-08-26T14:22:49.1416742+09:30 level=info msg="Executing migration" id="create user table"
+logger=migrator t=2024-08-26T14:22:49.1432656+09:30 level=info msg="Executing migration" id="add unique index user.login"
+logger=migrator t=2024-08-26T14:22:49.1454107+09:30 level=info msg="Executing migration" id="add unique index user.email"
+logger=migrator t=2024-08-26T14:22:49.1474968+09:30 level=info msg="Executing migration" id="drop index UQE_user_login - v1"
+logger=migrator t=2024-08-26T14:22:49.1496269+09:30 level=info msg="Executing migration" id="drop index UQE_user_email - v1"
+logger=migrator t=2024-08-26T14:22:49.1512309+09:30 level=info msg="Executing migration" id="Rename table user to user_v1 - v1"
+logger=migrator t=2024-08-26T14:22:49.1560042+09:30 level=info msg="Executing migration" id="create user table v2"
+logger=migrator t=2024-08-26T14:22:49.1577368+09:30 level=info msg="Executing migration" id="create index UQE_user_login - v2"
+logger=migrator t=2024-08-26T14:22:49.1600277+09:30 level=info msg="Executing migration" id="create index UQE_user_email - v2"
+logger=migrator t=2024-08-26T14:22:49.1616609+09:30 level=info msg="Executing migration" id="copy data_source v1 to v2"
+logger=migrator t=2024-08-26T14:22:49.164907+09:30 level=info msg="Executing migration" id="Drop old table user_v1"
+logger=migrator t=2024-08-26T14:22:49.1667479+09:30 level=info msg="Executing migration" id="Add column help_flags1 to user table"
+logger=migrator t=2024-08-26T14:22:49.1688277+09:30 level=info msg="Executing migration" id="Update user table charset"
+logger=migrator t=2024-08-26T14:22:49.1708975+09:30 level=info msg="Executing migration" id="Add last_seen_at column to user"
+logger=migrator t=2024-08-26T14:22:49.1782334+09:30 level=info msg="Executing migration" id="Add missing user data"
+logger=migrator t=2024-08-26T14:22:49.1782334+09:30 level=info msg="Executing migration" id="Add is_disabled column to user"
+logger=migrator t=2024-08-26T14:22:49.1818232+09:30 level=info msg="Executing migration" id="Add index user.login/user.email"
+logger=migrator t=2024-08-26T14:22:49.1845852+09:30 level=info msg="Executing migration" id="Add is_service_account column to user"
+logger=migrator t=2024-08-26T14:22:49.1862718+09:30 level=info msg="Executing migration" id="Update is_service_account column to nullable"
+logger=migrator t=2024-08-26T14:22:49.1916087+09:30 level=info msg="Executing migration" id="create temp user table v1-7"
+logger=migrator t=2024-08-26T14:22:49.1931689+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_email - v1-7"
+logger=migrator t=2024-08-26T14:22:49.1963963+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_org_id - v1-7"
+logger=migrator t=2024-08-26T14:22:49.1991163+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_code - v1-7"
+logger=migrator t=2024-08-26T14:22:49.2017139+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_status - v1-7"
+logger=migrator t=2024-08-26T14:22:49.2037868+09:30 level=info msg="Executing migration" id="Update temp_user table charset"
+logger=migrator t=2024-08-26T14:22:49.2065549+09:30 level=info msg="Executing migration" id="drop index IDX_temp_user_email - v1"
+logger=migrator t=2024-08-26T14:22:49.2087623+09:30 level=info msg="Executing migration" id="drop index IDX_temp_user_org_id - v1"
+logger=migrator t=2024-08-26T14:22:49.2109361+09:30 level=info msg="Executing migration" id="drop index IDX_temp_user_code - v1"
+logger=migrator t=2024-08-26T14:22:49.213053+09:30 level=info msg="Executing migration" id="drop index IDX_temp_user_status - v1"
+logger=migrator t=2024-08-26T14:22:49.2151523+09:30 level=info msg="Executing migration" id="Rename table temp_user to temp_user_tmp_qwerty - v1"
+logger=migrator t=2024-08-26T14:22:49.2199563+09:30 level=info msg="Executing migration" id="create temp_user v2"
+logger=migrator t=2024-08-26T14:22:49.2220829+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_email - v2"
+logger=migrator t=2024-08-26T14:22:49.2249547+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_org_id - v2"
+logger=migrator t=2024-08-26T14:22:49.227066+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_code - v2"
+logger=migrator t=2024-08-26T14:22:49.2291949+09:30 level=info msg="Executing migration" id="create index IDX_temp_user_status - v2"
+logger=migrator t=2024-08-26T14:22:49.2324358+09:30 level=info msg="Executing migration" id="copy temp_user v1 to v2"
+logger=migrator t=2024-08-26T14:22:49.2345341+09:30 level=info msg="Executing migration" id="drop temp_user_tmp_qwerty"
+logger=migrator t=2024-08-26T14:22:49.2371486+09:30 level=info msg="Executing migration" id="Set created for temp users that will otherwise prematurely expire"
+logger=migrator t=2024-08-26T14:22:49.2392791+09:30 level=info msg="Executing migration" id="create star table"
+logger=migrator t=2024-08-26T14:22:49.2419468+09:30 level=info msg="Executing migration" id="add unique index star.user_id_dashboard_id"
+logger=migrator t=2024-08-26T14:22:49.2447652+09:30 level=info msg="Executing migration" id="create org table v1"
+logger=migrator t=2024-08-26T14:22:49.2474251+09:30 level=info msg="Executing migration" id="create index UQE_org_name - v1"
+logger=migrator t=2024-08-26T14:22:49.2496138+09:30 level=info msg="Executing migration" id="create org_user table v1"
+logger=migrator t=2024-08-26T14:22:49.2517491+09:30 level=info msg="Executing migration" id="create index IDX_org_user_org_id - v1"
+logger=migrator t=2024-08-26T14:22:49.2544318+09:30 level=info msg="Executing migration" id="create index UQE_org_user_org_id_user_id - v1"
+logger=migrator t=2024-08-26T14:22:49.2565827+09:30 level=info msg="Executing migration" id="create index IDX_org_user_user_id - v1"
+logger=migrator t=2024-08-26T14:22:49.2597736+09:30 level=info msg="Executing migration" id="Update org table charset"
+logger=migrator t=2024-08-26T14:22:49.2618481+09:30 level=info msg="Executing migration" id="Update org_user table charset"
+logger=migrator t=2024-08-26T14:22:49.2640792+09:30 level=info msg="Executing migration" id="Migrate all Read Only Viewers to Viewers"
+logger=migrator t=2024-08-26T14:22:49.266512+09:30 level=info msg="Executing migration" id="create dashboard table"
+logger=migrator t=2024-08-26T14:22:49.2681932+09:30 level=info msg="Executing migration" id="add index dashboard.account_id"
+logger=migrator t=2024-08-26T14:22:49.2703145+09:30 level=info msg="Executing migration" id="add unique index dashboard_account_id_slug"
+logger=migrator t=2024-08-26T14:22:49.2741282+09:30 level=info msg="Executing migration" id="create dashboard_tag table"
+logger=migrator t=2024-08-26T14:22:49.2818458+09:30 level=info msg="Executing migration" id="add unique index dashboard_tag.dasboard_id_term"
+logger=migrator t=2024-08-26T14:22:49.2839767+09:30 level=info msg="Executing migration" id="drop index UQE_dashboard_tag_dashboard_id_term - v1"
+logger=migrator t=2024-08-26T14:22:49.2861731+09:30 level=info msg="Executing migration" id="Rename table dashboard to dashboard_v1 - v1"
+logger=migrator t=2024-08-26T14:22:49.2888457+09:30 level=info msg="Executing migration" id="create dashboard v2"
+logger=migrator t=2024-08-26T14:22:49.2909557+09:30 level=info msg="Executing migration" id="create index IDX_dashboard_org_id - v2"
+logger=migrator t=2024-08-26T14:22:49.2930251+09:30 level=info msg="Executing migration" id="create index UQE_dashboard_org_id_slug - v2"
+logger=migrator t=2024-08-26T14:22:49.2953243+09:30 level=info msg="Executing migration" id="copy dashboard v1 to v2"
+logger=migrator t=2024-08-26T14:22:49.2972099+09:30 level=info msg="Executing migration" id="drop table dashboard_v1"
+logger=migrator t=2024-08-26T14:22:49.2990944+09:30 level=info msg="Executing migration" id="alter dashboard.data to mediumtext v1"
+logger=migrator t=2024-08-26T14:22:49.3015095+09:30 level=info msg="Executing migration" id="Add column updated_by in dashboard - v2"
+logger=migrator t=2024-08-26T14:22:49.3037372+09:30 level=info msg="Executing migration" id="Add column created_by in dashboard - v2"
+logger=migrator t=2024-08-26T14:22:49.3053996+09:30 level=info msg="Executing migration" id="Add column gnetId in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3086795+09:30 level=info msg="Executing migration" id="Add index for gnetId in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3107876+09:30 level=info msg="Executing migration" id="Add column plugin_id in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3129865+09:30 level=info msg="Executing migration" id="Add index for plugin_id in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3152564+09:30 level=info msg="Executing migration" id="Add index for dashboard_id in dashboard_tag"
+logger=migrator t=2024-08-26T14:22:49.3168614+09:30 level=info msg="Executing migration" id="Update dashboard table charset"
+logger=migrator t=2024-08-26T14:22:49.3184229+09:30 level=info msg="Executing migration" id="Update dashboard_tag table charset"
+logger=migrator t=2024-08-26T14:22:49.3199872+09:30 level=info msg="Executing migration" id="Add column folder_id in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3231151+09:30 level=info msg="Executing migration" id="Add column isFolder in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3231151+09:30 level=info msg="Executing migration" id="Add column has_acl in dashboard"
+logger=migrator t=2024-08-26T14:22:49.32689+09:30 level=info msg="Executing migration" id="Add column uid in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3294119+09:30 level=info msg="Executing migration" id="Update uid column values in dashboard"
+logger=migrator t=2024-08-26T14:22:49.3294119+09:30 level=info msg="Executing migration" id="Add unique index dashboard_org_id_uid"
+logger=migrator t=2024-08-26T14:22:49.3324553+09:30 level=info msg="Executing migration" id="Remove unique index org_id_slug"
+logger=migrator t=2024-08-26T14:22:49.3354431+09:30 level=info msg="Executing migration" id="Update dashboard title length"
+logger=migrator t=2024-08-26T14:22:49.3386916+09:30 level=info msg="Executing migration" id="Add unique index for dashboard_org_id_title_folder_id"
+logger=migrator t=2024-08-26T14:22:49.3403452+09:30 level=info msg="Executing migration" id="create dashboard_provisioning"
+logger=migrator t=2024-08-26T14:22:49.3425776+09:30 level=info msg="Executing migration" id="Rename table dashboard_provisioning to dashboard_provisioning_tmp_qwerty - v1"
+logger=migrator t=2024-08-26T14:22:49.3459992+09:30 level=info msg="Executing migration" id="create dashboard_provisioning v2"
+logger=migrator t=2024-08-26T14:22:49.3481591+09:30 level=info msg="Executing migration" id="create index IDX_dashboard_provisioning_dashboard_id - v2"
+logger=migrator t=2024-08-26T14:22:49.3498361+09:30 level=info msg="Executing migration" id="create index IDX_dashboard_provisioning_dashboard_id_name - v2"
+logger=migrator t=2024-08-26T14:22:49.352169+09:30 level=info msg="Executing migration" id="copy dashboard_provisioning v1 to v2"
+logger=migrator t=2024-08-26T14:22:49.3538115+09:30 level=info msg="Executing migration" id="drop dashboard_provisioning_tmp_qwerty"
+logger=migrator t=2024-08-26T14:22:49.3561298+09:30 level=info msg="Executing migration" id="Add check_sum column"
+logger=migrator t=2024-08-26T14:22:49.3582254+09:30 level=info msg="Executing migration" id="Add index for dashboard_title"
+logger=migrator t=2024-08-26T14:22:49.3615399+09:30 level=info msg="Executing migration" id="delete tags for deleted dashboards"
+logger=migrator t=2024-08-26T14:22:49.3638533+09:30 level=info msg="Executing migration" id="delete stars for deleted dashboards"
+logger=migrator t=2024-08-26T14:22:49.3654915+09:30 level=info msg="Executing migration" id="Add index for dashboard_is_folder"
+logger=migrator t=2024-08-26T14:22:49.3677469+09:30 level=info msg="Executing migration" id="Add isPublic for dashboard"
+logger=migrator t=2024-08-26T14:22:49.3698007+09:30 level=info msg="Executing migration" id="create data_source table"
+logger=migrator t=2024-08-26T14:22:49.3725493+09:30 level=info msg="Executing migration" id="add index data_source.account_id"
+logger=migrator t=2024-08-26T14:22:49.3746247+09:30 level=info msg="Executing migration" id="add unique index data_source.account_id_name"
+logger=migrator t=2024-08-26T14:22:49.3767113+09:30 level=info msg="Executing migration" id="drop index IDX_data_source_account_id - v1"
+logger=migrator t=2024-08-26T14:22:49.378837+09:30 level=info msg="Executing migration" id="drop index UQE_data_source_account_id_name - v1"
+logger=migrator t=2024-08-26T14:22:49.3809701+09:30 level=info msg="Executing migration" id="Rename table data_source to data_source_v1 - v1"
+logger=migrator t=2024-08-26T14:22:49.3837328+09:30 level=info msg="Executing migration" id="create data_source table v2"
+logger=migrator t=2024-08-26T14:22:49.386521+09:30 level=info msg="Executing migration" id="create index IDX_data_source_org_id - v2"
+logger=migrator t=2024-08-26T14:22:49.3886389+09:30 level=info msg="Executing migration" id="create index UQE_data_source_org_id_name - v2"
+logger=migrator t=2024-08-26T14:22:49.391314+09:30 level=info msg="Executing migration" id="Drop old table data_source_v1 #2"
+logger=migrator t=2024-08-26T14:22:49.3939911+09:30 level=info msg="Executing migration" id="Add column with_credentials"
+logger=migrator t=2024-08-26T14:22:49.3961773+09:30 level=info msg="Executing migration" id="Add secure json data column"
+logger=migrator t=2024-08-26T14:22:49.3983297+09:30 level=info msg="Executing migration" id="Update data_source table charset"
+logger=migrator t=2024-08-26T14:22:49.4004505+09:30 level=info msg="Executing migration" id="Update initial version to 1"
+logger=migrator t=2024-08-26T14:22:49.4014916+09:30 level=info msg="Executing migration" id="Add read_only data column"
+logger=migrator t=2024-08-26T14:22:49.4040297+09:30 level=info msg="Executing migration" id="Migrate logging ds to loki ds"
+logger=migrator t=2024-08-26T14:22:49.4040297+09:30 level=info msg="Executing migration" id="Update json_data with nulls"
+logger=migrator t=2024-08-26T14:22:49.4076213+09:30 level=info msg="Executing migration" id="Add uid column"
+logger=migrator t=2024-08-26T14:22:49.4102064+09:30 level=info msg="Executing migration" id="Update uid value"
+logger=migrator t=2024-08-26T14:22:49.4122168+09:30 level=info msg="Executing migration" id="Add unique index datasource_org_id_uid"
+logger=migrator t=2024-08-26T14:22:49.4143763+09:30 level=info msg="Executing migration" id="add unique index datasource_org_id_is_default"
+logger=migrator t=2024-08-26T14:22:49.4169342+09:30 level=info msg="Executing migration" id="create api_key table"
+logger=migrator t=2024-08-26T14:22:49.4196183+09:30 level=info msg="Executing migration" id="add index api_key.account_id"
+logger=migrator t=2024-08-26T14:22:49.4222961+09:30 level=info msg="Executing migration" id="add index api_key.key"
+logger=migrator t=2024-08-26T14:22:49.4245682+09:30 level=info msg="Executing migration" id="add index api_key.account_id_name"
+logger=migrator t=2024-08-26T14:22:49.4270724+09:30 level=info msg="Executing migration" id="drop index IDX_api_key_account_id - v1"
+logger=migrator t=2024-08-26T14:22:49.4313439+09:30 level=info msg="Executing migration" id="drop index UQE_api_key_key - v1"
+logger=migrator t=2024-08-26T14:22:49.4340725+09:30 level=info msg="Executing migration" id="drop index UQE_api_key_account_id_name - v1"
+logger=migrator t=2024-08-26T14:22:49.4362377+09:30 level=info msg="Executing migration" id="Rename table api_key to api_key_v1 - v1"
+logger=migrator t=2024-08-26T14:22:49.4395779+09:30 level=info msg="Executing migration" id="create api_key table v2"
+logger=migrator t=2024-08-26T14:22:49.4418555+09:30 level=info msg="Executing migration" id="create index IDX_api_key_org_id - v2"
+logger=migrator t=2024-08-26T14:22:49.4441136+09:30 level=info msg="Executing migration" id="create index UQE_api_key_key - v2"
+logger=migrator t=2024-08-26T14:22:49.4470066+09:30 level=info msg="Executing migration" id="create index UQE_api_key_org_id_name - v2"
+logger=migrator t=2024-08-26T14:22:49.4487093+09:30 level=info msg="Executing migration" id="copy api_key v1 to v2"
+logger=migrator t=2024-08-26T14:22:49.4509448+09:30 level=info msg="Executing migration" id="Drop old table api_key_v1"
+logger=migrator t=2024-08-26T14:22:49.4531995+09:30 level=info msg="Executing migration" id="Update api_key table charset"
+logger=migrator t=2024-08-26T14:22:49.4549102+09:30 level=info msg="Executing migration" id="Add expires to api_key table"
+logger=migrator t=2024-08-26T14:22:49.4576246+09:30 level=info msg="Executing migration" id="Add service account foreign key"
+logger=migrator t=2024-08-26T14:22:49.4608431+09:30 level=info msg="Executing migration" id="set service account foreign key to nil if 0"
+logger=migrator t=2024-08-26T14:22:49.464179+09:30 level=info msg="Executing migration" id="Add last_used_at to api_key table"
+logger=migrator t=2024-08-26T14:22:49.4663868+09:30 level=info msg="Executing migration" id="Add is_revoked column to api_key table"
+logger=migrator t=2024-08-26T14:22:49.4696468+09:30 level=info msg="Executing migration" id="create dashboard_snapshot table v4"
+logger=migrator t=2024-08-26T14:22:49.4739175+09:30 level=info msg="Executing migration" id="drop table dashboard_snapshot_v4 #1"
+logger=migrator t=2024-08-26T14:22:49.4770671+09:30 level=info msg="Executing migration" id="create dashboard_snapshot table v5 #2"
+logger=migrator t=2024-08-26T14:22:49.4797731+09:30 level=info msg="Executing migration" id="create index UQE_dashboard_snapshot_key - v5"
+logger=migrator t=2024-08-26T14:22:49.4823994+09:30 level=info msg="Executing migration" id="create index UQE_dashboard_snapshot_delete_key - v5"
+logger=migrator t=2024-08-26T14:22:49.485072+09:30 level=info msg="Executing migration" id="create index IDX_dashboard_snapshot_user_id - v5"
+logger=migrator t=2024-08-26T14:22:49.4873118+09:30 level=info msg="Executing migration" id="alter dashboard_snapshot to mediumtext v2"
+logger=migrator t=2024-08-26T14:22:49.489469+09:30 level=info msg="Executing migration" id="Update dashboard_snapshot table charset"
+logger=migrator t=2024-08-26T14:22:49.492158+09:30 level=info msg="Executing migration" id="Add column external_delete_url to dashboard_snapshots table"
+logger=migrator t=2024-08-26T14:22:49.4948523+09:30 level=info msg="Executing migration" id="Add encrypted dashboard json column"
+logger=migrator t=2024-08-26T14:22:49.4971385+09:30 level=info msg="Executing migration" id="Change dashboard_encrypted column to MEDIUMBLOB"
+logger=migrator t=2024-08-26T14:22:49.4992802+09:30 level=info msg="Executing migration" id="create quota table v1"
+logger=migrator t=2024-08-26T14:22:49.5053646+09:30 level=info msg="Executing migration" id="create index UQE_quota_org_id_user_id_target - v1"
+logger=migrator t=2024-08-26T14:22:49.508501+09:30 level=info msg="Executing migration" id="Update quota table charset"
+logger=migrator t=2024-08-26T14:22:49.5140122+09:30 level=info msg="Executing migration" id="create plugin_setting table"
+logger=migrator t=2024-08-26T14:22:49.5192936+09:30 level=info msg="Executing migration" id="create index UQE_plugin_setting_org_id_plugin_id - v1"
+logger=migrator t=2024-08-26T14:22:49.5219006+09:30 level=info msg="Executing migration" id="Add column plugin_version to plugin_settings"
+logger=migrator t=2024-08-26T14:22:49.5245778+09:30 level=info msg="Executing migration" id="Update plugin_setting table charset"
+logger=migrator t=2024-08-26T14:22:49.5294396+09:30 level=info msg="Executing migration" id="create session table"
+logger=migrator t=2024-08-26T14:22:49.5320395+09:30 level=info msg="Executing migration" id="Drop old table playlist table"
+logger=migrator t=2024-08-26T14:22:49.5335986+09:30 level=info msg="Executing migration" id="Drop old table playlist_item table"
+logger=migrator t=2024-08-26T14:22:49.5356888+09:30 level=info msg="Executing migration" id="create playlist table v2"
+logger=migrator t=2024-08-26T14:22:49.5378442+09:30 level=info msg="Executing migration" id="create playlist item table v2"
+logger=migrator t=2024-08-26T14:22:49.5404436+09:30 level=info msg="Executing migration" id="Update playlist table charset"
+logger=migrator t=2024-08-26T14:22:49.5425325+09:30 level=info msg="Executing migration" id="Update playlist_item table charset"
+logger=migrator t=2024-08-26T14:22:49.5446408+09:30 level=info msg="Executing migration" id="drop preferences table v2"
+logger=migrator t=2024-08-26T14:22:49.5472517+09:30 level=info msg="Executing migration" id="drop preferences table v3"
+logger=migrator t=2024-08-26T14:22:49.5498778+09:30 level=info msg="Executing migration" id="create preferences table v3"
+logger=migrator t=2024-08-26T14:22:49.5525124+09:30 level=info msg="Executing migration" id="Update preferences table charset"
+logger=migrator t=2024-08-26T14:22:49.554603+09:30 level=info msg="Executing migration" id="Add column team_id in preferences"
+logger=migrator t=2024-08-26T14:22:49.5578169+09:30 level=info msg="Executing migration" id="Update team_id column values in preferences"
+logger=migrator t=2024-08-26T14:22:49.5599062+09:30 level=info msg="Executing migration" id="Add column week_start in preferences"
+logger=migrator t=2024-08-26T14:22:49.5625379+09:30 level=info msg="Executing migration" id="Add column preferences.json_data"
+logger=migrator t=2024-08-26T14:22:49.5656629+09:30 level=info msg="Executing migration" id="alter preferences.json_data to mediumtext v1"
+logger=migrator t=2024-08-26T14:22:49.56775+09:30 level=info msg="Executing migration" id="Add preferences index org_id"
+logger=migrator t=2024-08-26T14:22:49.5703817+09:30 level=info msg="Executing migration" id="Add preferences index user_id"
+logger=migrator t=2024-08-26T14:22:49.5729976+09:30 level=info msg="Executing migration" id="create alert table v1"
+logger=migrator t=2024-08-26T14:22:49.5756024+09:30 level=info msg="Executing migration" id="add index alert org_id & id "
+logger=migrator t=2024-08-26T14:22:49.578732+09:30 level=info msg="Executing migration" id="add index alert state"
+logger=migrator t=2024-08-26T14:22:49.5810316+09:30 level=info msg="Executing migration" id="add index alert dashboard_id"
+logger=migrator t=2024-08-26T14:22:49.5831067+09:30 level=info msg="Executing migration" id="Create alert_rule_tag table v1"
+logger=migrator t=2024-08-26T14:22:49.585289+09:30 level=info msg="Executing migration" id="Add unique index alert_rule_tag.alert_id_tag_id"
+logger=migrator t=2024-08-26T14:22:49.5874571+09:30 level=info msg="Executing migration" id="drop index UQE_alert_rule_tag_alert_id_tag_id - v1"
+logger=migrator t=2024-08-26T14:22:49.5895285+09:30 level=info msg="Executing migration" id="Rename table alert_rule_tag to alert_rule_tag_v1 - v1"
+logger=migrator t=2024-08-26T14:22:49.5937456+09:30 level=info msg="Executing migration" id="Create alert_rule_tag table v2"
+logger=migrator t=2024-08-26T14:22:49.5958399+09:30 level=info msg="Executing migration" id="create index UQE_alert_rule_tag_alert_id_tag_id - Add unique index alert_rule_tag.alert_id_tag_id V2"
+logger=migrator t=2024-08-26T14:22:49.5979227+09:30 level=info msg="Executing migration" id="copy alert_rule_tag v1 to v2"
+logger=migrator t=2024-08-26T14:22:49.6005824+09:30 level=info msg="Executing migration" id="drop table alert_rule_tag_v1"
+logger=migrator t=2024-08-26T14:22:49.6026757+09:30 level=info msg="Executing migration" id="create alert_notification table v1"
+logger=migrator t=2024-08-26T14:22:49.6053036+09:30 level=info msg="Executing migration" id="Add column is_default"
+logger=migrator t=2024-08-26T14:22:49.6079317+09:30 level=info msg="Executing migration" id="Add column frequency"
+logger=migrator t=2024-08-26T14:22:49.6106267+09:30 level=info msg="Executing migration" id="Add column send_reminder"
+logger=migrator t=2024-08-26T14:22:49.6121461+09:30 level=info msg="Executing migration" id="Add column disable_resolve_message"
+logger=migrator t=2024-08-26T14:22:49.6178149+09:30 level=info msg="Executing migration" id="add index alert_notification org_id & name"
+logger=migrator t=2024-08-26T14:22:49.6199519+09:30 level=info msg="Executing migration" id="Update alert table charset"
+logger=migrator t=2024-08-26T14:22:49.62205+09:30 level=info msg="Executing migration" id="Update alert_notification table charset"
+logger=migrator t=2024-08-26T14:22:49.6246653+09:30 level=info msg="Executing migration" id="create notification_journal table v1"
+logger=migrator t=2024-08-26T14:22:49.6267598+09:30 level=info msg="Executing migration" id="add index notification_journal org_id & alert_id & notifier_id"
+logger=migrator t=2024-08-26T14:22:49.6293812+09:30 level=info msg="Executing migration" id="drop alert_notification_journal"
+logger=migrator t=2024-08-26T14:22:49.6320485+09:30 level=info msg="Executing migration" id="create alert_notification_state table v1"
+logger=migrator t=2024-08-26T14:22:49.6341406+09:30 level=info msg="Executing migration" id="add index alert_notification_state org_id & alert_id & notifier_id"
+logger=migrator t=2024-08-26T14:22:49.6367486+09:30 level=info msg="Executing migration" id="Add for to alert table"
+logger=migrator t=2024-08-26T14:22:49.6393611+09:30 level=info msg="Executing migration" id="Add column uid in alert_notification"
+logger=migrator t=2024-08-26T14:22:49.642562+09:30 level=info msg="Executing migration" id="Update uid column values in alert_notification"
+logger=migrator t=2024-08-26T14:22:49.6446681+09:30 level=info msg="Executing migration" id="Add unique index alert_notification_org_id_uid"
+logger=migrator t=2024-08-26T14:22:49.6473117+09:30 level=info msg="Executing migration" id="Remove unique index org_id_name"
+logger=migrator t=2024-08-26T14:22:49.6499542+09:30 level=info msg="Executing migration" id="Add column secure_settings in alert_notification"
+logger=migrator t=2024-08-26T14:22:49.652557+09:30 level=info msg="Executing migration" id="alter alert.settings to mediumtext"
+logger=migrator t=2024-08-26T14:22:49.6541199+09:30 level=info msg="Executing migration" id="Add non-unique index alert_notification_state_alert_id"
+logger=migrator t=2024-08-26T14:22:49.6567132+09:30 level=info msg="Executing migration" id="Add non-unique index alert_rule_tag_alert_id"
+logger=migrator t=2024-08-26T14:22:49.6582318+09:30 level=info msg="Executing migration" id="Drop old annotation table v4"
+logger=migrator t=2024-08-26T14:22:49.6582318+09:30 level=info msg="Executing migration" id="create annotation table v5"
+logger=migrator t=2024-08-26T14:22:49.661749+09:30 level=info msg="Executing migration" id="add index annotation 0 v3"
+logger=migrator t=2024-08-26T14:22:49.6654594+09:30 level=info msg="Executing migration" id="add index annotation 1 v3"
+logger=migrator t=2024-08-26T14:22:49.6676936+09:30 level=info msg="Executing migration" id="add index annotation 2 v3"
+logger=migrator t=2024-08-26T14:22:49.6692809+09:30 level=info msg="Executing migration" id="add index annotation 3 v3"
+logger=migrator t=2024-08-26T14:22:49.6713581+09:30 level=info msg="Executing migration" id="add index annotation 4 v3"
+logger=migrator t=2024-08-26T14:22:49.6735401+09:30 level=info msg="Executing migration" id="Update annotation table charset"
+logger=migrator t=2024-08-26T14:22:49.6761194+09:30 level=info msg="Executing migration" id="Add column region_id to annotation table"
+logger=migrator t=2024-08-26T14:22:49.6787106+09:30 level=info msg="Executing migration" id="Drop category_id index"
+logger=migrator t=2024-08-26T14:22:49.6814714+09:30 level=info msg="Executing migration" id="Add column tags to annotation table"
+logger=migrator t=2024-08-26T14:22:49.6841079+09:30 level=info msg="Executing migration" id="Create annotation_tag table v2"
+logger=migrator t=2024-08-26T14:22:49.686783+09:30 level=info msg="Executing migration" id="Add unique index annotation_tag.annotation_id_tag_id"
+logger=migrator t=2024-08-26T14:22:49.6889639+09:30 level=info msg="Executing migration" id="drop index UQE_annotation_tag_annotation_id_tag_id - v2"
+logger=migrator t=2024-08-26T14:22:49.6912183+09:30 level=info msg="Executing migration" id="Rename table annotation_tag to annotation_tag_v2 - v2"
+logger=migrator t=2024-08-26T14:22:49.69549+09:30 level=info msg="Executing migration" id="Create annotation_tag table v3"
+logger=migrator t=2024-08-26T14:22:49.6976099+09:30 level=info msg="Executing migration" id="create index UQE_annotation_tag_annotation_id_tag_id - Add unique index annotation_tag.annotation_id_tag_id V3"
+logger=migrator t=2024-08-26T14:22:49.7012981+09:30 level=info msg="Executing migration" id="copy annotation_tag v2 to v3"
+logger=migrator t=2024-08-26T14:22:49.7029082+09:30 level=info msg="Executing migration" id="drop table annotation_tag_v2"
+logger=migrator t=2024-08-26T14:22:49.7052281+09:30 level=info msg="Executing migration" id="Update alert annotations and set TEXT to empty"
+logger=migrator t=2024-08-26T14:22:49.7067898+09:30 level=info msg="Executing migration" id="Add created time to annotation table"
+logger=migrator t=2024-08-26T14:22:49.7100686+09:30 level=info msg="Executing migration" id="Add updated time to annotation table"
+logger=migrator t=2024-08-26T14:22:49.7127194+09:30 level=info msg="Executing migration" id="Add index for created in annotation table"
+logger=migrator t=2024-08-26T14:22:49.7147879+09:30 level=info msg="Executing migration" id="Add index for updated in annotation table"
+logger=migrator t=2024-08-26T14:22:49.7169386+09:30 level=info msg="Executing migration" id="Convert existing annotations from seconds to milliseconds"
+logger=migrator t=2024-08-26T14:22:49.7192061+09:30 level=info msg="Executing migration" id="Add epoch_end column"
+logger=migrator t=2024-08-26T14:22:49.7207301+09:30 level=info msg="Executing migration" id="Add index for epoch_end"
+logger=migrator t=2024-08-26T14:22:49.7237386+09:30 level=info msg="Executing migration" id="Make epoch_end the same as epoch"
+logger=migrator t=2024-08-26T14:22:49.7268483+09:30 level=info msg="Executing migration" id="Move region to single row"
+logger=migrator t=2024-08-26T14:22:49.7293558+09:30 level=info msg="Executing migration" id="Remove index org_id_epoch from annotation table"
+logger=migrator t=2024-08-26T14:22:49.7327494+09:30 level=info msg="Executing migration" id="Remove index org_id_dashboard_id_panel_id_epoch from annotation table"
+logger=migrator t=2024-08-26T14:22:49.7357559+09:30 level=info msg="Executing migration" id="Add index for org_id_dashboard_id_epoch_end_epoch on annotation table"
+logger=migrator t=2024-08-26T14:22:49.7387561+09:30 level=info msg="Executing migration" id="Add index for org_id_epoch_end_epoch on annotation table"
+logger=migrator t=2024-08-26T14:22:49.7411034+09:30 level=info msg="Executing migration" id="Remove index org_id_epoch_epoch_end from annotation table"
+logger=migrator t=2024-08-26T14:22:49.7431686+09:30 level=info msg="Executing migration" id="Add index for alert_id on annotation table"
+logger=migrator t=2024-08-26T14:22:49.7447758+09:30 level=info msg="Executing migration" id="Increase tags column to length 4096"
+logger=migrator t=2024-08-26T14:22:49.7469405+09:30 level=info msg="Executing migration" id="create test_data table"
+logger=migrator t=2024-08-26T14:22:49.7490765+09:30 level=info msg="Executing migration" id="create dashboard_version table v1"
+logger=migrator t=2024-08-26T14:22:49.7512118+09:30 level=info msg="Executing migration" id="add index dashboard_version.dashboard_id"
+logger=migrator t=2024-08-26T14:22:49.7533755+09:30 level=info msg="Executing migration" id="add unique index dashboard_version.dashboard_id and dashboard_version.version"
+logger=migrator t=2024-08-26T14:22:49.7554605+09:30 level=info msg="Executing migration" id="Set dashboard version to 1 where 0"
+logger=migrator t=2024-08-26T14:22:49.7575522+09:30 level=info msg="Executing migration" id="save existing dashboard data in dashboard_version table v1"
+logger=migrator t=2024-08-26T14:22:49.7596935+09:30 level=info msg="Executing migration" id="alter dashboard_version.data to mediumtext v1"
+logger=migrator t=2024-08-26T14:22:49.7618442+09:30 level=info msg="Executing migration" id="create team table"
+logger=migrator t=2024-08-26T14:22:49.7640245+09:30 level=info msg="Executing migration" id="add index team.org_id"
+logger=migrator t=2024-08-26T14:22:49.7661847+09:30 level=info msg="Executing migration" id="add unique index team_org_id_name"
+logger=migrator t=2024-08-26T14:22:49.7683184+09:30 level=info msg="Executing migration" id="create team member table"
+logger=migrator t=2024-08-26T14:22:49.7704201+09:30 level=info msg="Executing migration" id="add index team_member.org_id"
+logger=migrator t=2024-08-26T14:22:49.7735718+09:30 level=info msg="Executing migration" id="add unique index team_member_org_id_team_id_user_id"
+logger=migrator t=2024-08-26T14:22:49.7756708+09:30 level=info msg="Executing migration" id="add index team_member.team_id"
+logger=migrator t=2024-08-26T14:22:49.7783463+09:30 level=info msg="Executing migration" id="Add column email to team table"
+logger=migrator t=2024-08-26T14:22:49.7809398+09:30 level=info msg="Executing migration" id="Add column external to team_member table"
+logger=migrator t=2024-08-26T14:22:49.7839964+09:30 level=info msg="Executing migration" id="Add column permission to team_member table"
+logger=migrator t=2024-08-26T14:22:49.7866159+09:30 level=info msg="Executing migration" id="create dashboard acl table"
+logger=migrator t=2024-08-26T14:22:49.7898284+09:30 level=info msg="Executing migration" id="add index dashboard_acl_dashboard_id"
+logger=migrator t=2024-08-26T14:22:49.792055+09:30 level=info msg="Executing migration" id="add unique index dashboard_acl_dashboard_id_user_id"
+logger=migrator t=2024-08-26T14:22:49.795196+09:30 level=info msg="Executing migration" id="add unique index dashboard_acl_dashboard_id_team_id"
+logger=migrator t=2024-08-26T14:22:49.797346+09:30 level=info msg="Executing migration" id="add index dashboard_acl_user_id"
+logger=migrator t=2024-08-26T14:22:49.8000253+09:30 level=info msg="Executing migration" id="add index dashboard_acl_team_id"
+logger=migrator t=2024-08-26T14:22:49.8042071+09:30 level=info msg="Executing migration" id="add index dashboard_acl_org_id_role"
+logger=migrator t=2024-08-26T14:22:49.8070397+09:30 level=info msg="Executing migration" id="add index dashboard_permission"
+logger=migrator t=2024-08-26T14:22:49.8096806+09:30 level=info msg="Executing migration" id="save default acl rules in dashboard_acl table"
+logger=migrator t=2024-08-26T14:22:49.8117654+09:30 level=info msg="Executing migration" id="delete acl rules for deleted dashboards and folders"
+logger=migrator t=2024-08-26T14:22:49.8149792+09:30 level=info msg="Executing migration" id="create tag table"
+logger=migrator t=2024-08-26T14:22:49.8170415+09:30 level=info msg="Executing migration" id="add index tag.key_value"
+logger=migrator t=2024-08-26T14:22:49.818593+09:30 level=info msg="Executing migration" id="create login attempt table"
+logger=migrator t=2024-08-26T14:22:49.8209104+09:30 level=info msg="Executing migration" id="add index login_attempt.username"
+logger=migrator t=2024-08-26T14:22:49.8230366+09:30 level=info msg="Executing migration" id="drop index IDX_login_attempt_username - v1"
+logger=migrator t=2024-08-26T14:22:49.8251188+09:30 level=info msg="Executing migration" id="Rename table login_attempt to login_attempt_tmp_qwerty - v1"
+logger=migrator t=2024-08-26T14:22:49.8294378+09:30 level=info msg="Executing migration" id="create login_attempt v2"
+logger=migrator t=2024-08-26T14:22:49.832634+09:30 level=info msg="Executing migration" id="create index IDX_login_attempt_username - v2"
+logger=migrator t=2024-08-26T14:22:49.8342544+09:30 level=info msg="Executing migration" id="copy login_attempt v1 to v2"
+logger=migrator t=2024-08-26T14:22:49.8370323+09:30 level=info msg="Executing migration" id="drop login_attempt_tmp_qwerty"
+logger=migrator t=2024-08-26T14:22:49.8385597+09:30 level=info msg="Executing migration" id="create user auth table"
+logger=migrator t=2024-08-26T14:22:49.8415915+09:30 level=info msg="Executing migration" id="create index IDX_user_auth_auth_module_auth_id - v1"
+logger=migrator t=2024-08-26T14:22:49.8456067+09:30 level=info msg="Executing migration" id="alter user_auth.auth_id to length 190"
+logger=migrator t=2024-08-26T14:22:49.8476313+09:30 level=info msg="Executing migration" id="Add OAuth access token to user_auth"
+logger=migrator t=2024-08-26T14:22:49.8506648+09:30 level=info msg="Executing migration" id="Add OAuth refresh token to user_auth"
+logger=migrator t=2024-08-26T14:22:49.8536399+09:30 level=info msg="Executing migration" id="Add OAuth token type to user_auth"
+logger=migrator t=2024-08-26T14:22:49.858704+09:30 level=info msg="Executing migration" id="Add OAuth expiry to user_auth"
+logger=migrator t=2024-08-26T14:22:49.8614239+09:30 level=info msg="Executing migration" id="Add index to user_id column in user_auth"
+logger=migrator t=2024-08-26T14:22:49.8636109+09:30 level=info msg="Executing migration" id="Add OAuth ID token to user_auth"
+logger=migrator t=2024-08-26T14:22:49.867386+09:30 level=info msg="Executing migration" id="create server_lock table"
+logger=migrator t=2024-08-26T14:22:49.8692128+09:30 level=info msg="Executing migration" id="add index server_lock.operation_uid"
+logger=migrator t=2024-08-26T14:22:49.871367+09:30 level=info msg="Executing migration" id="create user auth token table"
+logger=migrator t=2024-08-26T14:22:49.8740564+09:30 level=info msg="Executing migration" id="add unique index user_auth_token.auth_token"
+logger=migrator t=2024-08-26T14:22:49.8763005+09:30 level=info msg="Executing migration" id="add unique index user_auth_token.prev_auth_token"
+logger=migrator t=2024-08-26T14:22:49.8785395+09:30 level=info msg="Executing migration" id="add index user_auth_token.user_id"
+logger=migrator t=2024-08-26T14:22:49.8808623+09:30 level=info msg="Executing migration" id="Add revoked_at to the user auth token"
+logger=migrator t=2024-08-26T14:22:49.8836301+09:30 level=info msg="Executing migration" id="create cache_data table"
+logger=migrator t=2024-08-26T14:22:49.8854249+09:30 level=info msg="Executing migration" id="add unique index cache_data.cache_key"
+logger=migrator t=2024-08-26T14:22:49.8876837+09:30 level=info msg="Executing migration" id="create short_url table v1"
+logger=migrator t=2024-08-26T14:22:49.8894274+09:30 level=info msg="Executing migration" id="add index short_url.org_id-uid"
+logger=migrator t=2024-08-26T14:22:49.8920234+09:30 level=info msg="Executing migration" id="alter table short_url alter column created_by type to bigint"
+logger=migrator t=2024-08-26T14:22:49.8920234+09:30 level=info msg="Executing migration" id="delete alert_definition table"
+logger=migrator t=2024-08-26T14:22:49.8955707+09:30 level=info msg="Executing migration" id="recreate alert_definition table"
+logger=migrator t=2024-08-26T14:22:49.8981071+09:30 level=info msg="Executing migration" id="add index in alert_definition on org_id and title columns"
+logger=migrator t=2024-08-26T14:22:49.9006172+09:30 level=info msg="Executing migration" id="add index in alert_definition on org_id and uid columns"
+logger=migrator t=2024-08-26T14:22:49.9097805+09:30 level=info msg="Executing migration" id="alter alert_definition table data column to mediumtext in mysql"
+logger=migrator t=2024-08-26T14:22:49.9124928+09:30 level=info msg="Executing migration" id="drop index in alert_definition on org_id and title columns"
+logger=migrator t=2024-08-26T14:22:49.915086+09:30 level=info msg="Executing migration" id="drop index in alert_definition on org_id and uid columns"
+logger=migrator t=2024-08-26T14:22:49.917179+09:30 level=info msg="Executing migration" id="add unique index in alert_definition on org_id and title columns"
+logger=migrator t=2024-08-26T14:22:49.9198168+09:30 level=info msg="Executing migration" id="add unique index in alert_definition on org_id and uid columns"
+logger=migrator t=2024-08-26T14:22:49.9220647+09:30 level=info msg="Executing migration" id="Add column paused in alert_definition"
+logger=migrator t=2024-08-26T14:22:49.924329+09:30 level=info msg="Executing migration" id="drop alert_definition table"
+logger=migrator t=2024-08-26T14:22:49.9271674+09:30 level=info msg="Executing migration" id="delete alert_definition_version table"
+logger=migrator t=2024-08-26T14:22:49.929403+09:30 level=info msg="Executing migration" id="recreate alert_definition_version table"
+logger=migrator t=2024-08-26T14:22:49.9310991+09:30 level=info msg="Executing migration" id="add index in alert_definition_version table on alert_definition_id and version columns"
+logger=migrator t=2024-08-26T14:22:49.933304+09:30 level=info msg="Executing migration" id="add index in alert_definition_version table on alert_definition_uid and version columns"
+logger=migrator t=2024-08-26T14:22:49.9355333+09:30 level=info msg="Executing migration" id="alter alert_definition_version table data column to mediumtext in mysql"
+logger=migrator t=2024-08-26T14:22:49.9372785+09:30 level=info msg="Executing migration" id="drop alert_definition_version table"
+logger=migrator t=2024-08-26T14:22:49.9394965+09:30 level=info msg="Executing migration" id="create alert_instance table"
+logger=migrator t=2024-08-26T14:22:49.9418527+09:30 level=info msg="Executing migration" id="add index in alert_instance table on def_org_id, def_uid and current_state columns"
+logger=migrator t=2024-08-26T14:22:49.9437346+09:30 level=info msg="Executing migration" id="add index in alert_instance table on def_org_id, current_state columns"
+logger=migrator t=2024-08-26T14:22:49.945265+09:30 level=info msg="Executing migration" id="add column current_state_end to alert_instance"
+logger=migrator t=2024-08-26T14:22:49.9483633+09:30 level=info msg="Executing migration" id="remove index def_org_id, def_uid, current_state on alert_instance"
+logger=migrator t=2024-08-26T14:22:49.9499054+09:30 level=info msg="Executing migration" id="remove index def_org_id, current_state on alert_instance"
+logger=migrator t=2024-08-26T14:22:49.9529444+09:30 level=info msg="Executing migration" id="rename def_org_id to rule_org_id in alert_instance"
+logger=migrator t=2024-08-26T14:22:49.9591359+09:30 level=info msg="Executing migration" id="rename def_uid to rule_uid in alert_instance"
+logger=migrator t=2024-08-26T14:22:49.9647247+09:30 level=info msg="Executing migration" id="add index rule_org_id, rule_uid, current_state on alert_instance"
+logger=migrator t=2024-08-26T14:22:49.9668613+09:30 level=info msg="Executing migration" id="add index rule_org_id, current_state on alert_instance"
+logger=migrator t=2024-08-26T14:22:49.9690972+09:30 level=info msg="Executing migration" id="add current_reason column related to current_state"
+logger=migrator t=2024-08-26T14:22:49.9716695+09:30 level=info msg="Executing migration" id="create alert_rule table"
+logger=migrator t=2024-08-26T14:22:49.974493+09:30 level=info msg="Executing migration" id="add index in alert_rule on org_id and title columns"
+logger=migrator t=2024-08-26T14:22:49.9762462+09:30 level=info msg="Executing migration" id="add index in alert_rule on org_id and uid columns"
+logger=migrator t=2024-08-26T14:22:49.9785357+09:30 level=info msg="Executing migration" id="add index in alert_rule on org_id, namespace_uid, group_uid columns"
+logger=migrator t=2024-08-26T14:22:49.9801835+09:30 level=info msg="Executing migration" id="alter alert_rule table data column to mediumtext in mysql"
+logger=migrator t=2024-08-26T14:22:49.9818489+09:30 level=info msg="Executing migration" id="add column for to alert_rule"
+logger=migrator t=2024-08-26T14:22:49.9850265+09:30 level=info msg="Executing migration" id="add column annotations to alert_rule"
+logger=migrator t=2024-08-26T14:22:49.9872735+09:30 level=info msg="Executing migration" id="add column labels to alert_rule"
+logger=migrator t=2024-08-26T14:22:49.9898672+09:30 level=info msg="Executing migration" id="remove unique index from alert_rule on org_id, title columns"
+logger=migrator t=2024-08-26T14:22:49.9914215+09:30 level=info msg="Executing migration" id="add index in alert_rule on org_id, namespase_uid and title columns"
+logger=migrator t=2024-08-26T14:22:49.9929539+09:30 level=info msg="Executing migration" id="add dashboard_uid column to alert_rule"
+logger=migrator t=2024-08-26T14:22:49.9945263+09:30 level=info msg="Executing migration" id="add panel_id column to alert_rule"
+logger=migrator t=2024-08-26T14:22:49.9986016+09:30 level=info msg="Executing migration" id="add index in alert_rule on org_id, dashboard_uid and panel_id columns"
+logger=migrator t=2024-08-26T14:22:50.0006435+09:30 level=info msg="Executing migration" id="add rule_group_idx column to alert_rule"
+logger=migrator t=2024-08-26T14:22:50.0036527+09:30 level=info msg="Executing migration" id="add is_paused column to alert_rule table"
+logger=migrator t=2024-08-26T14:22:50.0066805+09:30 level=info msg="Executing migration" id="fix is_paused column for alert_rule table"
+logger=migrator t=2024-08-26T14:22:50.0087174+09:30 level=info msg="Executing migration" id="create alert_rule_version table"
+logger=migrator t=2024-08-26T14:22:50.0104625+09:30 level=info msg="Executing migration" id="add index in alert_rule_version table on rule_org_id, rule_uid and version columns"
+logger=migrator t=2024-08-26T14:22:50.0127767+09:30 level=info msg="Executing migration" id="add index in alert_rule_version table on rule_org_id, rule_namespace_uid and rule_group columns"
+logger=migrator t=2024-08-26T14:22:50.0149287+09:30 level=info msg="Executing migration" id="alter alert_rule_version table data column to mediumtext in mysql"
+logger=migrator t=2024-08-26T14:22:50.0170684+09:30 level=info msg="Executing migration" id="add column for to alert_rule_version"
+logger=migrator t=2024-08-26T14:22:50.0197464+09:30 level=info msg="Executing migration" id="add column annotations to alert_rule_version"
+logger=migrator t=2024-08-26T14:22:50.0219339+09:30 level=info msg="Executing migration" id="add column labels to alert_rule_version"
+logger=migrator t=2024-08-26T14:22:50.024602+09:30 level=info msg="Executing migration" id="add rule_group_idx column to alert_rule_version"
+logger=migrator t=2024-08-26T14:22:50.0273016+09:30 level=info msg="Executing migration" id="add is_paused column to alert_rule_versions table"
+logger=migrator t=2024-08-26T14:22:50.0305597+09:30 level=info msg="Executing migration" id="fix is_paused column for alert_rule_version table"
+logger=migrator t=2024-08-26T14:22:50.0327747+09:30 level=info msg="Executing migration" id=create_alert_configuration_table
+logger=migrator t=2024-08-26T14:22:50.0344571+09:30 level=info msg="Executing migration" id="Add column default in alert_configuration"
+logger=migrator t=2024-08-26T14:22:50.0381153+09:30 level=info msg="Executing migration" id="alert alert_configuration alertmanager_configuration column from TEXT to MEDIUMTEXT if mysql"
+logger=migrator t=2024-08-26T14:22:50.0404145+09:30 level=info msg="Executing migration" id="add column org_id in alert_configuration"
+logger=migrator t=2024-08-26T14:22:50.0432113+09:30 level=info msg="Executing migration" id="add index in alert_configuration table on org_id column"
+logger=migrator t=2024-08-26T14:22:50.0455009+09:30 level=info msg="Executing migration" id="add configuration_hash column to alert_configuration"
+logger=migrator t=2024-08-26T14:22:50.0483402+09:30 level=info msg="Executing migration" id=create_ngalert_configuration_table
+logger=migrator t=2024-08-26T14:22:50.050615+09:30 level=info msg="Executing migration" id="add index in ngalert_configuration on org_id column"
+logger=migrator t=2024-08-26T14:22:50.0528314+09:30 level=info msg="Executing migration" id="add column send_alerts_to in ngalert_configuration"
+logger=migrator t=2024-08-26T14:22:50.0556941+09:30 level=info msg="Executing migration" id="create provenance_type table"
+logger=migrator t=2024-08-26T14:22:50.0581167+09:30 level=info msg="Executing migration" id="add index to uniquify (record_key, record_type, org_id) columns"
+logger=migrator t=2024-08-26T14:22:50.0613522+09:30 level=info msg="Executing migration" id="create alert_image table"
+logger=migrator t=2024-08-26T14:22:50.0635066+09:30 level=info msg="Executing migration" id="add unique index on token to alert_image table"
+logger=migrator t=2024-08-26T14:22:50.0651178+09:30 level=info msg="Executing migration" id="support longer URLs in alert_image table"
+logger=migrator t=2024-08-26T14:22:50.067721+09:30 level=info msg="Executing migration" id=create_alert_configuration_history_table
+logger=migrator t=2024-08-26T14:22:50.067721+09:30 level=info msg="Executing migration" id="drop non-unique orgID index on alert_configuration"
+logger=migrator t=2024-08-26T14:22:50.0715246+09:30 level=info msg="Executing migration" id="drop unique orgID index on alert_configuration if exists"
+logger=migrator t=2024-08-26T14:22:50.0715246+09:30 level=warn msg="Skipping migration: Already executed, but not recorded in migration log" id="drop unique orgID index on alert_configuration if exists"
+logger=migrator t=2024-08-26T14:22:50.0740673+09:30 level=info msg="Executing migration" id="extract alertmanager configuration history to separate table"
+logger=migrator t=2024-08-26T14:22:50.0761627+09:30 level=info msg="Executing migration" id="add unique index on orgID to alert_configuration"
+logger=migrator t=2024-08-26T14:22:50.0771684+09:30 level=info msg="Executing migration" id="add last_applied column to alert_configuration_history"
+logger=migrator t=2024-08-26T14:22:50.0801764+09:30 level=info msg="Executing migration" id="clear migration entry \"remove unified alerting data\""
+logger=migrator t=2024-08-26T14:22:50.0801764+09:30 level=info msg="Executing migration" id="move dashboard alerts to unified alerting"
+logger=migrator t=2024-08-26T14:22:50.0832029+09:30 level=info msg="alerts found to migrate" alerts=0
+logger=migrator t=2024-08-26T14:22:50.0832029+09:30 level=info msg="Executing migration" id="create library_element table v1"
+logger=migrator t=2024-08-26T14:22:50.0867319+09:30 level=info msg="Executing migration" id="add index library_element org_id-folder_id-name-kind"
+logger=migrator t=2024-08-26T14:22:50.08983+09:30 level=info msg="Executing migration" id="create library_element_connection table v1"
+logger=migrator t=2024-08-26T14:22:50.0921047+09:30 level=info msg="Executing migration" id="add index library_element_connection element_id-kind-connection_id"
+logger=migrator t=2024-08-26T14:22:50.0943841+09:30 level=info msg="Executing migration" id="add unique index library_element org_id_uid"
+logger=migrator t=2024-08-26T14:22:50.0961559+09:30 level=info msg="Executing migration" id="increase max description length to 2048"
+logger=migrator t=2024-08-26T14:22:50.0990948+09:30 level=info msg="Executing migration" id="alter library_element model to mediumtext"
+logger=migrator t=2024-08-26T14:22:50.1007974+09:30 level=info msg="Executing migration" id="clone move dashboard alerts to unified alerting"
+logger=migrator t=2024-08-26T14:22:50.1036583+09:30 level=info msg="Executing migration" id="create data_keys table"
+logger=migrator t=2024-08-26T14:22:50.1059402+09:30 level=info msg="Executing migration" id="create secrets table"
+logger=migrator t=2024-08-26T14:22:50.1081794+09:30 level=info msg="Executing migration" id="rename data_keys name column to id"
+logger=migrator t=2024-08-26T14:22:50.11568+09:30 level=info msg="Executing migration" id="add name column into data_keys"
+logger=migrator t=2024-08-26T14:22:50.1178102+09:30 level=info msg="Executing migration" id="copy data_keys id column values into name"
+logger=migrator t=2024-08-26T14:22:50.1206072+09:30 level=info msg="Executing migration" id="rename data_keys name column to label"
+logger=migrator t=2024-08-26T14:22:50.1275385+09:30 level=info msg="Executing migration" id="rename data_keys id column back to name"
+logger=migrator t=2024-08-26T14:22:50.1355632+09:30 level=info msg="Executing migration" id="create kv_store table v1"
+logger=migrator t=2024-08-26T14:22:50.1371229+09:30 level=info msg="Executing migration" id="add index kv_store.org_id-namespace-key"
+logger=migrator t=2024-08-26T14:22:50.139271+09:30 level=info msg="Executing migration" id="update dashboard_uid and panel_id from existing annotations"
+logger=migrator t=2024-08-26T14:22:50.1413346+09:30 level=info msg="Executing migration" id="create permission table"
+logger=migrator t=2024-08-26T14:22:50.1431803+09:30 level=info msg="Executing migration" id="add unique index permission.role_id"
+logger=migrator t=2024-08-26T14:22:50.1452711+09:30 level=info msg="Executing migration" id="add unique index role_id_action_scope"
+logger=migrator t=2024-08-26T14:22:50.1474229+09:30 level=info msg="Executing migration" id="create role table"
+logger=migrator t=2024-08-26T14:22:50.149509+09:30 level=info msg="Executing migration" id="add column display_name"
+logger=migrator t=2024-08-26T14:22:50.1521925+09:30 level=info msg="Executing migration" id="add column group_name"
+logger=migrator t=2024-08-26T14:22:50.1548382+09:30 level=info msg="Executing migration" id="add index role.org_id"
+logger=migrator t=2024-08-26T14:22:50.157086+09:30 level=info msg="Executing migration" id="add unique index role_org_id_name"
+logger=migrator t=2024-08-26T14:22:50.1591635+09:30 level=info msg="Executing migration" id="add index role_org_id_uid"
+logger=migrator t=2024-08-26T14:22:50.1617279+09:30 level=info msg="Executing migration" id="create team role table"
+logger=migrator t=2024-08-26T14:22:50.1638041+09:30 level=info msg="Executing migration" id="add index team_role.org_id"
+logger=migrator t=2024-08-26T14:22:50.1659696+09:30 level=info msg="Executing migration" id="add unique index team_role_org_id_team_id_role_id"
+logger=migrator t=2024-08-26T14:22:50.1681052+09:30 level=info msg="Executing migration" id="add index team_role.team_id"
+logger=migrator t=2024-08-26T14:22:50.1702369+09:30 level=info msg="Executing migration" id="create user role table"
+logger=migrator t=2024-08-26T14:22:50.1723183+09:30 level=info msg="Executing migration" id="add index user_role.org_id"
+logger=migrator t=2024-08-26T14:22:50.174497+09:30 level=info msg="Executing migration" id="add unique index user_role_org_id_user_id_role_id"
+logger=migrator t=2024-08-26T14:22:50.1761669+09:30 level=info msg="Executing migration" id="add index user_role.user_id"
+logger=migrator t=2024-08-26T14:22:50.1784375+09:30 level=info msg="Executing migration" id="create builtin role table"
+logger=migrator t=2024-08-26T14:22:50.1807077+09:30 level=info msg="Executing migration" id="add index builtin_role.role_id"
+logger=migrator t=2024-08-26T14:22:50.1829366+09:30 level=info msg="Executing migration" id="add index builtin_role.name"
+logger=migrator t=2024-08-26T14:22:50.1852111+09:30 level=info msg="Executing migration" id="Add column org_id to builtin_role table"
+logger=migrator t=2024-08-26T14:22:50.1877131+09:30 level=info msg="Executing migration" id="add index builtin_role.org_id"
+logger=migrator t=2024-08-26T14:22:50.1899525+09:30 level=info msg="Executing migration" id="add unique index builtin_role_org_id_role_id_role"
+logger=migrator t=2024-08-26T14:22:50.1916241+09:30 level=info msg="Executing migration" id="Remove unique index role_org_id_uid"
+logger=migrator t=2024-08-26T14:22:50.1942552+09:30 level=info msg="Executing migration" id="add unique index role.uid"
+logger=migrator t=2024-08-26T14:22:50.1958111+09:30 level=info msg="Executing migration" id="create seed assignment table"
+logger=migrator t=2024-08-26T14:22:50.1988764+09:30 level=info msg="Executing migration" id="add unique index builtin_role_role_name"
+logger=migrator t=2024-08-26T14:22:50.1988764+09:30 level=info msg="Executing migration" id="add column hidden to role table"
+logger=migrator t=2024-08-26T14:22:50.2029175+09:30 level=info msg="Executing migration" id="create query_history table v1"
+logger=migrator t=2024-08-26T14:22:50.2049366+09:30 level=info msg="Executing migration" id="add index query_history.org_id-created_by-datasource_uid"
+logger=migrator t=2024-08-26T14:22:50.213052+09:30 level=info msg="Executing migration" id="alter table query_history alter column created_by type to bigint"
+logger=migrator t=2024-08-26T14:22:50.2140598+09:30 level=info msg="Executing migration" id="teams permissions migration"
+logger=migrator t=2024-08-26T14:22:50.2170678+09:30 level=info msg="Executing migration" id="dashboard permissions"
+logger=migrator t=2024-08-26T14:22:50.218769+09:30 level=info msg="Executing migration" id="dashboard permissions uid scopes"
+logger=migrator t=2024-08-26T14:22:50.2205579+09:30 level=info msg="Executing migration" id="drop managed folder create actions"
+logger=migrator t=2024-08-26T14:22:50.2236953+09:30 level=info msg="Executing migration" id="alerting notification permissions"
+logger=migrator t=2024-08-26T14:22:50.230023+09:30 level=info msg="Executing migration" id="create query_history_star table v1"
+logger=migrator t=2024-08-26T14:22:50.2322051+09:30 level=info msg="Executing migration" id="add index query_history.user_id-query_uid"
+logger=migrator t=2024-08-26T14:22:50.2353416+09:30 level=info msg="Executing migration" id="add column org_id in query_history_star"
+logger=migrator t=2024-08-26T14:22:50.2381497+09:30 level=info msg="Executing migration" id="alter table query_history_star_mig column user_id type to bigint"
+logger=migrator t=2024-08-26T14:22:50.240405+09:30 level=info msg="Executing migration" id="create correlation table v1"
+logger=migrator t=2024-08-26T14:22:50.24267+09:30 level=info msg="Executing migration" id="add index correlations.uid"
+logger=migrator t=2024-08-26T14:22:50.2443062+09:30 level=info msg="Executing migration" id="add index correlations.source_uid"
+logger=migrator t=2024-08-26T14:22:50.2482358+09:30 level=info msg="Executing migration" id="add correlation config column"
+logger=migrator t=2024-08-26T14:22:50.2517894+09:30 level=info msg="Executing migration" id="create entity_events table"
+logger=migrator t=2024-08-26T14:22:50.254592+09:30 level=info msg="Executing migration" id="create dashboard public config v1"
+logger=migrator t=2024-08-26T14:22:50.257392+09:30 level=info msg="Executing migration" id="drop index UQE_dashboard_public_config_uid - v1"
+logger=migrator t=2024-08-26T14:22:50.2580215+09:30 level=warn msg="Skipping migration: Already executed, but not recorded in migration log" id="drop index UQE_dashboard_public_config_uid - v1"
+logger=migrator t=2024-08-26T14:22:50.2598212+09:30 level=info msg="Executing migration" id="drop index IDX_dashboard_public_config_org_id_dashboard_uid - v1"
+logger=migrator t=2024-08-26T14:22:50.2603565+09:30 level=warn msg="Skipping migration: Already executed, but not recorded in migration log" id="drop index IDX_dashboard_public_config_org_id_dashboard_uid - v1"
+logger=migrator t=2024-08-26T14:22:50.2629951+09:30 level=info msg="Executing migration" id="Drop old dashboard public config table"
+logger=migrator t=2024-08-26T14:22:50.2657441+09:30 level=info msg="Executing migration" id="recreate dashboard public config v1"
+logger=migrator t=2024-08-26T14:22:50.2680482+09:30 level=info msg="Executing migration" id="create index UQE_dashboard_public_config_uid - v1"
+logger=migrator t=2024-08-26T14:22:50.2697403+09:30 level=info msg="Executing migration" id="create index IDX_dashboard_public_config_org_id_dashboard_uid - v1"
+logger=migrator t=2024-08-26T14:22:50.2719802+09:30 level=info msg="Executing migration" id="drop index UQE_dashboard_public_config_uid - v2"
+logger=migrator t=2024-08-26T14:22:50.2743846+09:30 level=info msg="Executing migration" id="drop index IDX_dashboard_public_config_org_id_dashboard_uid - v2"
+logger=migrator t=2024-08-26T14:22:50.2769489+09:30 level=info msg="Executing migration" id="Drop public config table"
+logger=migrator t=2024-08-26T14:22:50.2796596+09:30 level=info msg="Executing migration" id="Recreate dashboard public config v2"
+logger=migrator t=2024-08-26T14:22:50.2819608+09:30 level=info msg="Executing migration" id="create index UQE_dashboard_public_config_uid - v2"
+logger=migrator t=2024-08-26T14:22:50.2844131+09:30 level=info msg="Executing migration" id="create index IDX_dashboard_public_config_org_id_dashboard_uid - v2"
+logger=migrator t=2024-08-26T14:22:50.2865783+09:30 level=info msg="Executing migration" id="create index UQE_dashboard_public_config_access_token - v2"
+logger=migrator t=2024-08-26T14:22:50.2886727+09:30 level=info msg="Executing migration" id="Rename table dashboard_public_config to dashboard_public - v2"
+logger=migrator t=2024-08-26T14:22:50.2942907+09:30 level=info msg="Executing migration" id="add annotations_enabled column"
+logger=migrator t=2024-08-26T14:22:50.2969247+09:30 level=info msg="Executing migration" id="add time_selection_enabled column"
+logger=migrator t=2024-08-26T14:22:50.3000136+09:30 level=info msg="Executing migration" id="delete orphaned public dashboards"
+logger=migrator t=2024-08-26T14:22:50.3032713+09:30 level=info msg="Executing migration" id="add share column"
+logger=migrator t=2024-08-26T14:22:50.306143+09:30 level=info msg="Executing migration" id="backfill empty share column fields with default of public"
+logger=migrator t=2024-08-26T14:22:50.3082451+09:30 level=info msg="Executing migration" id="create default alerting folders"
+logger=migrator t=2024-08-26T14:22:50.3108754+09:30 level=info msg="Executing migration" id="create file table"
+logger=migrator t=2024-08-26T14:22:50.3124881+09:30 level=info msg="Executing migration" id="file table idx: path natural pk"
+logger=migrator t=2024-08-26T14:22:50.315109+09:30 level=info msg="Executing migration" id="file table idx: parent_folder_path_hash fast folder retrieval"
+logger=migrator t=2024-08-26T14:22:50.3172844+09:30 level=info msg="Executing migration" id="create file_meta table"
+logger=migrator t=2024-08-26T14:22:50.3193893+09:30 level=info msg="Executing migration" id="file table idx: path key"
+logger=migrator t=2024-08-26T14:22:50.3216834+09:30 level=info msg="Executing migration" id="set path collation in file table"
+logger=migrator t=2024-08-26T14:22:50.3237733+09:30 level=info msg="Executing migration" id="managed permissions migration"
+logger=migrator t=2024-08-26T14:22:50.3259129+09:30 level=info msg="Executing migration" id="managed folder permissions alert actions migration"
+logger=migrator t=2024-08-26T14:22:50.3275317+09:30 level=info msg="Executing migration" id="RBAC action name migrator"
+logger=migrator t=2024-08-26T14:22:50.3297891+09:30 level=info msg="Executing migration" id="Add UID column to playlist"
+logger=migrator t=2024-08-26T14:22:50.333029+09:30 level=info msg="Executing migration" id="Update uid column values in playlist"
+logger=migrator t=2024-08-26T14:22:50.3346742+09:30 level=info msg="Executing migration" id="Add index for uid in playlist"
+logger=migrator t=2024-08-26T14:22:50.3367667+09:30 level=info msg="Executing migration" id="update group index for alert rules"
+logger=migrator t=2024-08-26T14:22:50.3388971+09:30 level=info msg="Executing migration" id="managed folder permissions alert actions repeated migration"
+logger=migrator t=2024-08-26T14:22:50.3404608+09:30 level=info msg="Executing migration" id="admin only folder/dashboard permission"
+logger=migrator t=2024-08-26T14:22:50.3425481+09:30 level=info msg="Executing migration" id="add action column to seed_assignment"
+logger=migrator t=2024-08-26T14:22:50.3450952+09:30 level=info msg="Executing migration" id="add scope column to seed_assignment"
+logger=migrator t=2024-08-26T14:22:50.3486129+09:30 level=info msg="Executing migration" id="remove unique index builtin_role_role_name before nullable update"
+logger=migrator t=2024-08-26T14:22:50.3486129+09:30 level=info msg="Executing migration" id="update seed_assignment role_name column to nullable"
+logger=migrator t=2024-08-26T14:22:50.3677649+09:30 level=info msg="Executing migration" id="add unique index builtin_role_name back"
+logger=migrator t=2024-08-26T14:22:50.3703808+09:30 level=info msg="Executing migration" id="add unique index builtin_role_action_scope"
+logger=migrator t=2024-08-26T14:22:50.3725567+09:30 level=info msg="Executing migration" id="add primary key to seed_assigment"
+logger=migrator t=2024-08-26T14:22:50.3805927+09:30 level=info msg="Executing migration" id="managed folder permissions alert actions repeated fixed migration"
+logger=migrator t=2024-08-26T14:22:50.3822658+09:30 level=info msg="Executing migration" id="migrate external alertmanagers to datsourcse"
+logger=migrator t=2024-08-26T14:22:50.3843296+09:30 level=info msg="Executing migration" id="create folder table"
+logger=migrator t=2024-08-26T14:22:50.3865138+09:30 level=info msg="Executing migration" id="Add index for parent_uid"
+logger=migrator t=2024-08-26T14:22:50.3886603+09:30 level=info msg="Executing migration" id="Add unique index for folder.uid and folder.org_id"
+logger=migrator t=2024-08-26T14:22:50.3913728+09:30 level=info msg="Executing migration" id="Update folder title length"
+logger=migrator t=2024-08-26T14:22:50.3929223+09:30 level=info msg="Executing migration" id="Add unique index for folder.title and folder.parent_uid"
+logger=migrator t=2024-08-26T14:22:50.3955555+09:30 level=info msg="migrations completed" performed=488 skipped=0 duration=1.2577336s
+logger=sqlstore t=2024-08-26T14:22:50.4039097+09:30 level=info msg="Created default admin" user=admin
+logger=sqlstore t=2024-08-26T14:22:50.4039097+09:30 level=info msg="Created default organization"
+logger=secrets t=2024-08-26T14:22:50.4055207+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:22:50.6019287+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:22:50.6019287+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:22:50.611166+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:22:50.6172083+09:30 level=info msg="Live Push Gateway initialization"
+logger=settings t=2024-08-26T14:22:51.02186+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:22:51.02186+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:22:51.0233795+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:22:51.0233795+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:22:51.024886+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:22:51.0391641+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:22:51.0416956+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-26T14:22:51.0447038+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:22:51.2443378+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:22:51.2443378+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:22:51.2480351+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:22:51.2507205+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:22:51.4584031+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:22:51.4610096+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:22:51.4610096+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:22:51.4610096+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-26T14:22:51.4610096+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:22:51.4615536+09:30 level=info msg="storage starting"
+logger=http.server t=2024-08-26T14:22:51.4646799+09:30 level=info msg="HTTP Server Listen" address=[::]:3000 protocol=http subUrl= socket=
+logger=sqlstore.transactions t=2024-08-26T14:22:51.4743845+09:30 level=info msg="Database locked, sleeping then retrying" error="database is locked" retry=0 code="database is locked"
+logger=ngalert.state.manager t=2024-08-26T14:22:51.5038864+09:30 level=info msg="State cache has been initialized" states=0 duration=42.8768ms
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:22:51.5038864+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:22:51.5038864+09:30 level=info msg=starting first_tick=2024-08-26T14:23:00+09:30
+logger=grafana.update.checker t=2024-08-26T14:22:51.5670671+09:30 level=info msg="Update check succeeded" duration=105.5135ms
+logger=plugins.update.checker t=2024-08-26T14:22:51.7693259+09:30 level=info msg="Update check succeeded" duration=308.3163ms
+logger=infra.usagestats.collector t=2024-08-26T14:22:52.0498693+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:22:52.0503766+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:22:52.0503766+09:30 level=info msg="finished to provision alerting"
+logger=ngalert.state.manager t=2024-08-26T14:22:52.0503766+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:22:52.0519647+09:30 level=info msg="storage starting"
+logger=modules t=2024-08-26T14:22:52.0503766+09:30 level=warn msg="No modules registered..."
+logger=server t=2024-08-26T14:22:52.0519647+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=grafana.update.checker t=2024-08-26T14:22:52.0519647+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=1.5881ms
+logger=tracing t=2024-08-26T14:22:52.0519647+09:30 level=info msg="Closing tracing"
+logger=auth t=2024-08-26T14:22:52.0611126+09:30 level=error msg="failed to lock and execute cleanup of expired auth token" error="context canceled"
+logger=secret.migration t=2024-08-26T14:22:52.0641611+09:30 level=error msg="Server lock for secret migration already exists"
+logger=serviceaccounts t=2024-08-26T14:22:52.064667+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=infra.usagestats t=2024-08-26T14:22:52.064667+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=provisioning.dashboard t=2024-08-26T14:22:52.0651961+09:30 level=warn msg="Failed to delete orphaned provisioned dashboards" err="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:22:52.0651961+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:22:52.0651961+09:30 level=info msg="State cache has been initialized" states=0 duration=14.8195ms
+logger=infra.usagestats.collector t=2024-08-26T14:22:52.065713+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:22:52.065713+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:22:52.065713+09:30 level=info msg=starting first_tick=2024-08-26T14:23:00+09:30
+logger=settings t=2024-08-26T14:23:15.3042137+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:23:15.3042137+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:23:15.3047334+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:23:15.3047334+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:23:15.3047334+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:23:15.3052704+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:23:15.3052704+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:23:15.3052704+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:23:15.3052704+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:23:15.3052704+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:23:15.3052704+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:23:15.3058698+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:23:15.3164565+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:23:15.3180429+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-26T14:23:15.3197363+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:23:15.4655627+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:23:15.4660834+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:23:15.4700032+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:23:15.4716819+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:23:16.1057506+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:23:16.1057506+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:23:16.1057506+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:23:16.1057506+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-26T14:23:16.1057506+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:23:16.1057506+09:30 level=info msg="storage starting"
+logger=server t=2024-08-26T14:23:16.1087371+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=tracing t=2024-08-26T14:23:16.1087371+09:30 level=info msg="Closing tracing"
+logger=grafana.update.checker t=2024-08-26T14:23:16.1087371+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=2.9865ms
+logger=auth t=2024-08-26T14:23:16.1142764+09:30 level=error msg="failed to lock and execute cleanup of expired auth token" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:23:16.1164101+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=infra.usagestats.collector t=2024-08-26T14:23:16.1164101+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:23:16.1164101+09:30 level=info msg="State cache has been initialized" states=0 duration=10.6595ms
+logger=secret.migration t=2024-08-26T14:23:16.1164101+09:30 level=error msg="Server lock for secret migration already exists"
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:23:16.116915+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:23:16.116915+09:30 level=info msg=starting first_tick=2024-08-26T14:23:20+09:30
+logger=infra.usagestats t=2024-08-26T14:23:16.116915+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=serviceaccounts t=2024-08-26T14:23:16.116915+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=settings t=2024-08-26T14:23:22.5814753+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:23:22.5819915+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:23:22.5819915+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:23:22.5819915+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:23:22.5819915+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:23:22.5819915+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:23:22.5819915+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:23:22.5825073+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:23:22.5825073+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:23:22.5825073+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:23:22.5825073+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:23:22.5830281+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:23:22.5943611+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:23:22.5970189+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-26T14:23:22.5975424+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:23:22.7688992+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:23:22.7704654+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:23:22.773731+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:23:22.7758572+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:23:23.5290666+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:23:23.5290666+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:23:23.5290666+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:23:23.5290666+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-26T14:23:23.53215+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:23:23.53215+09:30 level=info msg="storage starting"
+logger=server t=2024-08-26T14:23:23.53215+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=grafana.update.checker t=2024-08-26T14:23:23.5350646+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=2.9146ms
+logger=tracing t=2024-08-26T14:23:23.5350646+09:30 level=info msg="Closing tracing"
+logger=infra.usagestats t=2024-08-26T14:23:23.5411053+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=secret.migration t=2024-08-26T14:23:23.5441063+09:30 level=error msg="Server lock for secret migration already exists"
+logger=serviceaccounts t=2024-08-26T14:23:23.5441063+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=infra.usagestats.collector t=2024-08-26T14:23:23.5441063+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:23:23.5441063+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=auth t=2024-08-26T14:23:23.5441063+09:30 level=error msg="failed to lock and execute cleanup of expired auth token" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:23:23.5441063+09:30 level=info msg="State cache has been initialized" states=0 duration=11.9563ms
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:23:23.5441063+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:23:23.5441063+09:30 level=info msg=starting first_tick=2024-08-26T14:23:30+09:30
+logger=provisioning.dashboard t=2024-08-26T14:23:23.5441063+09:30 level=warn msg="Failed to delete orphaned provisioned dashboards" err="context canceled"
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:24:20.5998563+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:24:20.5998563+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:24:20.5998563+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:24:20.6111889+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:24:20.6141932+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-26T14:24:20.6141932+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:24:20.7618666+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:24:20.762478+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:24:20.7650504+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:24:20.7682261+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:24:21.431468+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:24:21.431468+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:24:21.4329711+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:24:21.4329711+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-26T14:24:21.4329711+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:24:21.4329711+09:30 level=info msg="storage starting"
+logger=server t=2024-08-26T14:24:21.434484+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=tracing t=2024-08-26T14:24:21.434484+09:30 level=info msg="Closing tracing"
+logger=grafana.update.checker t=2024-08-26T14:24:21.434484+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=1.5129ms
+logger=infra.usagestats.collector t=2024-08-26T14:24:21.4405022+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=serviceaccounts t=2024-08-26T14:24:21.4405022+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=auth t=2024-08-26T14:24:21.4405022+09:30 level=error msg="failed to lock and execute cleanup of expired auth token" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:24:21.4405022+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:24:21.4405022+09:30 level=info msg="State cache has been initialized" states=0 duration=7.5311ms
+logger=secret.migration t=2024-08-26T14:24:21.4405022+09:30 level=error msg="Server lock for secret migration already exists"
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:24:21.4405022+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:24:21.4405022+09:30 level=info msg=starting first_tick=2024-08-26T14:24:30+09:30
+logger=provisioning.dashboard t=2024-08-26T14:24:21.4405022+09:30 level=warn msg="Failed to delete orphaned provisioned dashboards" err="context canceled"
+logger=infra.usagestats t=2024-08-26T14:24:21.4483583+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=settings t=2024-08-26T14:24:45.9164428+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:24:45.9164428+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:24:45.9164428+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:24:45.9164428+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:24:45.9164428+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:24:45.9164428+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:24:45.9164428+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:24:45.9169971+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:24:45.9169971+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:24:45.9169971+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:24:45.9169971+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:24:45.9169971+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:24:45.9276824+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:24:45.9305609+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-26T14:24:45.9310808+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:24:46.0736344+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:24:46.0736344+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:24:46.0764419+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:24:46.0788345+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:24:46.6938247+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:24:46.6949906+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:24:46.6949906+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:24:46.6949906+09:30 level=warn msg="No modules registered..."
+logger=grafanaStorageLogger t=2024-08-26T14:24:46.6949906+09:30 level=info msg="storage starting"
+logger=ngalert.state.manager t=2024-08-26T14:24:46.6949906+09:30 level=info msg="Warming state cache for startup"
+logger=server t=2024-08-26T14:24:46.7010561+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=tracing t=2024-08-26T14:24:46.7010561+09:30 level=info msg="Closing tracing"
+logger=grafana.update.checker t=2024-08-26T14:24:46.7010561+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=6.0655ms
+logger=auth t=2024-08-26T14:24:46.7039988+09:30 level=error msg="failed to lock and execute cleanup of expired auth token" error="context canceled"
+logger=provisioning.dashboard t=2024-08-26T14:24:46.7074563+09:30 level=warn msg="Failed to delete orphaned provisioned dashboards" err="context canceled"
+logger=infra.usagestats.collector t=2024-08-26T14:24:46.7083457+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=secret.migration t=2024-08-26T14:24:46.7083457+09:30 level=error msg="Server lock for secret migration already exists"
+logger=infra.usagestats t=2024-08-26T14:24:46.7083457+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=serviceaccounts t=2024-08-26T14:24:46.7083457+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:24:46.7083457+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:24:46.7083457+09:30 level=info msg="State cache has been initialized" states=0 duration=13.3551ms
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:24:46.7083457+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:24:46.7083457+09:30 level=info msg=starting first_tick=2024-08-26T14:24:50+09:30
+logger=settings t=2024-08-26T14:27:52.8063918+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:27:52.8069191+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:27:52.8070085+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:27:52.8070085+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:27:52.8070085+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:27:52.8070085+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:27:52.8070085+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:27:52.8075112+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:27:52.8075112+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:27:52.8075112+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:27:52.8075112+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:27:52.8080467+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:27:52.8209317+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:27:52.8245167+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=1.1401ms
+logger=secrets t=2024-08-26T14:27:52.8251572+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:27:52.9797342+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:27:52.980301+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:27:52.9830112+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:27:52.9853732+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:27:53.6003015+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:27:53.6011457+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:27:53.6011457+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:27:53.6011457+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-26T14:27:53.6011457+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:27:53.6011457+09:30 level=info msg="storage starting"
+logger=server t=2024-08-26T14:27:53.6036542+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=tracing t=2024-08-26T14:27:53.6036542+09:30 level=info msg="Closing tracing"
+logger=grafana.update.checker t=2024-08-26T14:27:53.6036542+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=2.5085ms
+logger=infra.usagestats t=2024-08-26T14:27:53.6096738+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=secret.migration t=2024-08-26T14:27:53.6126744+09:30 level=error msg="Server lock for secret migration already exists"
+logger=ngalert.state.manager t=2024-08-26T14:27:53.6126744+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:27:53.6126744+09:30 level=info msg="State cache has been initialized" states=0 duration=11.5287ms
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:27:53.6126744+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:27:53.6126744+09:30 level=info msg=starting first_tick=2024-08-26T14:28:00+09:30
+logger=provisioning.dashboard t=2024-08-26T14:27:53.6126744+09:30 level=warn msg="Failed to delete orphaned provisioned dashboards" err="context canceled"
+logger=auth t=2024-08-26T14:27:53.6126744+09:30 level=error msg="failed to lock and execute cleanup of expired auth token" error="context canceled"
+logger=serviceaccounts t=2024-08-26T14:27:53.6126744+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=infra.usagestats.collector t=2024-08-26T14:27:53.6126744+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=settings t=2024-08-26T14:28:25.0920007+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:28:25.0920007+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:28:25.0920007+09:30 level=info msg="Config loaded from" file=C:\Users\Felix\Downloads\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:28:25.0925277+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:28:25.0925277+09:30 level=info msg="Path Home" path=C:\Users\Felix\Downloads\grafana-9.5.3
+logger=settings t=2024-08-26T14:28:25.0925277+09:30 level=info msg="Path Data" path=C:\Users\Felix\Downloads\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:28:25.0925277+09:30 level=info msg="Path Logs" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:28:25.0925277+09:30 level=info msg="Path Plugins" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:28:25.0925277+09:30 level=info msg="Path Provisioning" path=C:\Users\Felix\Downloads\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:28:25.0925277+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:28:25.0925277+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:28:25.0930646+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:28:25.1020722+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:28:25.1050885+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-26T14:28:25.1050885+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:28:25.2453605+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:28:25.2468791+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=C:\Users\Felix\Downloads\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:28:25.2468791+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:28:25.2500815+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:28:25.8628786+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:28:25.8653824+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:28:25.8653824+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:28:25.8653824+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-26T14:28:25.8653824+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:28:25.8653824+09:30 level=info msg="storage starting"
+logger=server t=2024-08-26T14:28:25.8684706+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=tracing t=2024-08-26T14:28:25.8684706+09:30 level=info msg="Closing tracing"
+logger=grafana.update.checker t=2024-08-26T14:28:25.8684706+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=3.0882ms
+logger=infra.usagestats t=2024-08-26T14:28:25.8684706+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=infra.usagestats.collector t=2024-08-26T14:28:25.8714753+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=secret.migration t=2024-08-26T14:28:25.8714753+09:30 level=error msg="Server lock for secret migration already exists"
+logger=ngalert.state.manager t=2024-08-26T14:28:25.8714753+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=ngalert.state.manager t=2024-08-26T14:28:25.8714753+09:30 level=info msg="State cache has been initialized" states=0 duration=6.0929ms
+logger=serviceaccounts t=2024-08-26T14:28:25.8714753+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=provisioning.dashboard t=2024-08-26T14:28:25.8714753+09:30 level=warn msg="Failed to delete orphaned provisioned dashboards" err="context canceled"
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:28:25.8714753+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:28:25.8714753+09:30 level=info msg=starting first_tick=2024-08-26T14:28:30+09:30
+logger=sqlstore.transactions t=2024-08-26T14:32:51.4871181+09:30 level=info msg="Database locked, sleeping then retrying" error="database is locked" retry=0 code="database is locked"
+logger=cleanup t=2024-08-26T14:32:51.50527+09:30 level=info msg="Completed cleanup jobs" duration=33.3437ms
+logger=grafana.update.checker t=2024-08-26T14:32:51.6102258+09:30 level=info msg="Update check succeeded" duration=32.1701ms
+logger=plugins.update.checker t=2024-08-26T14:32:52.0174555+09:30 level=info msg="Update check succeeded" duration=243.388ms
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Config loaded from" file=D:\SEP_ATSYS_Muffin\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Path Home" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Path Data" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Path Logs" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Path Plugins" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Path Provisioning" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T14:38:22.6091796+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T14:38:22.6091796+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T14:38:22.6091796+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T14:38:22.6216503+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T14:38:22.6244493+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-26T14:38:22.6250818+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T14:38:22.6949409+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T14:38:22.695461+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T14:38:22.6977911+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T14:38:22.6995362+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T14:38:23.347027+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T14:38:23.347027+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T14:38:23.347027+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-26T14:38:23.347027+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-26T14:38:23.347027+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-26T14:38:23.347027+09:30 level=info msg="storage starting"
+logger=http.server t=2024-08-26T14:38:23.350036+09:30 level=info msg="HTTP Server Listen" address=[::]:3000 protocol=http subUrl= socket=
+logger=ngalert.state.manager t=2024-08-26T14:38:23.3514295+09:30 level=info msg="State cache has been initialized" states=0 duration=4.4025ms
+logger=ngalert.multiorg.alertmanager t=2024-08-26T14:38:23.3534398+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T14:38:23.3534398+09:30 level=info msg=starting first_tick=2024-08-26T14:38:30+09:30
+logger=grafana.update.checker t=2024-08-26T14:38:23.4353814+09:30 level=info msg="Update check succeeded" duration=88.3544ms
+logger=plugins.update.checker t=2024-08-26T14:38:23.6361081+09:30 level=info msg="Update check succeeded" duration=289.0811ms
+logger=context userId=0 orgId=0 uname= t=2024-08-26T14:38:57.6006347+09:30 level=info msg="Request Completed" method=GET path=/ status=302 remote_addr=[::1] time_ms=1 duration=1.0148ms size=29 referer= handler=/
+logger=http.server t=2024-08-26T14:39:06.6604776+09:30 level=info msg="Successful Login" User=admin@localhost
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:39:15.9400733+09:30 level=info msg="Request Completed" method=GET path=/api/live/ws status=-1 remote_addr=[::1] time_ms=1 duration=1.1597ms size=0 referer= handler=/api/live/ws
+logger=live t=2024-08-26T14:44:07.9541335+09:30 level=info msg="Initialized channel handler" channel=grafana/dashboard/uid/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9 address=grafana/dashboard/uid/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9
+logger=datasources t=2024-08-26T14:47:04.9715114+09:30 level=error msg="Failed to validate URL" url=
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:47:04.9715114+09:30 level=error msg="Validation error, invalid URL" error="validation of data source URL \"\" failed: empty URL string" remote_addr=[::1] traceID=
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:47:04.9720164+09:30 level=info msg="Request Completed" method=PUT path=/api/datasources/uid/a82bb5f4-85e8-4b26-8754-6e0b619ce343 status=400 remote_addr=[::1] time_ms=2 duration=2.2656ms size=56 referer=http://localhost:3000/datasources/edit/a82bb5f4-85e8-4b26-8754-6e0b619ce343 handler=/api/datasources/uid/:uid
+logger=tsdb.influxdb t=2024-08-26T14:47:27.008023+09:30 level=warn msg="error performing influxdb healthcheck" err="error reading InfluxDB. Status Code: 401"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:47:27.0085444+09:30 level=info msg="Request Completed" method=GET path=/api/datasources/uid/a82bb5f4-85e8-4b26-8754-6e0b619ce343/health status=400 remote_addr=[::1] time_ms=3 duration=3.3667ms size=72 referer=http://localhost:3000/datasources/edit/a82bb5f4-85e8-4b26-8754-6e0b619ce343 handler=/api/datasources/uid/:uid/health
+logger=cleanup t=2024-08-26T14:48:23.3663213+09:30 level=info msg="Completed cleanup jobs" duration=17.3375ms
+logger=grafana.update.checker t=2024-08-26T14:48:23.4768528+09:30 level=info msg="Update check succeeded" duration=38.5547ms
+logger=plugins.update.checker t=2024-08-26T14:48:23.8863812+09:30 level=info msg="Update check succeeded" duration=240.398ms
+logger=tsdb.influxdb t=2024-08-26T14:49:23.0619972+09:30 level=warn msg="error performing influxdb healthcheck" err="error reading InfluxDB. Status Code: 401"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:49:23.0625299+09:30 level=info msg="Request Completed" method=GET path=/api/datasources/uid/a82bb5f4-85e8-4b26-8754-6e0b619ce343/health status=400 remote_addr=[::1] time_ms=2 duration=2.3377ms size=72 referer=http://localhost:3000/datasources/edit/a82bb5f4-85e8-4b26-8754-6e0b619ce343 handler=/api/datasources/uid/:uid/health
+logger=tsdb.influxdb t=2024-08-26T14:49:38.2526739+09:30 level=warn msg="error performing influxdb healthcheck" err="error reading InfluxDB. Status Code: 401"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:49:38.2526739+09:30 level=info msg="Request Completed" method=GET path=/api/datasources/uid/a82bb5f4-85e8-4b26-8754-6e0b619ce343/health status=400 remote_addr=[::1] time_ms=2 duration=2.7641ms size=72 referer=http://localhost:3000/datasources/edit/a82bb5f4-85e8-4b26-8754-6e0b619ce343 handler=/api/datasources/uid/:uid/health
+logger=tsdb.influxdb t=2024-08-26T14:49:45.4092049+09:30 level=warn msg="error performing influxdb healthcheck" err="error reading InfluxDB. Status Code: 401"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:49:45.4098603+09:30 level=info msg="Request Completed" method=GET path=/api/datasources/uid/a82bb5f4-85e8-4b26-8754-6e0b619ce343/health status=400 remote_addr=[::1] time_ms=3 duration=3.2431ms size=72 referer=http://localhost:3000/datasources/edit/a82bb5f4-85e8-4b26-8754-6e0b619ce343 handler=/api/datasources/uid/:uid/health
+logger=tsdb.influxdb t=2024-08-26T14:49:48.2212751+09:30 level=warn msg="error performing influxdb healthcheck" err="error reading InfluxDB. Status Code: 401"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:49:48.2218296+09:30 level=info msg="Request Completed" method=GET path=/api/datasources/uid/a82bb5f4-85e8-4b26-8754-6e0b619ce343/health status=400 remote_addr=[::1] time_ms=2 duration=2.5501ms size=72 referer=http://localhost:3000/datasources/edit/a82bb5f4-85e8-4b26-8754-6e0b619ce343 handler=/api/datasources/uid/:uid/health
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:56:06.0835998+09:30 level=info msg="Request Completed" method=GET path=/api/live/ws status=-1 remote_addr=[::1] time_ms=1 duration=1.0226ms size=0 referer= handler=/api/live/ws
+logger=tsdb.influx_flux t=2024-08-26T14:58:16.9315617+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:58:16.9320778+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=9 duration=9.6638ms size=428 referer="http://localhost:3000/explore?left=%7B%22datasource%22%3A%22a82bb5f4-85e8-4b26-8754-6e0b619ce343%22%2C%22queries%22%3A%5B%7B%22refId%22%3A%22A%22%2C%22datasource%22%3A%7B%22type%22%3A%22influxdb%22%2C%22uid%22%3A%22a82bb5f4-85e8-4b26-8754-6e0b619ce343%22%7D%2C%22query%22%3A%22buckets%28%29%22%7D%5D%2C%22range%22%3A%7B%22from%22%3A%22now-1h%22%2C%22to%22%3A%22now%22%7D%7D&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T14:58:17.0279311+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:58:17.0279311+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=12 duration=12.3403ms size=428 referer="http://localhost:3000/explore?left=%7B%22datasource%22%3A%22a82bb5f4-85e8-4b26-8754-6e0b619ce343%22%2C%22queries%22%3A%5B%7B%22refId%22%3A%22A%22%2C%22datasource%22%3A%7B%22type%22%3A%22influxdb%22%2C%22uid%22%3A%22a82bb5f4-85e8-4b26-8754-6e0b619ce343%22%7D%2C%22query%22%3A%22buckets%28%29%22%7D%5D%2C%22range%22%3A%7B%22from%22%3A%22now-1h%22%2C%22to%22%3A%22now%22%7D%7D&orgId=1" handler=/api/ds/query
+logger=cleanup t=2024-08-26T14:58:23.4126111+09:30 level=info msg="Completed cleanup jobs" duration=58.9516ms
+logger=grafana.update.checker t=2024-08-26T14:58:23.4639662+09:30 level=info msg="Update check succeeded" duration=23.1057ms
+logger=plugins.update.checker t=2024-08-26T14:58:23.909811+09:30 level=info msg="Update check succeeded" duration=260.1629ms
+logger=tsdb.influx_flux t=2024-08-26T14:58:39.3311677+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:58:39.3316707+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.7902ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T14:58:54.8364622+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:58:54.8364622+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.5328ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=1&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T14:59:01.8602762+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:59:01.86047+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.666ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=1&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T14:59:03.0146471+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:59:03.0157108+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.7858ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=1&inspect=1&inspectTab=query&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T14:59:10.9666427+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T14:59:10.9671724+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=6 duration=6.1687ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=1&inspect=1&inspectTab=query&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:00:30.0946584+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:00:30.0946584+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.4308ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:00:40.3631063+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:00:40.3631063+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2 duration=2.6282ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:00:40.3784065+09:30 level=warn msg="Flux query failed" err="invalid: compilation failed: error @3:5-3:55: expected RPAREN, got EOF" query="from(bucket: \"ATSYS\")\r\n |> range(start: -10m)\r\n |> filter(fn: (r) => r._measurement == \"measurement1\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:00:40.3789095+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.2872ms size=361 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:00:54.1591174+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:00:54.1596339+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.7604ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:00.8049983+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:00.8055021+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2 duration=2.5527ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:00.8151249+09:30 level=warn msg="Flux query failed" err="invalid: compilation failed: error @3:5-3:55: expected RPAREN, got EOF" query="from(bucket: \"ATSYS\")\r\n |> range(start: -10m)\r\n |> filter(fn: (r) => r._measurement == \"measurement1\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:00.8151249+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.5566ms size=361 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:19.7431604+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:19.7437751+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=12 duration=12.2549ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:19.7578135+09:30 level=warn msg="Flux query failed" err="invalid: compilation failed: error @3:5-3:55: expected RPAREN, got EOF" query="from(bucket: \"ATSYS\")\r\n |> range(start: -10m)\r\n |> filter(fn: (r) => r._measurement == \"measurement1\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:19.758333+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=4 duration=4.9393ms size=361 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:27.2820977+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:27.2820977+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.7813ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:32.1544627+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:32.1549658+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2 duration=2.6583ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:33.054157+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:33.0546917+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=5 duration=5.5343ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&inspect=2&inspectTab=query&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:39.8878114+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:39.8883147+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.287ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&inspect=2&inspectTab=query&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:01:46.6491474+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:01:46.6491474+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.6575ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:02:04.5733489+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:02:04.5735655+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.3982ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:02:09.9146736+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:02:09.9152847+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=6 duration=6.0285ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&inspect=2&inspectTab=query&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:02:31.8947372+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:02:31.8947372+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2 duration=2.808ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:02:31.9094248+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:02:31.9098608+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=17 duration=17.9316ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:04:16.0696417+09:30 level=warn msg="Flux query failed" err="unauthorized: unauthorized access" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:04:16.0696417+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2 duration=2.5567ms size=264 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:04:30.6041147+09:30 level=warn msg="Flux query failed" err="unauthorized: unauthorized access" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:04:30.6046372+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.6166ms size=264 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:04:30.6093+09:30 level=warn msg="Flux query failed" err="unauthorized: unauthorized access" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect Bitcoin sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"bitcoin\")\r\n    |> to(bucket: \"example-bucket\")"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:04:30.6093+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.0345ms size=409 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:04:30.6870678+09:30 level=warn msg="Flux query failed" err="unauthorized: unauthorized access" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:04:30.6876637+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.7575ms size=264 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:04:30.6997897+09:30 level=warn msg="Flux query failed" err="unauthorized: unauthorized access" query=buckets()
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:04:30.7003172+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.7692ms size=209 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:05:50.5403056+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:05:50.5408253+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.5682ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:05:50.5408253+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:05:50.5413439+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2 duration=2.6478ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:05:52.3371875+09:30 level=warn msg="Flux query failed" err="not found: failed to initialize execute state: could not find bucket \"example-bucket\"" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect Bitcoin sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"bitcoin\")\r\n    |> to(bucket: \"example-bucket\")"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:05:52.3371875+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1793 duration=1.7939543s size=463 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:06:14.9396137+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:06:14.9402014+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=13 duration=13.4238ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:06:16.7722974+09:30 level=warn msg="Flux query failed" err="not found: failed to initialize execute state: could not find bucket \"example-bucket\"" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect Bitcoin sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"bitcoin\")\r\n    |> to(bucket: \"example-bucket\")"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:06:16.7728198+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1822 duration=1.8222553s size=463 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:06:52.7709496+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:06:52.7714792+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=18 duration=18.9864ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:07:41.9335954+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:07:41.9335954+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.6865ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:07:42.3781198+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:07:42.378638+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=4 duration=4.028ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:07:42.378638+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:07:42.379162+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.5473ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:07:42.3840482+09:30 level=warn msg="Flux query failed" err="Post \"http://localhost:8086/api/v2/query?org=University+of+Adelaide\": context canceled" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect Bitcoin sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"bitcoin\")\r\n    |> to(bucket: \"example-bucket\")"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:07:42.3845533+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=446 duration=446.0284ms size=464 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=2&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:07:57.2468155+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:07:57.2473191+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.5879ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:08:10.3205689+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:08:10.3210764+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2 duration=2.3705ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:08:10.4460421+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:08:10.4460421+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.9631ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:08:10.4460421+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:08:10.4468956+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.8167ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:08:10.4521998+09:30 level=warn msg="Flux query failed" err="Post \"http://localhost:8086/api/v2/query?org=University+of+Adelaide\": context canceled" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect air sensor sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"airSensor\")\r\n    |> to(bucket: \"example-bucket\")"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:08:10.4521998+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=127 duration=127.5883ms size=469 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:08:10.4693931+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:08:10.4699235+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=8 duration=8.4343ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=cleanup t=2024-08-26T15:08:23.4099883+09:30 level=info msg="Completed cleanup jobs" duration=62.788ms
+logger=grafana.update.checker t=2024-08-26T15:08:23.4931953+09:30 level=info msg="Update check succeeded" duration=44.1367ms
+logger=plugins.update.checker t=2024-08-26T15:08:23.9052742+09:30 level=info msg="Update check succeeded" duration=259.1386ms
+logger=server t=2024-08-26T15:10:15.2275469+09:30 level=info msg="Shutdown started" reason="System signal: interrupt"
+logger=tracing t=2024-08-26T15:10:15.2275469+09:30 level=info msg="Closing tracing"
+logger=ticker t=2024-08-26T15:10:15.2275469+09:30 level=info msg=stopped last_tick=2024-08-26T15:10:10+09:30
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Config loaded from" file=D:\SEP_ATSYS_Muffin\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Path Home" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Path Data" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Path Logs" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\log
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Path Plugins" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Path Provisioning" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-26T15:10:59.7246231+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-26T15:10:59.7246231+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-26T15:10:59.7246231+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-26T15:10:59.7374816+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-26T15:10:59.7407267+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=3.2451ms
+logger=secrets t=2024-08-26T15:10:59.7407267+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-26T15:10:59.8126382+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-26T15:10:59.8126382+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=D:\SEP_ATSYS_Muffin\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-26T15:10:59.8151629+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-26T15:10:59.8169855+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-26T15:11:00.456426+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-26T15:11:00.4604532+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-26T15:11:00.4604532+09:30 level=info msg="finished to provision alerting"
+logger=ngalert.state.manager t=2024-08-26T15:11:00.4604532+09:30 level=info msg="Warming state cache for startup"
+logger=modules t=2024-08-26T15:11:00.4604532+09:30 level=warn msg="No modules registered..."
+logger=grafanaStorageLogger t=2024-08-26T15:11:00.4604532+09:30 level=info msg="storage starting"
+logger=http.server t=2024-08-26T15:11:00.4635957+09:30 level=info msg="HTTP Server Listen" address=[::]:3000 protocol=http subUrl= socket=
+logger=ngalert.state.manager t=2024-08-26T15:11:00.4707388+09:30 level=info msg="State cache has been initialized" states=0 duration=10.2856ms
+logger=ngalert.multiorg.alertmanager t=2024-08-26T15:11:00.4707388+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=ticker t=2024-08-26T15:11:00.4707388+09:30 level=info msg=starting first_tick=2024-08-26T15:11:10+09:30
+logger=grafana.update.checker t=2024-08-26T15:11:00.5455727+09:30 level=info msg="Update check succeeded" duration=85.1195ms
+logger=plugins.update.checker t=2024-08-26T15:11:00.7388966+09:30 level=info msg="Update check succeeded" duration=278.4434ms
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:14.0224196+09:30 level=info msg="Request Completed" method=GET path=/api/live/ws status=-1 remote_addr=[::1] time_ms=4 duration=4.2423ms size=0 referer= handler=/api/live/ws
+logger=live t=2024-08-26T15:11:17.6101736+09:30 level=info msg="Initialized channel handler" channel=grafana/dashboard/uid/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9 address=grafana/dashboard/uid/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9
+logger=tsdb.influx_flux t=2024-08-26T15:11:20.0177373+09:30 level=warn msg="Flux query failed" err="Post \"http://localhost:8086/api/v2/query?org=University+of+Adelaide\": dial tcp [::1]:8086: connectex: No connection could be made because the target machine actively refused it." query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=tsdb.influx_flux t=2024-08-26T15:11:20.0177373+09:30 level=warn msg="Flux query failed" err="Post \"http://localhost:8086/api/v2/query?org=University+of+Adelaide\": dial tcp [::1]:8086: connectex: No connection could be made because the target machine actively refused it." query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:20.0198655+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2378 duration=2.378094s size=410 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:20.0239522+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2384 duration=2.3840404s size=410 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:11:22.3718237+09:30 level=warn msg="Flux query failed" err="Post \"http://localhost:8086/api/v2/query?org=University+of+Adelaide\": dial tcp [::1]:8086: connectex: No connection could be made because the target machine actively refused it." query=buckets()
+logger=tsdb.influx_flux t=2024-08-26T15:11:22.3718237+09:30 level=warn msg="Flux query failed" err="Post \"http://localhost:8086/api/v2/query?org=University+of+Adelaide\": dial tcp [::1]:8086: connectex: No connection could be made because the target machine actively refused it." query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect Bitcoin sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"bitcoin\")\r\n    |> to(bucket: \"example-bucket\")"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:22.3723264+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2347 duration=2.3476145s size=355 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:22.3723264+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=2346 duration=2.3463525s size=555 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:11:31.7721105+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:31.7731809+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=11 duration=11.9899ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=2&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:11:34.7192676+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:34.7203142+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=5 duration=5.6588ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?inspect=1&inspectTab=error&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:11:41.3274783+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:11:41.3274783+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.8875ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:07.0173672+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:07.0173672+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=9 duration=9.5933ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:07.0212106+09:30 level=warn msg="Flux query failed" err="invalid: compilation failed: error @9:8-9:35: expected RPAREN, got EOF" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect air sensor sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"airSensor\")\r\n    |> to(bucket: \"example-bucket\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:07.0214292+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.0442ms size=450 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:07.1279933+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:07.1287481+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=20 duration=20.9026ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:07.1300356+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:07.1320948+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=23 duration=23.7781ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:10.2197039+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:10.2202082+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=20 duration=20.402ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:10.2473342+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:10.2473342+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=48 duration=48.0486ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:10.2512868+09:30 level=warn msg="Flux query failed" err="invalid: compilation failed: error @9:8-9:35: expected RPAREN, got EOF" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect air sensor sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"airSensor\")\r\n    |> to(bucket: \"example-bucket\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:10.2518242+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1 duration=1.5107ms size=450 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:10.2623371+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:10.2628393+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=63 duration=63.0331ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:13.5456656+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:13.5461718+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=6 duration=6.7209ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&inspect=3&inspectTab=error&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:13.5598219+09:30 level=warn msg="Flux query failed" err="invalid: compilation failed: error @9:8-9:35: expected RPAREN, got EOF" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect air sensor sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"airSensor\")\r\n    |> to(bucket: \"example-bucket\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:13.5598219+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=4 duration=4.5956ms size=450 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&inspect=3&inspectTab=error&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:20.5086379+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:20.5097892+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=9 duration=9.0748ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&inspect=3&inspectTab=error&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:20.5263529+09:30 level=warn msg="Flux query failed" err="invalid: compilation failed: error @9:8-9:35: expected RPAREN, got EOF" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect air sensor sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"airSensor\")\r\n    |> to(bucket: \"example-bucket\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:20.5271528+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=4 duration=4.32ms size=450 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&inspect=3&inspectTab=error&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:38.9768663+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:38.977449+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.126ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:39.9885712+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:39.9890992+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.4385ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&from=1724645026096&inspect=3&inspectTab=query&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:39.990794+09:30 level=warn msg="Flux query failed" err="Post \"http://localhost:8086/api/v2/query?org=University+of+Adelaide\": context canceled" query="import \"influxdata/influxdb/sample\"\r\n\r\noption task = {\r\n  name: \"Collect air sensor sample data\",\r\n  every: 15m,\r\n}\r\n\r\nsample.data(set: \"airSensor\")\r\n    |> to(bucket: \"example-bucket\")"
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:39.990794+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=1010 duration=1.0101372s size=469 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?editPanel=3&from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:44.1289415+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:44.1294784+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=3 duration=3.2264ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:44.131742+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:44.1318017+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=4 duration=4.4671ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
+logger=tsdb.influx_flux t=2024-08-26T15:12:44.1323145+09:30 level=warn msg="Flux query failed" err="invalid: error @1:1-1:5: undefined identifier SHOW\n\nerror @1:6-1:15: undefined identifier RETENTION\n\nerror @1:16-1:24: undefined identifier POLICIES\n\nerror @1:25-1:27: undefined identifier on" query="SHOW RETENTION POLICIES on \"ATSYS\""
+logger=context userId=1 orgId=1 uname=admin t=2024-08-26T15:12:44.1323145+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=4 duration=4.9799ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?from=1724645026096&orgId=1&to=1724650927103" handler=/api/ds/query
