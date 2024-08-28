@@ -9,4 +9,4 @@ Initial Token (sudo): N-8Wu2nfylIVZyPR4xLK3ONuVIC-RmxnuhoBzOmkXhIXRUPdlMnssvXPe8
 
 Grafana
 Username: admin
-Password: 12345678
+Password: H3x&9Lmp*V8j
