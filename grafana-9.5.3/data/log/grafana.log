@@ -1718,3 +1718,97 @@ logger=tsdb.influx_flux t=2024-08-28T13:34:01.7767665+09:30 level=warn msg="Flux
 logger=context userId=1 orgId=1 uname=admin t=2024-08-28T13:34:01.7777964+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=14 duration=14.6895ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
 logger=context userId=1 orgId=1 uname=admin t=2024-08-28T13:34:01.7777964+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=17 duration=17.8435ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
 logger=context userId=1 orgId=1 uname=admin t=2024-08-28T13:34:01.7783166+09:30 level=info msg="Request Completed" method=POST path=/api/ds/query status=400 remote_addr=[::1] time_ms=15 duration=15.7337ms size=428 referer="http://localhost:3000/d/a5c4ceac-d408-46eb-bdf3-fea6a570e3b9/muffin?orgId=1" handler=/api/ds/query
+logger=settings t=2024-08-28T13:49:23.0854469+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-28T13:49:23.0894362+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-28T13:49:23.0894362+09:30 level=info msg="Config loaded from" file=D:\InfluxUI-UG1\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-28T13:49:23.0894362+09:30 level=info msg="Config loaded from" file=D:\InfluxUI-UG1\grafana-9.5.3\conf\custom.ini
+logger=settings t=2024-08-28T13:49:23.089976+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-28T13:49:23.089976+09:30 level=info msg="Path Home" path=D:\InfluxUI-UG1\grafana-9.5.3
+logger=settings t=2024-08-28T13:49:23.089976+09:30 level=info msg="Path Data" path=D:\InfluxUI-UG1\grafana-9.5.3\data
+logger=settings t=2024-08-28T13:49:23.089976+09:30 level=info msg="Path Logs" path=D:\InfluxUI-UG1\grafana-9.5.3\data\log
+logger=settings t=2024-08-28T13:49:23.089976+09:30 level=info msg="Path Plugins" path=D:\InfluxUI-UG1\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-28T13:49:23.0905335+09:30 level=info msg="Path Provisioning" path=D:\InfluxUI-UG1\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-28T13:49:23.0905335+09:30 level=info msg="App mode production"
+logger=settings t=2024-08-28T13:49:23.0905335+09:30 level=warn msg="[Deprecated] the configuration setting 'tracing.jaeger' is deprecated, please use 'tracing.opentelemetry.jaeger' instead"
+logger=jaeger t=2024-08-28T13:49:23.0967848+09:30 level=info msg="debug logging disabled"
+logger=jaeger t=2024-08-28T13:49:23.0967848+09:30 level=info msg="debug logging disabled"
+logger=sqlstore t=2024-08-28T13:49:23.2495617+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-28T13:49:23.2569333+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=D:\InfluxUI-UG1\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-28T13:49:23.2671844+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-28T13:49:23.271899+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-28T13:49:23.2857323+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-28T13:49:23.3633309+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-28T13:49:23.3633309+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=D:\InfluxUI-UG1\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-28T13:49:23.3645711+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-28T13:49:23.3667409+09:30 level=info msg="Live Push Gateway initialization"
+logger=settings t=2024-08-28T13:49:38.2400305+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-28T13:49:38.2400305+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-28T13:49:38.2400305+09:30 level=info msg="Config loaded from" file=D:\InfluxUI-UG1\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-28T13:49:38.2415431+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-28T13:49:38.2415431+09:30 level=info msg="Path Home" path=D:\InfluxUI-UG1\grafana-9.5.3
+logger=settings t=2024-08-28T13:49:38.2415431+09:30 level=info msg="Path Data" path=D:\InfluxUI-UG1\grafana-9.5.3\data
+logger=settings t=2024-08-28T13:49:38.2415431+09:30 level=info msg="Path Logs" path=D:\InfluxUI-UG1\grafana-9.5.3\data\log
+logger=settings t=2024-08-28T13:49:38.2415431+09:30 level=info msg="Path Plugins" path=D:\InfluxUI-UG1\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-28T13:49:38.2415431+09:30 level=info msg="Path Provisioning" path=D:\InfluxUI-UG1\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-28T13:49:38.2415431+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-28T13:49:38.2415431+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-28T13:49:38.2415431+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=D:\InfluxUI-UG1\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-28T13:49:38.2523757+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-28T13:49:38.2553872+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-28T13:49:38.2553872+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-28T13:49:38.3457069+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-28T13:49:38.3462428+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=D:\InfluxUI-UG1\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-28T13:49:38.3489499+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-28T13:49:38.3505257+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-28T13:49:38.9797858+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-28T13:49:38.9797858+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-28T13:49:38.9827859+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-28T13:49:38.9827859+09:30 level=warn msg="No modules registered..."
+logger=ngalert.state.manager t=2024-08-28T13:49:38.9827859+09:30 level=info msg="Warming state cache for startup"
+logger=grafanaStorageLogger t=2024-08-28T13:49:38.9827859+09:30 level=info msg="storage starting"
+logger=server t=2024-08-28T13:49:38.9848471+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=grafana.update.checker t=2024-08-28T13:49:38.9853622+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=2.5763ms
+logger=tracing t=2024-08-28T13:49:38.9853622+09:30 level=info msg="Closing tracing"
+logger=secret.migration t=2024-08-28T13:49:38.9900199+09:30 level=error msg="Server lock for secret migration already exists"
+logger=ngalert.state.manager t=2024-08-28T13:49:38.9900199+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=ngalert.state.manager t=2024-08-28T13:49:38.9905395+09:30 level=info msg="State cache has been initialized" states=0 duration=7.7536ms
+logger=ngalert.multiorg.alertmanager t=2024-08-28T13:49:38.9905395+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=serviceaccounts t=2024-08-28T13:49:38.9905395+09:30 level=warn msg="Failed to get usage metrics" error="context canceled"
+logger=ticker t=2024-08-28T13:49:38.9905395+09:30 level=info msg=starting first_tick=2024-08-28T13:49:40+09:30
+logger=infra.usagestats t=2024-08-28T13:49:38.9905395+09:30 level=error msg="Failed to get last sent time" error="context canceled"
+logger=infra.usagestats.collector t=2024-08-28T13:49:38.9905395+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=settings t=2024-08-28T13:49:40.7175054+09:30 level=info msg="Starting Grafana" version=9.5.3 commit=916d9793aa branch=HEAD compiled=2023-05-23T02:31:35+09:30
+logger=settings t=2024-08-28T13:49:40.7180224+09:30 level=warn msg="\"sentry\" frontend logging provider is deprecated and will be removed in the next major version. Use \"grafana\" provider instead."
+logger=settings t=2024-08-28T13:49:40.718536+09:30 level=info msg="Config loaded from" file=D:\InfluxUI-UG1\grafana-9.5.3/conf/defaults.ini
+logger=settings t=2024-08-28T13:49:40.718536+09:30 level=info msg=Target target=[all]
+logger=settings t=2024-08-28T13:49:40.7190485+09:30 level=info msg="Path Home" path=D:\InfluxUI-UG1\grafana-9.5.3
+logger=settings t=2024-08-28T13:49:40.7190485+09:30 level=info msg="Path Data" path=D:\InfluxUI-UG1\grafana-9.5.3\data
+logger=settings t=2024-08-28T13:49:40.7190485+09:30 level=info msg="Path Logs" path=D:\InfluxUI-UG1\grafana-9.5.3\data\log
+logger=settings t=2024-08-28T13:49:40.7190485+09:30 level=info msg="Path Plugins" path=D:\InfluxUI-UG1\grafana-9.5.3\data\plugins
+logger=settings t=2024-08-28T13:49:40.7205742+09:30 level=info msg="Path Provisioning" path=D:\InfluxUI-UG1\grafana-9.5.3\conf\provisioning
+logger=settings t=2024-08-28T13:49:40.7205742+09:30 level=info msg="App mode production"
+logger=sqlstore t=2024-08-28T13:49:40.7205742+09:30 level=info msg="Connecting to DB" dbtype=sqlite3
+logger=sqlstore t=2024-08-28T13:49:40.7205742+09:30 level=warn msg="SQLite database file has broader permissions than it should" path=D:\InfluxUI-UG1\grafana-9.5.3\data\grafana.db mode=-rw-rw-rw- expected=-rw-r-----
+logger=migrator t=2024-08-28T13:49:40.7303665+09:30 level=info msg="Starting DB migrations"
+logger=migrator t=2024-08-28T13:49:40.7333153+09:30 level=info msg="migrations completed" performed=0 skipped=484 duration=0s
+logger=secrets t=2024-08-28T13:49:40.7333153+09:30 level=info msg="Envelope encryption state" enabled=true currentprovider=secretKey.v1
+logger=plugin.loader t=2024-08-28T13:49:40.8089249+09:30 level=info msg="Plugin registered" pluginID=input
+logger=local.finder t=2024-08-28T13:49:40.8089249+09:30 level=warn msg="Skipping finding plugins as directory does not exist" path=D:\InfluxUI-UG1\grafana-9.5.3\data\plugins
+logger=query_data t=2024-08-28T13:49:40.8119396+09:30 level=info msg="Query Service initialization"
+logger=live.push_http t=2024-08-28T13:49:40.8129433+09:30 level=info msg="Live Push Gateway initialization"
+logger=infra.usagestats.collector t=2024-08-28T13:49:41.4520572+09:30 level=info msg="registering usage stat providers" usageStatsProvidersLen=2
+logger=provisioning.alerting t=2024-08-28T13:49:41.4541133+09:30 level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2024-08-28T13:49:41.4541133+09:30 level=info msg="finished to provision alerting"
+logger=modules t=2024-08-28T13:49:41.4541133+09:30 level=warn msg="No modules registered..."
+logger=grafanaStorageLogger t=2024-08-28T13:49:41.4541133+09:30 level=info msg="storage starting"
+logger=ngalert.state.manager t=2024-08-28T13:49:41.4541133+09:30 level=info msg="Warming state cache for startup"
+logger=server t=2024-08-28T13:49:41.458121+09:30 level=error msg="Stopped background service" service=*api.HTTPServer reason="failed to open listener on address 0.0.0.0:3000: listen tcp 0.0.0.0:3000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+logger=tracing t=2024-08-28T13:49:41.458121+09:30 level=info msg="Closing tracing"
+logger=grafana.update.checker t=2024-08-28T13:49:41.458121+09:30 level=error msg="Update check failed" error="failed to get latest.json repo from github.com: Get \"https://raw.githubusercontent.com/grafana/grafana/main/latest.json\": context canceled" duration=4.0077ms
+logger=ngalert.state.manager t=2024-08-28T13:49:41.458121+09:30 level=error msg="Unable to fetch orgIds" error="context canceled"
+logger=ngalert.state.manager t=2024-08-28T13:49:41.458121+09:30 level=info msg="State cache has been initialized" states=0 duration=4.0077ms
+logger=ticker t=2024-08-28T13:49:41.458121+09:30 level=info msg=starting first_tick=2024-08-28T13:49:50+09:30
+logger=ngalert.multiorg.alertmanager t=2024-08-28T13:49:41.458121+09:30 level=info msg="starting MultiOrg Alertmanager"
+logger=infra.usagestats.collector t=2024-08-28T13:49:41.458121+09:30 level=error msg="Failed to get system stats" error="context canceled"
+logger=secret.migration t=2024-08-28T13:49:41.4611212+09:30 level=error msg="Stopped secret migration service" service=*migrations.DataSourceSecretMigrationService reason="context canceled"
+logger=infra.lockservice t=2024-08-28T13:49:41.4611212+09:30 level=error msg="Failed to release the lock" error="context canceled"
