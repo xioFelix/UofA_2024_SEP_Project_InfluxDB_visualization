@@ -6,6 +6,7 @@
 - **Initial Organization Name**: UofA
 - **Initial Bucket Name**: Muffin
 - **Initial Token (sudo)**: N-8Wu2nfylIVZyPR4xLK3ONuVIC-RmxnuhoBzOmkXhIXRUPdlMnssvXPe8xAj50-zZTqv5zgQxxCNGD-UtViuw==
+- **Reference:** https://docs.influxdata.com/influxdb/v2/api/
 
 ## Grafana
 - **Username**: admin
