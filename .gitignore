@@ -1,2 +1,4 @@
 node_modules/
 /grafana-9.5.3/var/log
+/grafana-9.5.3/data/log
+/grafana-9.5.3/data/log
