@@ -2,7 +2,9 @@
 
 InfluxDB
 Username: Muffin
-Password: 12345678
+Password: G4$z7wQp!k2R
+Initial Organization Name: UofA
+Initial Bucket Name: Muffin
 
 Grafana
 Username: admin
