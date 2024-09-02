@@ -1,4 +1,5 @@
 import React from 'react';
+import LogIn from './LogIn';
 
 const Header: React.FC = () => {
   return (
@@ -7,6 +8,9 @@ const Header: React.FC = () => {
         {/* Logo Section */}
         <div className="text-xl font-bold">
           <img src="/src/assets/atsys-logo.png" alt="ATSYS" className="h-13" />
+        </div>
+        <div>
+          <LogIn />
         </div>
       </div>
     </header>
