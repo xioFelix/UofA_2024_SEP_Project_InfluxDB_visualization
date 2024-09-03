@@ -20,7 +20,7 @@ const LogIn: React.FC = () => {
         onClick={toggleModal}
       >
         Log In
-      </button>
+      </button> 
 
       {/* Modal that appears when the user clicks the Log In button */}
       {showModal && (
