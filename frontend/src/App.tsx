@@ -5,8 +5,12 @@ import DragAndDrop from './components/DragAndDrop';
 function App() {
   return (
     <div>
-      <Header />
-      <DragAndDrop/>
+      <div>
+        <Header />
+      </div>
+      <div>
+        <DragAndDrop />
+      </div>
     </div>
   );
 }
