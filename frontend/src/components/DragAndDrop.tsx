@@ -4,6 +4,7 @@ const DragAndDrop: React.FC = () => {
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [fields, setFields] = useState<string[]>([]); // Multi-select fields
+  const [queryResult, setQueryResult] = useState<string>(''); // Store the query result
 
   // Available measurements, assumed to be associated with the bucket
   const measurementsMap: { [key: string]: string[] } = {
@@ -100,6 +101,20 @@ const DragAndDrop: React.FC = () => {
     updateChart();
   };
 
+  const handleComplete = () => {
+    if (bucket === 'Drop Bucket Here') {
+      setQueryResult('Please select a Bucket.');
+    } else if (measurement === 'Drop Measurement Here') {
+      setQueryResult('Please select a Measurement.');
+    } else if (fields.length === 0) {
+      setQueryResult('Please select at least one Field.');
+    } else {
+      const fieldsText = fields.join(', ');
+      const result = `Bucket: ${bucket}, Measurement: ${measurement}, Fields: ${fieldsText}`;
+      setQueryResult(result);
+    }
+  };
+
   const containerStyle: React.CSSProperties = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -170,6 +185,21 @@ const DragAndDrop: React.FC = () => {
     whiteSpace: 'nowrap', // Prevent text from wrapping
     overflow: 'hidden', // Hide overflow text
     textOverflow: 'ellipsis', // Add ellipsis if text is too long
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    padding: '10px 20px',
+    backgroundColor: '#ff8c00', // Orange color for the button
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    marginTop: '20px',
+  };
+
+  const resultStyle: React.CSSProperties = {
+    marginTop: '20px',
+    color: '#333',
   };
 
   return (
@@ -294,6 +324,10 @@ const DragAndDrop: React.FC = () => {
               <p>Drop Field Here</p>
             )}
           </div>
+          <button onClick={handleComplete} style={buttonStyle}>
+            Complete
+          </button>
+          {queryResult && <p style={resultStyle}>{queryResult}</p>}
         </div>
       </div>
     </div>
