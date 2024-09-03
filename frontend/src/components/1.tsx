@@ -22,7 +22,7 @@ const DragAndDrop: React.FC = () => {
 
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
     e.dataTransfer.setData('text/plain', e.currentTarget.innerText);
-    setTimeout(() => (e.currentTarget.style.opacity = '0.5'), 0);
+    setTimeout(() => e.currentTarget.style.opacity = '0.5', 0);
   };
 
   const handleDragEnd = (e: DragEvent<HTMLLIElement>) => {
@@ -45,25 +45,13 @@ const DragAndDrop: React.FC = () => {
   const handleDrop = (
     e: DragEvent<HTMLDivElement>,
     setItem: React.Dispatch<React.SetStateAction<string>>,
-    allowedItems: string[],
-    resetFields: boolean = false,
-    resetMeasurement: boolean = false
+    allowedItems: string[]
   ) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
     if (allowedItems.includes(data)) {
       setItem(data);
       e.currentTarget.style.backgroundColor = '#fafafa';
-
-      if (resetFields) {
-        setFields([]); // Reset fields
-      }
-
-      if (resetMeasurement) {
-        setMeasurement('Drop Measurement Here'); // Reset measurement
-        setFields([]); // Also reset fields when resetting measurement
-      }
-
       updateChart();
     } else {
       e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
@@ -72,9 +60,9 @@ const DragAndDrop: React.FC = () => {
 
   const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    const data = e.dataTransfer.getData('text/plain');
-    if (fieldsMap[measurement]?.includes(data) && !fields.includes(data)) {
-      setFields([...fields, data]);
+    const field = e.dataTransfer.getData('text/plain');
+    if (fieldsMap[measurement]?.includes(field) && !fields.includes(field)) {
+      setFields([...fields, field]);
       e.currentTarget.style.backgroundColor = '#fafafa';
       updateChart();
     } else {
@@ -82,22 +70,14 @@ const DragAndDrop: React.FC = () => {
     }
   };
 
-  const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
-    handleDrop(e, setBucket, ['Bucket 1', 'Bucket 2', 'Bucket 3'], true, true);
-  };
-
-  const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
-    handleDrop(e, setMeasurement, measurementsMap[bucket], true);
-  };
-
-  const updateChart = () => {
-    // Code for updating the chart can be modified or removed here.
-  };
-
   const removeField = (index: number) => {
     const updatedFields = fields.filter((_, i) => i !== index);
     setFields(updatedFields);
     updateChart();
+  };
+
+  const updateChart = () => {
+    // Code for updating the chart can be modified or removed here.
   };
 
   const containerStyle: React.CSSProperties = {
@@ -179,30 +159,9 @@ const DragAndDrop: React.FC = () => {
         <div className="available-items">
           <h2 style={{ textAlign: 'center' }}>Available Buckets</h2>
           <ul id="buckets" style={listStyle}>
-            <li
-              style={listItemStyle}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              Bucket 1
-            </li>
-            <li
-              style={listItemStyle}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              Bucket 2
-            </li>
-            <li
-              style={listItemStyle}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              Bucket 3
-            </li>
+            <li style={listItemStyle} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>Bucket 1</li>
+            <li style={listItemStyle} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>Bucket 2</li>
+            <li style={listItemStyle} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>Bucket 3</li>
           </ul>
         </div>
 
@@ -211,16 +170,8 @@ const DragAndDrop: React.FC = () => {
             <>
               <h2 style={{ textAlign: 'center' }}>Available Measurements</h2>
               <ul id="measurements" style={listStyle}>
-                {measurementsMap[bucket].map((measure) => (
-                  <li
-                    key={measure}
-                    style={listItemStyle}
-                    draggable
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                  >
-                    {measure}
-                  </li>
+                {measurementsMap[bucket].map(measure => (
+                  <li key={measure} style={listItemStyle} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>{measure}</li>
                 ))}
               </ul>
             </>
@@ -232,16 +183,8 @@ const DragAndDrop: React.FC = () => {
             <>
               <h2 style={{ textAlign: 'center' }}>Available Fields</h2>
               <ul id="fields" style={listStyle}>
-                {fieldsMap[measurement]?.map((field) => (
-                  <li
-                    key={field}
-                    style={listItemStyle}
-                    draggable
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                  >
-                    {field}
-                  </li>
+                {fieldsMap[measurement]?.map(field => (
+                  <li key={field} style={listItemStyle} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>{field}</li>
                 ))}
               </ul>
             </>
@@ -256,7 +199,7 @@ const DragAndDrop: React.FC = () => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleBucketDrop} // Reset both measurement and fields
+            onDrop={(e) => handleDrop(e, setBucket, ['Bucket 1', 'Bucket 2', 'Bucket 3'])}
           >
             <p>{bucket}</p>
           </div>
@@ -266,7 +209,7 @@ const DragAndDrop: React.FC = () => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleMeasurementDrop} // Reset fields only
+            onDrop={(e) => handleDrop(e, setMeasurement, measurementsMap[bucket])}
           >
             <p>{measurement}</p>
           </div>
@@ -276,16 +219,13 @@ const DragAndDrop: React.FC = () => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleFieldDrop} // Handle field drop
+            onDrop={handleFieldDrop}
           >
             {fields.length > 0 ? (
               fields.map((field, index) => (
                 <div key={index} style={fieldStyle}>
                   <span style={fieldTextStyle}>{field}</span>
-                  <button
-                    onClick={() => removeField(index)}
-                    style={deleteButtonStyle}
-                  >
+                  <button onClick={() => removeField(index)} style={deleteButtonStyle}>
                     &times;
                   </button>
                 </div>
