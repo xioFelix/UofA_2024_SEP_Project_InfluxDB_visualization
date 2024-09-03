@@ -1,10 +1,12 @@
 // Desc: Main App component
 import Header from './components/Header';
+import DragAndDrop from './components/dragAndDrop';
 
 function App() {
   return (
     <div>
       <Header />
+      <DragAndDrop/>
     </div>
   );
 }
