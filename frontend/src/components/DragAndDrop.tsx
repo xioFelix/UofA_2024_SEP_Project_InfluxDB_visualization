@@ -18,7 +18,6 @@ const DragAndDrop: React.FC = () => {
     'Measurement 1': ['Field 1', 'Field 2', 'Field 3'],
     'Measurement 2': ['Field 4', 'Field 5', 'Field 6'],
     'Measurement 3': ['Field 7', 'Field 8', 'Field 9'],
-    // Continue adding fields for other measurements
   };
 
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
@@ -43,6 +42,7 @@ const DragAndDrop: React.FC = () => {
     e.currentTarget.style.backgroundColor = '#fafafa';
   };
 
+  // Handle drop logic including resetting fields or measurement
   const handleDrop = (
     e: DragEvent<HTMLDivElement>,
     setItem: React.Dispatch<React.SetStateAction<string>>,
@@ -71,6 +71,7 @@ const DragAndDrop: React.FC = () => {
     }
   };
 
+  // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
   const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
@@ -83,24 +84,28 @@ const DragAndDrop: React.FC = () => {
     }
   };
 
+  // Handle drop logic for buckets, resetting measurements and fields as necessary
   const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
     handleDrop(e, setBucket, ['Bucket 1', 'Bucket 2', 'Bucket 3'], true, true);
   };
 
+  // Handle drop logic for measurements, resetting fields as necessary
   const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
     handleDrop(e, setMeasurement, measurementsMap[bucket], true);
   };
 
   const updateChart = () => {
-    // Code for updating the chart can be modified or removed here.
+    // Placeholder function for updating the chart, modify or remove as necessary
   };
 
+  // Remove a specific field from the selected fields list
   const removeField = (index: number) => {
     const updatedFields = fields.filter((_, i) => i !== index);
     setFields(updatedFields);
     updateChart();
   };
 
+  // Handle the "Complete" button click, checking if all necessary selections have been made
   const handleComplete = () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
@@ -115,15 +120,17 @@ const DragAndDrop: React.FC = () => {
     }
   };
 
+  // Styles for the container that holds the different drop zones and available items
   const containerStyle: React.CSSProperties = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     gap: '20px', // Adding space between the columns
-    maxWidth: '1300px', // Increase width as needed
+    maxWidth: '1300px', // Increase occupied page width
     margin: 'auto',
   };
 
+  // Styles for the list of available items (buckets, measurements, fields)
   const listStyle: React.CSSProperties = {
     border: '1px solid #ccc',
     borderRadius: '5px',
@@ -131,9 +138,10 @@ const DragAndDrop: React.FC = () => {
     backgroundColor: '#fff',
     width: '300px', // Fixed width for columns
     wordWrap: 'break-word', // Ensure long words break and wrap within the box
-    overflowWrap: 'break-word', // Ensure long words break and wrap within the box
+    overflowWrap: 'break-word',
   };
 
+  // Styles for individual list items within the available items
   const listItemStyle: React.CSSProperties = {
     padding: '8px',
     margin: '5px 0',
@@ -142,6 +150,7 @@ const DragAndDrop: React.FC = () => {
     cursor: 'pointer',
   };
 
+  // Styles for the drop zones in the Query Builder section
   const dropzoneStyle: React.CSSProperties = {
     border: '2px dashed #ccc',
     padding: '20px',
@@ -151,9 +160,10 @@ const DragAndDrop: React.FC = () => {
     marginBottom: '20px',
     width: '200px', // Fixed width for columns
     wordWrap: 'break-word', // Ensure long words break and wrap within the box
-    overflowWrap: 'break-word', // Ensure long words break and wrap within the box
+    overflowWrap: 'break-word',
   };
 
+  // Styles for the individual fields displayed in the Query Builder
   const fieldStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
@@ -166,6 +176,7 @@ const DragAndDrop: React.FC = () => {
     position: 'relative',
   };
 
+  // Styles for the delete button (X) that appears next to each field in the Query Builder
   const deleteButtonStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
@@ -179,6 +190,7 @@ const DragAndDrop: React.FC = () => {
     transform: 'translateY(-50%)',
   };
 
+  // Styles for the text within the field items, ensuring long text is handled properly
   const fieldTextStyle: React.CSSProperties = {
     flexGrow: 1,
     marginRight: '30px', // Adjust margin for the delete button space
@@ -187,9 +199,10 @@ const DragAndDrop: React.FC = () => {
     textOverflow: 'ellipsis', // Add ellipsis if text is too long
   };
 
+  // Styles for the "Complete" button in the Query Builder
   const buttonStyle: React.CSSProperties = {
     padding: '10px 20px',
-    backgroundColor: '#ff8c00', // Orange color for the button
+    backgroundColor: '#ff8c00', // Orange color
     color: '#fff',
     border: 'none',
     borderRadius: '5px',
@@ -197,9 +210,20 @@ const DragAndDrop: React.FC = () => {
     marginTop: '20px',
   };
 
-  const resultStyle: React.CSSProperties = {
-    marginTop: '20px',
-    color: '#333',
+  // Styles for the result text that appears below the "Complete" button, in a fixed position
+  const resultContainerStyle: React.CSSProperties = {
+    position: 'fixed',
+    bottom: '20px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundColor: '#fff',
+    padding: '10px 20px',
+    borderRadius: '5px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    zIndex: 1000,
+    width: '80%',
+    maxWidth: '600px',
+    textAlign: 'center',
   };
 
   return (
@@ -286,7 +310,7 @@ const DragAndDrop: React.FC = () => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleBucketDrop} // Reset both measurement and fields
+            onDrop={handleBucketDrop} 
           >
             <p>{bucket}</p>
           </div>
@@ -296,7 +320,7 @@ const DragAndDrop: React.FC = () => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleMeasurementDrop} // Reset fields only
+            onDrop={handleMeasurementDrop} 
           >
             <p>{measurement}</p>
           </div>
@@ -306,7 +330,7 @@ const DragAndDrop: React.FC = () => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleFieldDrop} // Handle field drop
+            onDrop={handleFieldDrop} 
           >
             {fields.length > 0 ? (
               fields.map((field, index) => (
@@ -327,9 +351,13 @@ const DragAndDrop: React.FC = () => {
           <button onClick={handleComplete} style={buttonStyle}>
             Complete
           </button>
-          {queryResult && <p style={resultStyle}>{queryResult}</p>}
         </div>
       </div>
+      {queryResult && (
+        <div style={resultContainerStyle}>
+          <p>{queryResult}</p>
+        </div>
+      )}
     </div>
   );
 };
