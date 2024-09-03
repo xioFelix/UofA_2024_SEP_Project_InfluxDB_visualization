@@ -10,22 +10,28 @@ const LogIn: React.FC = () => {
     setShowModal(!showModal);
   };
 
-  // Return TSX
   return (
     <div className="relative">
-
       {/* Orange Button to open the Log In modal with hover effect */}
       <button
         className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition duration-200"
         onClick={toggleModal}
       >
         Log In
-      </button> 
+      </button>
 
       {/* Modal that appears when the user clicks the Log In button */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75">
-          <div className="p-6 bg-black text-white rounded-lg shadow-lg w-96">
+          <div className="relative p-6 bg-black text-white rounded-lg shadow-lg w-96">
+            {/* Close Button */}
+            <button
+              className="absolute top-2 right-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition duration-200"
+              style={{ width: '25px', height: '25px' }} // Adjust this value to control the size
+              onClick={toggleModal}
+            >
+              X
+            </button>
             <h2 className="mb-4 text-lg font-bold">Log In</h2>
             {/* Form inside the modal for entering the API Token */}
             <form>
