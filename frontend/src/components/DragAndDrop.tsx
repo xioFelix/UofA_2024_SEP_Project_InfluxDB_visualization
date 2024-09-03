@@ -71,29 +71,15 @@ const DragAndDrop: React.FC = () => {
   };
 
   const updateChart = () => {
-    const chartDiv = document.getElementById('chart');
-    if (chartDiv) {
-      if (
-        bucket !== 'Drop Bucket Here' &&
-        measurement !== 'Drop Measurement Here' &&
-        fields.length > 0
-      ) {
-        chartDiv.innerHTML = `
-          <p>Generating chart for:</p>
-          <p><strong>Bucket:</strong> ${bucket}</p>
-          <p><strong>Measurement:</strong> ${measurement}</p>
-          <p><strong>Fields:</strong> ${fields.join(', ')}</p>
-        `;
-      } else {
-        chartDiv.innerHTML = ''; // Clear content
-      }
-    }
+    // Code for updating the chart can be modified or removed here.
   };
 
   const containerStyle: React.CSSProperties = {
     display: 'flex',
     justifyContent: 'space-between',
-    maxWidth: '800px',
+    alignItems: 'flex-start',
+    gap: '20px', // Adding space between the columns
+    maxWidth: '1000px', // Increase width as needed
     margin: 'auto',
   };
 
@@ -102,6 +88,7 @@ const DragAndDrop: React.FC = () => {
     borderRadius: '5px',
     padding: '10px',
     backgroundColor: '#fff',
+    width: '200px', // Adjust width to match your design needs
   };
 
   const listItemStyle: React.CSSProperties = {
@@ -119,15 +106,7 @@ const DragAndDrop: React.FC = () => {
     backgroundColor: '#fafafa',
     textAlign: 'center',
     marginBottom: '20px',
-  };
-
-  const chartContainerStyle: React.CSSProperties = {
-    textAlign: 'center',
-    border: '2px solid #ccc',
-    borderRadius: '5px',
-    padding: '20px',
-    backgroundColor: '#fff',
-    marginTop: '30px',
+    width: '200px', // Adjust width to match your design needs
   };
 
   return (
@@ -141,7 +120,9 @@ const DragAndDrop: React.FC = () => {
             <li style={listItemStyle} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>Bucket 2</li>
             <li style={listItemStyle} draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>Bucket 3</li>
           </ul>
+        </div>
 
+        <div className="available-items">
           {bucket !== 'Drop Bucket Here' && (
             <>
               <h2 style={{ textAlign: 'center' }}>Available Measurements</h2>
@@ -152,7 +133,9 @@ const DragAndDrop: React.FC = () => {
               </ul>
             </>
           )}
+        </div>
 
+        <div className="available-items">
           {measurement !== 'Drop Measurement Here' && (
             <>
               <h2 style={{ textAlign: 'center' }}>Available Fields</h2>
@@ -197,13 +180,6 @@ const DragAndDrop: React.FC = () => {
           >
             <p>{fields.length > 0 ? fields.join(', ') : 'Drop Field Here'}</p>
           </div>
-        </div>
-      </div>
-
-      <div style={chartContainerStyle}>
-        <h2>Generated Chart</h2>
-        <div id="chart">
-          {/* No content will be displayed here if conditions are not met */}
         </div>
       </div>
     </div>
