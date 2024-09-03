@@ -1,6 +1,6 @@
 import React, { useState, DragEvent } from 'react';
 
-const dragAndDrop: React.FC = () => {
+const DragAndDrop: React.FC = () => {
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [field, setField] = useState<string>('Drop Field Here');
@@ -144,4 +144,4 @@ const dragAndDrop: React.FC = () => {
   );
 };
 
-export default dragAndDrop;
+export default DragAndDrop;
