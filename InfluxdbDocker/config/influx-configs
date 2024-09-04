@@ -1,7 +1,7 @@
 [default]
   url = "http://localhost:8086"
   token = "N-8Wu2nfylIVZyPR4xLK3ONuVIC-RmxnuhoBzOmkXhIXRUPdlMnssvXPe8xAj50-zZTqv5zgQxxCNGD-UtViuw=="
-  org = "docs"
+  org = "UofA"
   active = true
 # 
 # [eu-central]
