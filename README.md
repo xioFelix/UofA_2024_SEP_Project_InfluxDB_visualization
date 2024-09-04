@@ -1,6 +1,8 @@
 # InfluxUI-UG1 Configuration
 
 ## InfluxDB
+Run `docker-compose up` to start the InfluxDB and ~~Grafana~~ containers. The InfluxDB container will be available at `http://localhost:8086` ~~and the Grafana container will be available at `http://localhost:3000`~~.
+
 - **Username**: Muffin
 - **Password**: G4$z7wQp!k2R
 - **Initial Organization Name**: UofA
@@ -11,4 +13,3 @@
 ## Grafana
 - **Username**: admin
 - **Password**: H3x&9Lmp*V8j
-
