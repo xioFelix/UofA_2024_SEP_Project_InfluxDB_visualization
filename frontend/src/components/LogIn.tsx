@@ -16,8 +16,6 @@ const LogIn: React.FC = () => {
 
     // Log the API Token to the console
     console.log('API Token entered:', apiToken);
-
-    // You can also add additional logic here if needed, such as form validation
   };
 
   //   // Send API Token to the backend
