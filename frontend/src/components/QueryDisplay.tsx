@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const QueryPresenter: React.FC= () => {
+const QueryDisplay: React.FC= () => {
     const [isQueryVisible, setIsQueryVisible] = useState<boolean>(false);
     const toggleQueryVisibility = () => {
         setIsQueryVisible(!isQueryVisible);
@@ -14,7 +14,7 @@ const QueryPresenter: React.FC= () => {
                 className="mt-2 text-left w-full flex justify-between items-center font-semibold text-lg"
                 aria-expanded={isQueryVisible}
             >
-                Query Presenter
+                Query Display
                 <span>{isQueryVisible ? '▲' : '▼'}</span>
             </button>
             {isQueryVisible && (
@@ -26,4 +26,4 @@ const QueryPresenter: React.FC= () => {
     );    
 }
 
-export default QueryPresenter;
+export default QueryDisplay;
