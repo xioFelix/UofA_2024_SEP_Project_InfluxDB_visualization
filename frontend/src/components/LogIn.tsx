@@ -10,6 +10,38 @@ const LogIn: React.FC = () => {
     setShowModal(!showModal);
   };
 
+    // Function to handle form submission
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    // Log the API Token to the console
+    console.log('API Token entered:', apiToken);
+
+    // You can also add additional logic here if needed, such as form validation
+  };
+
+  //   // Send API Token to the backend
+  //   try {
+  //     const response = await fetch('backendURL', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ apiToken }), // Send the API token in the request body
+  //     });
+
+  //     if (response.ok) {
+  //       console.log('API Token successfully sent to the backend');
+  //       // Optionally handle successful response (e.g., close the modal, show a success message)
+  //       setShowModal(false);
+  //     } else {
+  //       console.error('Failed to send API Token to the backend');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error occurred while sending API Token:', error);
+  //   }
+  // };
+
   return (
     <div className="relative">
       {/* Orange Button to open the Log In modal with hover effect */}
@@ -34,7 +66,7 @@ const LogIn: React.FC = () => {
             </button>
             <h2 className="mb-4 text-lg font-bold">Log In</h2>
             {/* Form inside the modal for entering the API Token */}
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-sm font-bold mb-2">API Token</label>
                 {/* Input field for the API Token */}
