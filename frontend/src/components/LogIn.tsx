@@ -11,34 +11,30 @@ const LogIn: React.FC = () => {
   };
 
     // Function to handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent default form submission behavior
 
-    // Log the API Token to the console
-    console.log('API Token entered:', apiToken);
+    // Send API Token to the backend
+    try {
+      const response = await fetch('backendURL', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ apiToken }), // Send the API token in the request body
+      });
+
+      if (response.ok) {
+        console.log('API Token successfully sent to the backend');
+        // Optionally handle successful response (e.g., close the modal, show a success message)
+        setShowModal(false);
+      } else {
+        console.error('Failed to send API Token to the backend');
+      }
+    } catch (error) {
+      console.error('Error occurred while sending API Token:', error);
+    }
   };
-
-  //   // Send API Token to the backend
-  //   try {
-  //     const response = await fetch('backendURL', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ apiToken }), // Send the API token in the request body
-  //     });
-
-  //     if (response.ok) {
-  //       console.log('API Token successfully sent to the backend');
-  //       // Optionally handle successful response (e.g., close the modal, show a success message)
-  //       setShowModal(false);
-  //     } else {
-  //       console.error('Failed to send API Token to the backend');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error occurred while sending API Token:', error);
-  //   }
-  // };
 
   return (
     <div className="relative">
