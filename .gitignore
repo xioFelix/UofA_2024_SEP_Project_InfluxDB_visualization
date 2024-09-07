@@ -7,3 +7,4 @@ grafana-9.5.3/data/log/grafana.log
 # Ignore data and files directories by default
 InfluxdbDocker/data/
 InfluxdbDocker/config/
+*.bolt
