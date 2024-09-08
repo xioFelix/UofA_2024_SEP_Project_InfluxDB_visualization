@@ -25,8 +25,8 @@ services:
     depends_on:
       - influxdb2  # Ensure InfluxDB starts before Grafana
     environment:
-      - GF_SECURITY_ADMIN_USER=admin # Grafana default admin username
-      - GF_SECURITY_ADMIN_PASSWORD=H3x&9Lmp*V8j # Grafana default admin password
+      # - GF_SECURITY_ADMIN_USER=admin
+      # - GF_SECURITY_ADMIN_PASSWORD=H3x&9Lmp*V8j
       - GF_SERVER_ROOT_URL=http://localhost:3000  # Grafana root URL
       - GF_SECURITY_ALLOW_EMBEDDING=true  # Allow embedding Grafana dashboards
     volumes:
