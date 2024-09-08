@@ -28,8 +28,8 @@ services:
     depends_on:
       - influxdb2  # Ensure InfluxDB is started before Grafana
     environment:
-      GF_SECURITY_ADMIN_USER_FILE: /run/secrets/grafana-admin-username  # Secret for Grafana admin username
-      GF_SECURITY_ADMIN_PASSWORD_FILE: /run/secrets/grafana-admin-password  # Secret for Grafana admin password
+      GF_SECURITY_ADMIN_USER: /run/secrets/grafana-admin-username  # Secret for Grafana admin username
+      GF_AUTH_GOOGLE_CLIENT_SECRET: /run/secrets/grafana-admin-password  # Secret for Grafana admin password
     secrets:
       - grafana-admin-username  # Load the Grafana admin username secret
       - grafana-admin-password  # Load the Grafana admin password secret
