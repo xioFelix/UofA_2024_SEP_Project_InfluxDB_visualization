@@ -1,46 +1,53 @@
+version: '3.8'
 services:
   influxdb2:
-    image: influxdb:2
+    image: influxdb:2.7.10
+    container_name: influxdb
     ports:
-      - 8086:8086  # Expose InfluxDB on port 8086
+      - "8086:8086"
     environment:
       DOCKER_INFLUXDB_INIT_MODE: setup
       DOCKER_INFLUXDB_INIT_USERNAME_FILE: /run/secrets/influxdb2-admin-username
       DOCKER_INFLUXDB_INIT_PASSWORD_FILE: /run/secrets/influxdb2-admin-password
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN_FILE: /run/secrets/influxdb2-admin-token
-      DOCKER_INFLUXDB_INIT_ORG: UofA  # Organization name
-      DOCKER_INFLUXDB_INIT_BUCKET: Muffin  # Bucket name
+      DOCKER_INFLUXDB_INIT_ORG: UofA
+      DOCKER_INFLUXDB_INIT_BUCKET: Muffin
     secrets:
       - influxdb2-admin-username
       - influxdb2-admin-password
       - influxdb2-admin-token
     volumes:
-      - ./InfluxdbDocker/data:/var/lib/influxdb2  # Map local data directory to container's InfluxDB data directory
-      - ./InfluxdbDocker/config:/etc/influxdb2  # Map local config directory to container's InfluxDB config directory
+      - ./influxdb_data:/var/lib/influxdb2  # 持久化数据
 
   grafana:
-    image: grafana/grafana-enterprise:9.5.3  # Use Grafana Enterprise version 9.5.3
+    image: grafana/grafana-enterprise:9.5.3
+    container_name: grafana
     ports:
-      - 3000:3000  # Expose Grafana on port 3000
+      - "3000:3000"
     depends_on:
-      - influxdb2  # Ensure InfluxDB starts before Grafana
+      - influxdb2  # 确保 InfluxDB 先启动
     environment:
-      # - GF_SECURITY_ADMIN_USER=admin
-      # - GF_SECURITY_ADMIN_PASSWORD=H3x&9Lmp*V8j
-      - GF_SERVER_ROOT_URL=http://localhost:3000  # Grafana root URL
-      - GF_SECURITY_ALLOW_EMBEDDING=true  # Allow embedding Grafana dashboards
+      GF_SECURITY_ADMIN_USER_FILE: /run/secrets/grafana-admin-username
+      GF_SECURITY_ADMIN_PASSWORD_FILE: /run/secrets/grafana-admin-password
+    secrets:
+      - grafana-admin-username
+      - grafana-admin-password
     volumes:
-      - ./grafana_data:/var/lib/grafana  # Persist Grafana data locally
-    links:
-      - influxdb2  # Link Grafana to InfluxDB container
+      - ./grafana_data:/var/lib/grafana  # 持久化数据
 
 secrets:
   influxdb2-admin-username:
-    file: ./run/secrets/influxdb2-admin-username  # Secret file for InfluxDB admin username
+    file: ./run/secrets/influxdb2-admin-username
   influxdb2-admin-password:
-    file: ./run/secrets/influxdb2-admin-password  # Secret file for InfluxDB admin password
+    file: ./run/secrets/influxdb2-admin-password
   influxdb2-admin-token:
-    file: ./run/secrets/influxdb2-admin-token  # Secret file for InfluxDB admin token
+    file: ./run/secrets/influxdb2-admin-token
+
+  grafana-admin-username:
+    file: ./run/secrets/grafana-admin-username
+  grafana-admin-password:
+    file: ./run/secrets/grafana-admin-password
 
 volumes:
-  grafana_data:  # Define Grafana data volume
+  influxdb_data:
+  grafana_data:
