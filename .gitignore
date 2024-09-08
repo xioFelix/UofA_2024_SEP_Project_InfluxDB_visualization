@@ -8,3 +8,5 @@ grafana-9.5.3/data/log/grafana.log
 InfluxdbDocker/data/
 InfluxdbDocker/config/
 *.bolt
+InfluxdbDocker/data/influxd.bolt
+grafanaDocker/data/grafana.db
