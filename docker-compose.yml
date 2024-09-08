@@ -4,50 +4,47 @@ services:
     image: influxdb:2.7.10
     container_name: influxdb
     ports:
-      - "8086:8086"
+      - "8086:8086"  # Expose InfluxDB on port 8086
     environment:
-      DOCKER_INFLUXDB_INIT_MODE: setup
-      DOCKER_INFLUXDB_INIT_USERNAME_FILE: /run/secrets/influxdb2-admin-username
-      DOCKER_INFLUXDB_INIT_PASSWORD_FILE: /run/secrets/influxdb2-admin-password
-      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN_FILE: /run/secrets/influxdb2-admin-token
-      DOCKER_INFLUXDB_INIT_ORG: UofA
-      DOCKER_INFLUXDB_INIT_BUCKET: Muffin
+      DOCKER_INFLUXDB_INIT_MODE: setup  # Set InfluxDB initialization mode to 'setup'
+      DOCKER_INFLUXDB_INIT_USERNAME_FILE: /run/secrets/influxdb2-admin-username  # Secret for InfluxDB admin username
+      DOCKER_INFLUXDB_INIT_PASSWORD_FILE: /run/secrets/influxdb2-admin-password  # Secret for InfluxDB admin password
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN_FILE: /run/secrets/influxdb2-admin-token  # Secret for InfluxDB admin token
+      DOCKER_INFLUXDB_INIT_ORG: UofA  # Organization name for InfluxDB
+      DOCKER_INFLUXDB_INIT_BUCKET: Muffin  # Bucket name for data storage in InfluxDB
     secrets:
-      - influxdb2-admin-username
-      - influxdb2-admin-password
-      - influxdb2-admin-token
+      - influxdb2-admin-username  # Load the InfluxDB admin username secret
+      - influxdb2-admin-password  # Load the InfluxDB admin password secret
+      - influxdb2-admin-token     # Load the InfluxDB admin token secret
     volumes:
-      - ./influxdb_data:/var/lib/influxdb2  # 持久化数据
+      - ./influxdbDocker/data:/var/lib/influxdb2  # Bind mount to persist InfluxDB data on the host system
+      - ./influxdbDocker/config:/etc/influxdb2    # Bind mount for InfluxDB configuration files
 
   grafana:
-    image: grafana/grafana-enterprise:9.5.3
+    image: grafana/grafana-enterprise:9.5.3  # Use Grafana Enterprise version 9.5.3
     container_name: grafana
     ports:
-      - "3000:3000"
+      - "3000:3000"  # Expose Grafana on port 3000
     depends_on:
-      - influxdb2  # 确保 InfluxDB 先启动
+      - influxdb2  # Ensure InfluxDB is started before Grafana
     environment:
-      GF_SECURITY_ADMIN_USER_FILE: /run/secrets/grafana-admin-username
-      GF_SECURITY_ADMIN_PASSWORD_FILE: /run/secrets/grafana-admin-password
+      GF_SECURITY_ADMIN_USER_FILE: /run/secrets/grafana-admin-username  # Secret for Grafana admin username
+      GF_SECURITY_ADMIN_PASSWORD_FILE: /run/secrets/grafana-admin-password  # Secret for Grafana admin password
     secrets:
-      - grafana-admin-username
-      - grafana-admin-password
+      - grafana-admin-username  # Load the Grafana admin username secret
+      - grafana-admin-password  # Load the Grafana admin password secret
     volumes:
-      - ./grafana_data:/var/lib/grafana  # 持久化数据
+      - ./grafanaDocker/data:/var/lib/grafana  # Bind mount to persist Grafana data on the host system
 
 secrets:
   influxdb2-admin-username:
-    file: ./run/secrets/influxdb2-admin-username
+    file: ./run/secrets/influxdb2-admin-username  # Secret file for InfluxDB admin username
   influxdb2-admin-password:
-    file: ./run/secrets/influxdb2-admin-password
+    file: ./run/secrets/influxdb2-admin-password  # Secret file for InfluxDB admin password
   influxdb2-admin-token:
-    file: ./run/secrets/influxdb2-admin-token
+    file: ./run/secrets/influxdb2-admin-token     # Secret file for InfluxDB admin token
 
   grafana-admin-username:
-    file: ./run/secrets/grafana-admin-username
+    file: ./run/secrets/grafana-admin-username  # Secret file for Grafana admin username
   grafana-admin-password:
-    file: ./run/secrets/grafana-admin-password
-
-volumes:
-  influxdb_data:
-  grafana_data:
+    file: ./run/secrets/grafana-admin-password  # Secret file for Grafana admin password
