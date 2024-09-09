@@ -13,6 +13,7 @@ export const verifyToken = async (token: string) => {
     const health = await healthAPI.getHealth();
     
     if (health.status === 'pass') {
+      console.log('InfluxDB health OK:', health);
       return true;
     } else {
       console.error('InfluxDB health check failed:', health);
