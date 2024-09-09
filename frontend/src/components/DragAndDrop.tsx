@@ -1,4 +1,5 @@
 import React, { useState, DragEvent } from 'react';
+import axios from 'axios'; // Axios for HTTP requests
 
 const DragAndDrop: React.FC = () => {
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
@@ -105,8 +106,8 @@ const DragAndDrop: React.FC = () => {
     updateChart();
   };
 
-  // Handle the "Complete" button click, checking if all necessary selections have been made
-  const handleComplete = () => {
+  // Frontend drag-and-drop logic in DragAndDrop.tsx
+  const handleComplete = async () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
     } else if (measurement === 'Drop Measurement Here') {
@@ -114,12 +115,37 @@ const DragAndDrop: React.FC = () => {
     } else if (fields.length === 0) {
       setQueryResult('Please select at least one Field.');
     } else {
-      const fieldsText = fields.join(', ');
-      const result = `Bucket: ${bucket}, Measurement: ${measurement}, Fields: ${fieldsText}`;
-      setQueryResult(result);
+      try {
+        // Prepare the data to be sent to the backend
+        const requestData = {
+          bucket,
+          measurement,
+          fields,  // Send fields array
+        };
+
+        // Frontend Axios Request (ensure it's a POST request)
+        const response = await axios.post('http://localhost:7000/api/query', requestData); // Use POST method
+
+        // Display the result from the backend
+        setQueryResult(`Query Generated Successfully: ${response.data.query}`);
+      } catch (error: unknown) { 
+        if (axios.isAxiosError(error)) {
+          console.error('Axios error status:', error.response?.status);
+          console.error('Axios error data:', error.response?.data);
+          console.error('Axios error headers:', error.response?.headers);
+      
+          setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
+        } else if (error instanceof Error) {
+          console.error('Error generating query:', error.message);
+          setQueryResult(`Error: ${error.message}`);
+        } else {
+          console.error('An unexpected error occurred:', error);
+          setQueryResult('An unknown error occurred.');
+        }
+      }          
     }
   };
-
+  
   // Styles for the container that holds the different drop zones and available items
   const containerStyle: React.CSSProperties = {
     display: 'flex',

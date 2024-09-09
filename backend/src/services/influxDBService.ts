@@ -27,3 +27,23 @@ export const verifyTokenAndGetBuckets = async (token: string) => {
     throw error;
   }
 };
+
+export const generateQueryForSelection = (bucket: string, measurement: string, fields: string[]): string => {
+  if (!bucket || !measurement || !fields || fields.length === 0) {
+    return '';  // If the input data is incorrect, an empty string is returned
+  }
+
+  // Dynamically generate filters for multiple fields
+  const fieldFilters = fields.map(field => `r._field == "${field}"`).join(' or ');
+
+  // Construct the InfluxDB query
+  const query = `
+    from(bucket: "${bucket}")
+      |> range(start: -1h)
+      |> filter(fn: (r) => r._measurement == "${measurement}" and (${fieldFilters}))
+      |> yield(name: "selected_data")
+  `;
+  
+  return query;
+};
+
