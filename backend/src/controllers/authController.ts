@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { verifyTokenAndGetBuckets } from '../services/influxDBService';
+import { verifyToken } from '../services/influxDBService';
 
 // POST /api/auth/login
 export const logIn = async (req: Request, res: Response) => {
   const { apiToken } = req.body;
   try {
-    const isValid = await verifyTokenAndGetBuckets(apiToken);
+    const isValid = await verifyToken(apiToken);
     
     // Check if the API Token is valid
     if (isValid) {
