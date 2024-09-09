@@ -4,8 +4,8 @@ import { HealthAPI } from '@influxdata/influxdb-client-apis';
 // InfluxDB 2.0 server URL and token
 export const verifyToken = async (token: string) => {
   const url = 'http://localhost:8086';
-  const org = 'muffin';
-  const bucket = 'my-muffin';
+  const org = 'UofA';
+  const bucket = 'Muffin';
   const client = new InfluxDB({ url, token });
 
   try {

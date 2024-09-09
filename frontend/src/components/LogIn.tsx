@@ -16,7 +16,7 @@ const LogIn: React.FC = () => {
 
     // Send API Token to the backend
     try {
-      const response = await fetch('backendURL', {
+      const response = await fetch('http://localhost:7000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
