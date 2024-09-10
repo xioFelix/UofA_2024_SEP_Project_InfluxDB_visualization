@@ -7,7 +7,7 @@ const GrafanaAPI = () => {
         fetch('/api/dashboards/1/a0fb9bb8-4dff-4d6b-b607-0039a140f21d', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer YOUR_API_KEY`,  // 使用你的 Grafana API 密钥
+                'Authorization': `Bearer glsa_1KcuKQyqk4uBPAN9S3mNi5UGQHS4bEPj_ade072dc`,
                 'Content-Type': 'application/json',
             }
         })
