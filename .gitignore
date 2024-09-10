@@ -99,8 +99,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # Manually ignored files
-InfluxdbDocker/data/
-InfluxdbDocker/config/
+grafanaDocker/
+InfluxdbDocker/
 *.bolt
 *.db
-grafanaDocker
