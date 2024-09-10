@@ -1,30 +1,40 @@
 import { useEffect, useState } from 'react';
 
 const InfluxDBAPI = () => {
-    const [data, setData] = useState(null);
+    const [buckets, setBuckets] = useState<any[]>([]); // State to store buckets
 
     useEffect(() => {
-        fetch('http://localhost:8086/api/v2/query', {
-            method: 'POST',
+        fetch('http://localhost:8086/api/v2/buckets', {  // API endpoint to get all buckets
+            method: 'GET',
             headers: {
                 'Authorization': `Token N-8Wu2nfylIVZyPR4xLK3ONuVIC-RmxnuhoBzOmkXhIXRUPdlMnssvXPe8xAj50-zZTqv5zgQxxCNGD-UtViuw==`,
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: 'from(bucket: "Muffin") |> range(start: -1h)',
-                dialect: {
-                    annotations: ["datatype", "group", "default"],
-                },
-            }),
+            }
         })
-            .then((response) => response.json())
-            .then((data) => setData(data))
-            .catch((error) => console.error('Error fetching data from InfluxDB:', error));
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setBuckets(data.buckets);  // Set the bucket data to state
+            })
+            .catch((error) => console.error('Error fetching buckets:', error));
     }, []);
 
     return (
         <div>
-            {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>Loading InfluxDB data...</p>}
+            <h2>Available Buckets</h2>
+            {buckets.length > 0 ? (
+                <ul>
+                    {buckets.map((bucket) => (
+                        <li key={bucket.id}>{bucket.name}</li>  // Display bucket names
+                    ))}
+                </ul>
+            ) : (
+                <p>Loading buckets...</p>
+            )}
         </div>
     );
 };
