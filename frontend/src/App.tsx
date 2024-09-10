@@ -24,7 +24,7 @@ function App() {
       </div>
 
       {/* Render QueryDisplay component */}
-      <div>
+      <div style={{ marginBottom: '50px'}}>
         <QueryDisplay />
       </div>
 
@@ -38,6 +38,11 @@ function App() {
       <div className="mt-16">
         <h2>InfluxDB Data</h2>
         <InfluxDBAPI />
+      </div>
+
+      {/* Footer */}
+      <div className="footer" style={{
+        marginBottom: '100px'}}>
       </div>
     </div>
   );
