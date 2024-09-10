@@ -25,11 +25,11 @@ const LogIn: React.FC = () => {
       });
 
       if (response.ok) {
-        console.log('API Token successfully sent to the backend');
+        console.log('Authentication Successed');
         // Optionally handle successful response (e.g., close the modal, show a success message)
         setShowModal(false);
       } else {
-        console.error('Failed to send API Token to the backend');
+        console.error('Authentication Failed');
       }
     } catch (error) {
       console.error('Error occurred while sending API Token:', error);
