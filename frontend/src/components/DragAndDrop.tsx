@@ -1,7 +1,11 @@
 import React, { useState, DragEvent } from 'react';
 import axios from 'axios'; // Axios for HTTP requests
 
-const DragAndDrop: React.FC = () => {
+interface DragAndDropProps {
+  buckets: string[]; // Buckets data passed as a prop
+}
+
+const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [fields, setFields] = useState<string[]>([]); // Multi-select fields
@@ -87,7 +91,7 @@ const DragAndDrop: React.FC = () => {
 
   // Handle drop logic for buckets, resetting measurements and fields as necessary
   const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
-    handleDrop(e, setBucket, ['Bucket 1', 'Bucket 2', 'Bucket 3'], true, true);
+    handleDrop(e, setBucket, buckets, true, true); // Reset measurements and fields
   };
 
   // Handle drop logic for measurements, resetting fields as necessary

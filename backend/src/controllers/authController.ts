@@ -13,7 +13,7 @@ export const logIn = async (req: Request, res: Response) => {
       res.status(200).json({
         message: 'API Token is valid and buckets are fetched successfully!',
         buckets: bucketNames,  // Send the bucket names in the response
-      });
+      }); 
     } else {
       res.status(401).json({
         message: 'Invalid API Token or no buckets found',

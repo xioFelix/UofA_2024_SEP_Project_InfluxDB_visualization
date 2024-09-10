@@ -2,7 +2,7 @@ import { InfluxDB } from '@influxdata/influxdb-client';
 import { HealthAPI } from '@influxdata/influxdb-client-apis';
 import { BucketsAPI } from '@influxdata/influxdb-client-apis';
 
-// InfluxDB 2.0 server URL and token
+// InfluxDB 2.0 server URL and organization
 const url = 'http://localhost:8086';  // URL remains constant
 const org = 'UofA';  // organization remains constant for this example
 
@@ -13,6 +13,7 @@ export const verifyTokenAndGetBuckets = async (token: string) => {
     const healthAPI = new HealthAPI(client);  
     const health = await healthAPI.getHealth();
     
+    // If the token is valid, fetch the buckets
     if (health.status === 'pass') {
       // Fetch all buckets from the database
       const bucketsAPI = new BucketsAPI(client);  
