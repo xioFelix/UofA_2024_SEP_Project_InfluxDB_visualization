@@ -13,3 +13,5 @@ Run `docker-compose up` to start the InfluxDB and Grafana containers. The Influx
 ## Grafana
 - **Username**: admin
 - **Password**: H3x&9Lmp*V8j
+- **Token**: glsa_1KcuKQyqk4uBPAN9S3mNi5UGQHS4bEPj_ade072dc
+- **Token ID**: sa-muffin
