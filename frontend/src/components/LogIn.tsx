@@ -39,7 +39,7 @@ const LogIn: React.FC<LogInProps> = ({ handleLoginSuccess }) => {
 
         setShowModal(false); // Close modal after successful login
       } else {
-        console.error('Failed to send API Token to the backend');
+        console.error('Authentication Failed');
       }
     } catch (error) {
       console.error('Error occurred while sending API Token:', error);
