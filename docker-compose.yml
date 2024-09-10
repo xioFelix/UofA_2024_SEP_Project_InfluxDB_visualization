@@ -27,23 +27,18 @@ services:
     depends_on:
       - influxdb2  # Ensure InfluxDB is started before Grafana
     environment:
-      GF_SECURITY_ADMIN_USER: /run/secrets/grafana-admin-username  # Secret for Grafana admin username
-      GF_AUTH_GOOGLE_CLIENT_SECRET: /run/secrets/grafana-admin-password  # Secret for Grafana admin password
+      - GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/grafana-admin-password  # Secret for Grafana admin password from file
     secrets:
-      - grafana-admin-username  # Load the Grafana admin username secret
       - grafana-admin-password  # Load the Grafana admin password secret
     volumes:
       - ./grafanaDocker/data:/var/lib/grafana  # Bind mount to persist Grafana data on the host system
 
 secrets:
+  grafana-admin-password:
+    file: ./run/secrets/grafana-admin-password  # Secret file for Grafana admin password
   influxdb2-admin-username:
     file: ./run/secrets/influxdb2-admin-username  # Secret file for InfluxDB admin username
   influxdb2-admin-password:
     file: ./run/secrets/influxdb2-admin-password  # Secret file for InfluxDB admin password
   influxdb2-admin-token:
     file: ./run/secrets/influxdb2-admin-token     # Secret file for InfluxDB admin token
-
-  grafana-admin-username:
-    file: ./run/secrets/grafana-admin-username  # Secret file for Grafana admin username
-  grafana-admin-password:
-    file: ./run/secrets/grafana-admin-password  # Secret file for Grafana admin password
