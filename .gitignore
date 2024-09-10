@@ -103,3 +103,5 @@ grafanaDocker/
 InfluxdbDocker/
 *.bolt
 *.db
+/InfluxdbDocker
+/grafanaDocker
