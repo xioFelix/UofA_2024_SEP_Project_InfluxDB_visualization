@@ -103,4 +103,4 @@ InfluxdbDocker/data/
 InfluxdbDocker/config/
 *.bolt
 *.db
-grafanaDocker/data/grafana.db
+grafanaDocker
