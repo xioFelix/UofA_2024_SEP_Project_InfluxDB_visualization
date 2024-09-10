@@ -17,7 +17,7 @@ export const verifyTokenAndGetBuckets = async (token: string) => {
       // Fetch all buckets from the database
       const bucketsAPI = new BucketsAPI(client);  
       const buckets = await bucketsAPI.getBuckets({ org });
-      
+      console.log(buckets)
       return buckets;   // Return the list of buckets
     } else {
       throw new Error('Token verification failed');
