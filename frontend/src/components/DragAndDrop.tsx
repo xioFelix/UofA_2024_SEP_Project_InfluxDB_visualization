@@ -260,33 +260,20 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
     <div id="app">
       <h1 style={{ textAlign: 'center' }}>InfluxDB & Grafana Query Builder</h1>
       <div style={containerStyle}>
-        <div className="available-items">
+      <div className="available-items">
           <h2 style={{ textAlign: 'center' }}>Available Buckets</h2>
           <ul id="buckets" style={listStyle}>
-            <li
-              style={listItemStyle}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              Bucket 1
-            </li>
-            <li
-              style={listItemStyle}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              Bucket 2
-            </li>
-            <li
-              style={listItemStyle}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            >
-              Bucket 3
-            </li>
+            {buckets.map((bucket) => (
+              <li
+                key={bucket} // Using the bucket name as the key
+                style={listItemStyle}
+                draggable
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
+              >
+                {bucket}
+              </li>
+            ))}
           </ul>
         </div>
 
