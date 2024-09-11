@@ -24,7 +24,7 @@ function App() {
       </div>
 
       {/* Render QueryDisplay component */}
-      <div style={{ marginBottom: '50px'}}>
+      <div style={{ marginBottom: '50px', textAlign: 'center' }}>
         <QueryDisplay />
       </div>
 
