@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 interface LogInProps {
   handleLoginSuccess: (buckets: string[]) => void;
@@ -8,10 +10,14 @@ interface LogInProps {
 const LogIn: React.FC<LogInProps> = ({ handleLoginSuccess }) => {
   const [showModal, setShowModal] = useState(false);
   const [apiToken, setApiToken] = useState('');
+  const [authStatus, setAuthStatus] = useState<'success' | 'error' | null>(null); // Track authentication status
+  const [errorMessage, setErrorMessage] = useState(''); // Track error message
 
   // Function to toggle modal visibility
   const toggleModal = () => {
     setShowModal(!showModal);
+    setAuthStatus(null); // Clear any previous status when opening modal
+    setErrorMessage(''); // Clear any previous error message when opening modal
   };
 
   // Function to handle form submission
@@ -37,12 +43,17 @@ const LogIn: React.FC<LogInProps> = ({ handleLoginSuccess }) => {
           handleLoginSuccess(data.buckets); // Pass bucket names back to the parent component
         }
 
+        setAuthStatus('success'); // Set authentication status to success
         setShowModal(false); // Close modal after successful login
       } else {
-        console.error('Authentication Failed');
+        const errorData = await response.json(); // Extract error message from the response
+        setAuthStatus('error'); // Set authentication status to error
+        setErrorMessage(errorData.message || 'Authentication Failed'); // Set the error message
       }
     } catch (error) {
       console.error('Error occurred while sending API Token:', error);
+      setAuthStatus('error');
+      setErrorMessage('An unexpected error occurred.');
     }
   };
 
@@ -84,6 +95,13 @@ const LogIn: React.FC<LogInProps> = ({ handleLoginSuccess }) => {
                 Log In
               </button>
             </form>
+
+            {/* Display error alert if authentication fails */}
+            {authStatus === 'error' && (
+              <Stack sx={{ width: '100%', marginTop: '15px' }} spacing={2}>
+                <Alert severity="error">{errorMessage}</Alert>
+              </Stack>
+            )}
           </div>
         </div>
       )}
