@@ -20,19 +20,20 @@ app.use('/api/auth', authRoutes);
 // Route for query generation 
 app.use('/api/query', querySendRoutes);
 
-// test route to check if the server is running
-app.get("/api/test", async(req: Request, res: Response) => {
-    res.json({ message: "Hello world!" });
-});
 
 // Print the registered route
 const listRoutes = (app: express.Express) => {
-app._router.stack.forEach((middleware: any) => {
-    if (middleware.route) {
-    console.log(`${Object.keys(middleware.route.methods)}: ${middleware.route.path}`);
+    if (!app._router) {
+      console.log("No routes registered.");
+      return;
     }
-});
-};
+    
+    app._router.stack.forEach((middleware: any) => {
+      if (middleware.route) {
+        console.log(`${Object.keys(middleware.route.methods)}: ${middleware.route.path}`);
+      }
+    });
+  };
 
 // start the server at port 7000
 app.listen(7000, () => {
