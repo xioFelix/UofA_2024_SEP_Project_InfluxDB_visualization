@@ -96,7 +96,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
 
   // Handle drop logic for measurements, resetting fields as necessary
   const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
-    handleDrop(e, setMeasurement, measurementsMap[bucket], true);
+    handleDrop(e, setMeasurement, measurementsMap[bucket] || [], true);
   };
 
   const updateChart = () => {
@@ -278,7 +278,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
         </div>
 
         <div className="available-items">
-          {bucket !== 'Drop Bucket Here' && (
+          {bucket !== 'Drop Bucket Here' && measurementsMap[bucket] && (
             <>
               <h2 style={{ textAlign: 'center' }}>Available Measurements</h2>
               <ul id="measurements" style={listStyle}>
