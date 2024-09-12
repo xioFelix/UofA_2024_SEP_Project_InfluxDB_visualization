@@ -15,3 +15,9 @@ Run `docker-compose up` to start the InfluxDB and Grafana containers. The Influx
 - **Password**: H3x&9Lmp*V8j
 - **Token**: glsa_1KcuKQyqk4uBPAN9S3mNi5UGQHS4bEPj_ade072dc
 - **Token ID**: sa-muffin
+
+## React.js(Frontend)
+Navigate to the Frontend Directory: `cd frontend`.
+Install all required packages and dependencies: `npm install`.
+Start the frontend development server using the following command: `npm run dev`
+Once the command completes, a URL will be displayed in the terminal. Copy and paste the URL into your browser to access the frontend.(Example: `http://localhost:5173/`)
