@@ -21,3 +21,8 @@ Run `docker-compose up` to start the InfluxDB and Grafana containers. The Influx
 - Install all required packages and dependencies: `npm install`.
 - Start the frontend development server using the following command: `npm run dev`
 - Once the command completes, a URL will be displayed in the terminal. Copy and paste the URL into your browser to access the frontend.(Example: `http://localhost:5173/`)
+
+## Node.js(Backend)
+- Navigate to the Backend Directory: `cd backend`.
+- Install all required packages and dependencies: `npm install`.
+- Start the backend development server using the following command: `npm run dev`
