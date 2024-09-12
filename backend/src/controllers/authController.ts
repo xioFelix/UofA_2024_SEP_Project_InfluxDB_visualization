@@ -7,13 +7,17 @@ export const logIn = async (req: Request, res: Response) => {
   try {
     // Verify the API Token and fetch the buckets
     const buckets = await verifyTokenAndGetBuckets(apiToken);
-    
+
     if (buckets && buckets.buckets) {
-      const bucketNames = buckets.buckets.map((b) => b.name);  // Extract the bucket names
+      // Extract the bucket names and filter out names starting with '_'
+      const bucketNames = buckets.buckets
+        .map((b) => b.name)
+        .filter((name) => !name.startsWith('_')); // Filter out system buckets
+
       res.status(200).json({
         message: 'API Token is valid and buckets are fetched successfully!',
-        buckets: bucketNames,  // Send the bucket names in the response
-      }); 
+        buckets: bucketNames, // Send the filtered bucket names in the response
+      });
     } else {
       res.status(401).json({
         message: 'Invalid API Token or no buckets found',
