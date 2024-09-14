@@ -8,15 +8,9 @@ interface DragAndDropProps {
 const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
+  const [measurements, setMeasurements] = useState<string[]>([]); // Store actual measurements
   const [fields, setFields] = useState<string[]>([]); // Multi-select fields
   const [queryResult, setQueryResult] = useState<string>(''); // Store the query result
-
-  // Available measurements, assumed to be associated with the bucket
-  const measurementsMap: { [key: string]: string[] } = {
-    'Bucket 1': ['Measurement 1', 'Measurement 2', 'Measurement 3'],
-    'Bucket 2': ['Measurement 4', 'Measurement 5', 'Measurement 6'],
-    'Bucket 3': ['Measurement 7', 'Measurement 8', 'Measurement 9'],
-  };
 
   // Available fields, assumed to be associated with the measurement
   const fieldsMap: { [key: string]: string[] } = {
@@ -26,12 +20,20 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
   };
 
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
-    e.dataTransfer.setData('text/plain', e.currentTarget.innerText);
-    setTimeout(() => (e.currentTarget.style.opacity = '0.5'), 0);
+    const target = e.currentTarget;
+    if (target) {
+      e.dataTransfer.setData('text/plain', target.innerText);
+      setTimeout(() => {
+        target.style.opacity = '0.5';
+      }, 0);
+    }
   };
 
   const handleDragEnd = (e: DragEvent<HTMLLIElement>) => {
-    e.currentTarget.style.opacity = '1';
+    const target = e.currentTarget;
+    if (target) {
+      target.style.opacity = '1';
+    }
   };
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -47,33 +49,47 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
     e.currentTarget.style.backgroundColor = '#fafafa';
   };
 
-  // Handle drop logic including resetting fields or measurement
-  const handleDrop = (
-    e: DragEvent<HTMLDivElement>,
-    setItem: React.Dispatch<React.SetStateAction<string>>,
-    allowedItems: string[],
-    resetFields: boolean = false,
-    resetMeasurement: boolean = false
-  ) => {
+
+  const fetchMeasurements = async (bucket: string) => {
+    try {
+      console.log('Fetching measurements for bucket:', bucket);  // Log the bucket before making the request
+      const response = await axios.post('http://localhost:7000/api/buckets/measurements', { bucket });
+      console.log('Measurements fetched:', response.data.measurements);  // Log the measurements received
+      setMeasurements(response.data.measurements); // Update the state with fetched measurements
+    } catch (error) {
+      console.error('Error fetching measurements:', error);  // Log the error
+    }
+  };
+  
+
+  // Handle drop logic for buckets, resetting measurements and fields as necessary
+  const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
-    if (allowedItems.includes(data)) {
-      setItem(data);
-      e.currentTarget.style.backgroundColor = '#fafafa';
+    
+    if (buckets.includes(data)) {
+      setBucket(data); // Update selected bucket
+      setMeasurement('Drop Measurement Here'); // Reset selected measurement
+      setFields([]); // Reset selected fields
 
-      if (resetFields) {
-        setFields([]); // Reset fields
-      }
-
-      if (resetMeasurement) {
-        setMeasurement('Drop Measurement Here'); // Reset measurement
-        setFields([]); // Also reset fields when resetting measurement
-      }
-
-      updateChart();
-    } else {
-      e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
+      // Fetch measurements for the selected bucket
+      fetchMeasurements(data);
     }
+
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
+  };
+
+  // Handle drop logic for measurements, resetting fields as necessary
+  const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('text/plain');
+
+    if (measurements.includes(data)) {
+      setMeasurement(data);
+      setFields([]); // Reset fields when measurement is changed
+    }
+
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
   };
 
   // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
@@ -82,21 +98,9 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
     const data = e.dataTransfer.getData('text/plain');
     if (fieldsMap[measurement]?.includes(data) && !fields.includes(data)) {
       setFields([...fields, data]);
-      e.currentTarget.style.backgroundColor = '#fafafa';
-      updateChart();
-    } else {
-      e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
     }
-  };
 
-  // Handle drop logic for buckets, resetting measurements and fields as necessary
-  const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
-    handleDrop(e, setBucket, buckets, true, true); // Reset measurements and fields
-  };
-
-  // Handle drop logic for measurements, resetting fields as necessary
-  const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
-    handleDrop(e, setMeasurement, measurementsMap[bucket] || [], true);
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
   };
 
   const updateChart = () => {
@@ -260,7 +264,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
     <div id="app">
       <h1 style={{ textAlign: 'center' }}>InfluxDB & Grafana Query Builder</h1>
       <div style={containerStyle}>
-      <div className="available-items">
+        <div className="available-items">
           <h2 style={{ textAlign: 'center' }}>Available Buckets</h2>
           <ul id="buckets" style={listStyle}>
             {buckets.map((bucket) => (
@@ -278,11 +282,11 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
         </div>
 
         <div className="available-items">
-          {bucket !== 'Drop Bucket Here' && measurementsMap[bucket] && (
+          {bucket !== 'Drop Bucket Here' && measurements.length > 0 && (
             <>
               <h2 style={{ textAlign: 'center' }}>Available Measurements</h2>
               <ul id="measurements" style={listStyle}>
-                {measurementsMap[bucket].map((measure) => (
+                {measurements.map((measure) => (
                   <li
                     key={measure}
                     style={listItemStyle}

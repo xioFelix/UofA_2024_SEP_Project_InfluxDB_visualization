@@ -3,6 +3,7 @@ import cors from 'cors';
 import "dotenv/config";
 import authRoutes from './routes/authRoutes';
 import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
+import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -19,6 +20,9 @@ app.use('/api/auth', authRoutes);
 
 // Route for query generation 
 app.use('/api/query', querySendRoutes);
+
+// get measurements
+app.use('/api/buckets', bucketRoutes);
 
 
 // Print the registered route

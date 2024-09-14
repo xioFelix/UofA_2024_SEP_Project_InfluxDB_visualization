@@ -6,6 +6,8 @@ import { BucketsAPI } from '@influxdata/influxdb-client-apis';
 const url = 'http://localhost:8086';  // URL remains constant
 const org = 'UofA';  // organization remains constant for this example
 
+let savedToken: string | null = null;
+
 export const verifyTokenAndGetBuckets = async (token: string) => {
   const client = new InfluxDB({ url, token });
   try {
@@ -15,6 +17,8 @@ export const verifyTokenAndGetBuckets = async (token: string) => {
     
     // If the token is valid, fetch the buckets
     if (health.status === 'pass') {
+      savedToken = token; // save token +
+
       // Fetch all buckets from the database
       const bucketsAPI = new BucketsAPI(client);  
       const buckets = await bucketsAPI.getBuckets({ org });
@@ -28,6 +32,7 @@ export const verifyTokenAndGetBuckets = async (token: string) => {
     throw error;
   }
 };
+
 
 export const generateQueryForSelection = (bucket: string, measurement: string, fields: string[]): string => {
   if (!bucket || !measurement || !fields || fields.length === 0) {
@@ -48,3 +53,28 @@ export const generateQueryForSelection = (bucket: string, measurement: string, f
   return query;
 };
 
+export const getMeasurements = async (bucket: string): Promise<string[]> => {
+  if (!savedToken) {
+    throw new Error('Token is not available. Please verify the token first.');
+  }
+
+  const client = new InfluxDB({ url, token: savedToken });
+  const queryApi = client.getQueryApi(org);
+
+  const query = `import "influxdata/influxdb/schema"
+    schema.measurements(bucket: "${bucket}")`;
+
+  try {
+    const measurements: string[] = [];
+    const result = await queryApi.collectRows(query);
+
+    result.forEach((row) => {
+      measurements.push((row as { _value: string })._value);
+    });
+
+    return measurements;
+  } catch (error) {
+    console.error('Failed to fetch measurements:', error);
+    throw new Error('Failed to fetch measurements');
+  }
+};
