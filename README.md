@@ -8,6 +8,7 @@ Run `docker-compose up` to start the InfluxDB and Grafana containers. The Influx
 - **Initial Organization Name**: UofA
 - **Initial Bucket Name**: Muffin
 - **Initial Token (sudo)**: N-8Wu2nfylIVZyPR4xLK3ONuVIC-RmxnuhoBzOmkXhIXRUPdlMnssvXPe8xAj50-zZTqv5zgQxxCNGD-UtViuw==
+- **Read Example Data Token (Read-only): q0Mc51HIxXJ_kphljbgbNwgM6-Cz_UhC1l1rw_BpOKm-z28cqqqTXMQKswXD11OReW-gx5EAh4bOOG5539IsVw==
 - **Reference:** https://docs.influxdata.com/influxdb/v2/api/
 
 ## Grafana
