@@ -20,7 +20,7 @@ const QueryDisplay: React.FC = () => {
 
       // Parse the response and update state
       const data = await response.json();
-      setQueryString(data.query); // Assuming the backend returns { query: 'your query string' }
+      setQueryString(data.query || 'No query string available'); // Assuming the backend returns { query: 'your query string' }
     } catch (error) {
       console.error('Error generating query string:', error);
     }
@@ -47,7 +47,7 @@ const QueryDisplay: React.FC = () => {
       {/* Conditionally render the query string area */}
       {isQueryVisible && (
         <div className="mt-2 p-2 bg-gray-100 rounded" style={{ width: '350px', margin: '0 auto', padding: '10px' }}>
-          <p>{queryString  || 'No query string available'}</p>
+          <p>{queryString}</p>
         </div>
       )}
     </div>
