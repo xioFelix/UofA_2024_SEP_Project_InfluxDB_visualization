@@ -1,5 +1,5 @@
 export const updateGrafanaDashboard = async (query: string) => {
-    const adminToken = 'YOUR_GRAFANA_ADMIN_TOKEN';
+    const adminToken = 'glsa_1KcuKQyqk4uBPAN9S3mNi5UGQHS4bEPj_ade072dc';
     const response = await fetch('http://localhost:3000/api/dashboards/db', {
         method: 'POST',
         headers: {
