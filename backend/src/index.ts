@@ -9,7 +9,8 @@ const app = express();
 // Configure CORS to allow requests from your frontend
 app.use(cors({
     origin: 'http://localhost:5173', // Allow only your frontend's origin
-    methods: ['GET', 'POST'], // Allow only these HTTP methods
+  methods: ['GET', 'POST', 'OPTIONS'], // Allow only these HTTP methods
+  credentials: true
   }));
 
 app.use(express.json());

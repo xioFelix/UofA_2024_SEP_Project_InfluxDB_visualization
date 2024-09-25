@@ -29,6 +29,9 @@ services:
     environment:
       - GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/grafana-admin-password  # Secret for Grafana admin password from file
       - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_NAME=UofA
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
     secrets:
       - grafana-admin-password  # Load the Grafana admin password secret
     volumes:
