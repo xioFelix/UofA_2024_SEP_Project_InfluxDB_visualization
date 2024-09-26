@@ -20,7 +20,7 @@ const QueryDisplay: React.FC = () => {
 
       // Parse the response and update state
       const data = await response.json();
-      setQueryString(data.query || 'No query string available'); // Assuming the backend returns { query: 'your query string' }
+      setQueryString(data.query || 'No query string available');
     } catch (error) {
       console.error('Error generating query string:', error);
     }
