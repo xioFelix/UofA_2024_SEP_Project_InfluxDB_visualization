@@ -15,11 +15,16 @@ const QueryDisplay: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify({
+        bucket: 'example_bucket', 
+        measurement: 'example_measurement',
+        fields: ['field1', 'field2']
+        }),
       });
 
       // Parse the response and update state
       const data = await response.json();
+      console.log("Received data from backend:", data);
       setQueryString(data.query || 'No query string available');
     } catch (error) {
       console.error('Error generating query string:', error);
