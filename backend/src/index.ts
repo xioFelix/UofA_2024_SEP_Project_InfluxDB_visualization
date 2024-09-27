@@ -4,6 +4,7 @@ import "dotenv/config";
 import authRoutes from './routes/authRoutes';
 import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
 import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
+import queryDisplayRoutes from './routes/queryDisplayRoutes';
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -24,6 +25,9 @@ app.use('/api/query', querySendRoutes);
 
 // get measurements
 app.use('/api/buckets', bucketRoutes);
+
+// Route for query display
+app.use('/api/query', queryDisplayRoutes);
 
 
 // Print the registered route
