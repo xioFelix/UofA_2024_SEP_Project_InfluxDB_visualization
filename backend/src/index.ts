@@ -4,6 +4,11 @@ import "dotenv/config";
 import authRoutes from './routes/authRoutes';
 import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
 import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
+<<<<<<< Updated upstream
+=======
+import queryDisplayRoutes from './routes/queryDisplayRoutes';
+import grafanaRoutes from './routes/grafanaRoutes'; 
+>>>>>>> Stashed changes
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -25,6 +30,14 @@ app.use('/api/query', querySendRoutes);
 // get measurements
 app.use('/api/buckets', bucketRoutes);
 
+<<<<<<< Updated upstream
+=======
+// Route for query display
+app.use('/api/query', queryDisplayRoutes);
+
+// Route for Grafana Dashboard
+app.use('/api/grafana', grafanaRoutes);
+>>>>>>> Stashed changes
 
 // Print the registered route
 const listRoutes = (app: express.Express) => {
