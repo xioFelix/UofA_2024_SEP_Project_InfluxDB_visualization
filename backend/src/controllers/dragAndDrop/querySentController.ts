@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { generateQueryForSelection } from '../../services/influxDBService'; 
+import { generateQueryForSelection } from '../../services/influxDBService';
+import { handleCreateDashboard } from '../../services/grafanaService';
 
 // POST /api/query
 export const generateQuery = async (req: Request, res: Response) => {
