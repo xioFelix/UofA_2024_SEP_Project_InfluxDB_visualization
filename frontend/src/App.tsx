@@ -40,8 +40,14 @@ function App() {
       {/* Display the Grafana dashboard in an iframe if a dashboard URL is set */}
       <div className="mt-16">
         <h2>Grafana Dashboard</h2>
-        {dashboardUid ? (
-          <GrafanaIframe dashboardUid={dashboardUid} />
+        {dashboardUrl ? (
+          // Display the Grafana dashboard using the provided URL inside an iframe
+          <iframe
+            src={`http://localhost:3000${dashboardUrl}?orgId=1&refresh=1s&viewPanel=1`}
+            width="100%"
+            height="600"
+            frameBorder="0">
+          </iframe>
         ) : (
           <p>No dashboard to display</p>
         )}
