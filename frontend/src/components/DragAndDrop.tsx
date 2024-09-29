@@ -143,7 +143,12 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
         // Send the query request to the backend
         const response = await axios.post('http://localhost:7000/api/query', requestData);
 
-        // Display the result from the backend
+        // Check if the dashboard URL is included in the response
+        if (response.data.dashboardUrl) {
+          onDashboardCreated(response.data.dashboardUrl); // Pass the URL to the parent component
+        }
+
+        // Set the query result in the state
         setQueryResult(`Query Generated Successfully: ${response.data.query}`);
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
