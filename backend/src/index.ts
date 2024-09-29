@@ -30,7 +30,7 @@ app.use('/api/buckets', bucketRoutes);
 app.use('/api/query', querySendRoutes);
 
 // Route for query display
-app.use('/api/query', queryDisplayRoutes);
+app.use('/api/display', queryDisplayRoutes);
 
 // Route for Grafana Dashboard
 app.use('/api/grafana', grafanaRoutes);
