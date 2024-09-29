@@ -134,7 +134,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
       setQueryResult('Please select at least one Field.');
     } else {
       try {
-        // Prepare the data to be sent to the backend
         const requestData = {
           bucket,
           measurement,
