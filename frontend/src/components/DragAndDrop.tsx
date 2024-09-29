@@ -6,7 +6,7 @@ interface DragAndDropProps {
   onDashboardCreated: (url: string) => void; // Function to handle when a dashboard is created
 }
 
-const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
+const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }) => {
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [measurements, setMeasurements] = useState<string[]>([]); // Store actual measurements
