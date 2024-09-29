@@ -59,7 +59,7 @@ function App() {
         <InfluxDBAPI />
       </div>
 
-      {/* Footer */}
+      {/* Footer section for additional spacing */}
       <div className="footer" style={{ marginBottom: '100px' }}>
       </div>
     </div>
