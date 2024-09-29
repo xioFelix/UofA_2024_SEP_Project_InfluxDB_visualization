@@ -22,14 +22,12 @@ app.use(express.urlencoded({ extended: true }));
 // use the authRoutes
 app.use('/api/auth', authRoutes);
 
-// Route for query generation 
-app.use('/api/query', querySendRoutes);
-
 // get measurements
-app.use('/api/buckets', bucketRoutes);
-
 app.use('/api/measurements', measurementRoutes); 
 app.use('/api/buckets', bucketRoutes);
+
+// Route for query generation 
+app.use('/api/query', querySendRoutes);
 
 // Route for query display
 app.use('/api/query', queryDisplayRoutes);

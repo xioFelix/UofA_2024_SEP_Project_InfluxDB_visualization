@@ -13,13 +13,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
   const [selectedFields, setSelectedFields] = useState<string[]>([]); // Selected fields by drag and drop
   const [queryResult, setQueryResult] = useState<string>(''); // Store the query result
 
-  // // Available fields, assumed to be associated with the measurement
-  // const fieldsMap: { [key: string]: string[] } = {
-  //   'Measurement 1': ['Field 1', 'Field 2', 'Field 3'],
-  //   'Measurement 2': ['Field 4', 'Field 5', 'Field 6'],
-  //   'Measurement 3': ['Field 7', 'Field 8', 'Field 9'],
-  // };
-
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
@@ -61,13 +54,12 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
       console.error('Error fetching measurements:', error);  // Log the error
     }
   };
-  
 
   // Handle drop logic for buckets, resetting measurements and fields as necessary
   const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
-    
+
     if (buckets.includes(data)) {
       setBucket(data); // Update selected bucket
       setMeasurement('Drop Measurement Here'); // Reset selected measurement
@@ -87,39 +79,38 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
     const data = e.dataTransfer.getData('text/plain');
 
     if (measurements.includes(data)) {
-        setMeasurement(data);
-        setSelectedFields([]); // Reset fields when measurement is changed
+      setMeasurement(data);
+      setSelectedFields([]); // Reset fields when measurement is changed
 
-        // Fetch fields for the selected measurement
-        try {
-            const response = await axios.post('http://localhost:7000/api/measurements/fields', {
-                bucket,
-                measurement: data,
-            });
-            console.log('Fetched fields:', response.data.fields);  // Log fetched fields
-            setFields(response.data.fields);
-        } catch (error) {
-            console.error('Error fetching fields:', error);
-        }
+      // Fetch fields for the selected measurement
+      try {
+        const response = await axios.post('http://localhost:7000/api/measurements/fields', {
+          bucket,
+          measurement: data,
+        });
+        console.log('Fetched fields:', response.data.fields);  // Log fetched fields
+        setFields(response.data.fields);
+      } catch (error) {
+        console.error('Error fetching fields:', error);
+      }
     }
     if (e.currentTarget) {
       e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
-  }
-};
+    }
+  };
 
+  // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
+  const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('text/plain');
 
-// Handle drop for fields, ensuring that fields are only added if they match the selected measurement
-const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
-  e.preventDefault();
-  const data = e.dataTransfer.getData('text/plain');
-  
-  // Check if the field is not already selected and is part of the fields array
-  if (fields.includes(data) && !selectedFields.includes(data)) {
-    setSelectedFields([...selectedFields, data]);  // Only add field to selectedFields when it's dragged
-  }
+    // Check if the field is not already selected and is part of the fields array
+    if (fields.includes(data) && !selectedFields.includes(data)) {
+      setSelectedFields([...selectedFields, data]);  // Only add field to selectedFields when it's dragged
+    }
 
-  e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
-};
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
+  };
 
   const updateChart = () => {
     // Placeholder function for updating the chart, modify or remove as necessary
@@ -138,7 +129,7 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
       setQueryResult('Please select a Bucket.');
     } else if (measurement === 'Drop Measurement Here') {
       setQueryResult('Please select a Measurement.');
-    } else if (selectedFields.length === 0) {  
+    } else if (selectedFields.length === 0) {
       setQueryResult('Please select at least one Field.');
     } else {
       try {
@@ -146,20 +137,20 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
         const requestData = {
           bucket,
           measurement,
-          fields: selectedFields,  
+          fields: selectedFields,
         };
-  
+
         // Frontend Axios Request (ensure it's a POST request)
         const response = await axios.post('http://localhost:7000/api/query', requestData); // Use POST method
-  
+
         // Display the result from the backend
         setQueryResult(`Query Generated Successfully: ${response.data.query}`);
-      } catch (error: unknown) { 
+      } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
           console.error('Axios error status:', error.response?.status);
           console.error('Axios error data:', error.response?.data);
           console.error('Axios error headers:', error.response?.headers);
-      
+
           setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
         } else if (error instanceof Error) {
           console.error('Error generating query:', error.message);
@@ -168,11 +159,11 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
           console.error('An unexpected error occurred:', error);
           setQueryResult('An unknown error occurred.');
         }
-      }          
+      }
     }
   };
-  
-  
+
+
   // Styles for the container that holds the different drop zones and available items
   const containerStyle: React.CSSProperties = {
     display: 'flex',
@@ -322,25 +313,25 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
         </div>
 
         <div className="available-items">
-  {measurement !== 'Drop Measurement Here' && fields.length > 0 && (
-    <>
-      <h2 style={{ textAlign: 'center' }}>Available Fields</h2>
-      <ul id="fields" style={listStyle}>
-      {fields.map((field) => (
-          <li
-            key={field}
-            style={listItemStyle}
-            draggable
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          >
-            {field}
-          </li>
-        ))}
-      </ul>
-    </>
-  )}
-</div>
+          {measurement !== 'Drop Measurement Here' && fields.length > 0 && (
+            <>
+              <h2 style={{ textAlign: 'center' }}>Available Fields</h2>
+              <ul id="fields" style={listStyle}>
+                {fields.map((field) => (
+                  <li
+                    key={field}
+                    style={listItemStyle}
+                    draggable
+                    onDragStart={handleDragStart}
+                    onDragEnd={handleDragEnd}
+                  >
+                    {field}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
 
 
         <div className="query-builder">
@@ -351,7 +342,7 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleBucketDrop} 
+            onDrop={handleBucketDrop}
           >
             <p>{bucket}</p>
           </div>
@@ -361,7 +352,7 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleMeasurementDrop} 
+            onDrop={handleMeasurementDrop}
           >
             <p>{measurement}</p>
           </div>
@@ -371,9 +362,9 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
             onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleFieldDrop} 
+            onDrop={handleFieldDrop}
           >
-            {fields.length > 0 ? (
+            {selectedFields.length > 0 ? (
               selectedFields.map((field, index) => (
                 <div key={index} style={fieldStyle}>
                   <span style={fieldTextStyle}>{field}</span>
@@ -386,8 +377,9 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
                 </div>
               ))
             ) : (
-              <p>Drop Field Here</p>
+              <p>Drop Fields Here</p> // This is the placeholder for fields
             )}
+
           </div>
           <button onClick={handleComplete} style={buttonStyle}>
             Complete
