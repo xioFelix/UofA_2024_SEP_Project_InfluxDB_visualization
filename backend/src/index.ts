@@ -4,16 +4,13 @@ import "dotenv/config";
 import authRoutes from './routes/authRoutes';
 import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
 import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
-import measurementRoutes from './routes/dragAndDrop/measurementRoutes';
-
-
-
 
 const app = express();
 // Configure CORS to allow requests from your frontend
 app.use(cors({
     origin: 'http://localhost:5173', // Allow only your frontend's origin
-    methods: ['GET', 'POST'], // Allow only these HTTP methods
+  methods: ['GET', 'POST', 'OPTIONS'], // Allow only these HTTP methods
+  credentials: true
   }));
 
 app.use(express.json());
@@ -27,10 +24,6 @@ app.use('/api/query', querySendRoutes);
 
 // get measurements
 app.use('/api/buckets', bucketRoutes);
-
-app.use('/api/measurements', measurementRoutes);
-
-
 
 
 // Print the registered route

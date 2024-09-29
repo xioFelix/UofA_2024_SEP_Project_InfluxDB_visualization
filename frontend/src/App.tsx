@@ -6,7 +6,11 @@ import GrafanaIframe from './components/GrafanaIframe';
 import InfluxDBAPI from './components/InfluxDBAPI';
 
 function App() {
-  const [buckets, setBuckets] = useState<string[]>([]); // State to manage bucket names
+  // State to manage bucket names from InfluxDB
+  const [buckets, setBuckets] = useState<string[]>([]);
+
+  // State to store the Grafana dashboard UID, initially null
+  const [dashboardUid, setDashboardUid] = useState<string | null>(null);
 
   // Function to handle login success and receive bucket names
   const handleLoginSuccess = (bucketNames: string[]) => {
@@ -28,10 +32,14 @@ function App() {
         <QueryDisplay />
       </div>
 
-      {/* Render Grafana iframe */}
+      {/* Render Grafana iframe if dashboardUid exists, otherwise show a message */}
       <div className="mt-16">
         <h2>Grafana Dashboard</h2>
-        <GrafanaIframe />
+        {dashboardUid ? (
+          <GrafanaIframe dashboardUid={dashboardUid} />
+        ) : (
+          <p>No dashboard to display</p>
+        )}
       </div>
 
       {/* Render InfluxDB API Data */}
@@ -41,8 +49,7 @@ function App() {
       </div>
 
       {/* Footer */}
-      <div className="footer" style={{
-        marginBottom: '100px'}}>
+      <div className="footer" style={{ marginBottom: '100px' }}>
       </div>
     </div>
   );
