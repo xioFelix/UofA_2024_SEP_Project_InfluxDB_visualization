@@ -154,7 +154,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
         if (axios.isAxiosError(error)) {
           setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
         } else if (error instanceof Error) {
-          console.error('Error generating query:', error.message);
           setQueryResult(`Error: ${error.message}`);
         } else {
           console.error('An unexpected error occurred:', error);
