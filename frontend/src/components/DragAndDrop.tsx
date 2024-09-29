@@ -140,8 +140,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
           fields: selectedFields,
         };
 
-        // Frontend Axios Request (ensure it's a POST request)
-        const response = await axios.post('http://localhost:7000/api/query', requestData); // Use POST method
+        // Send the query request to the backend
+        const response = await axios.post('http://localhost:7000/api/query', requestData);
 
         // Display the result from the backend
         setQueryResult(`Query Generated Successfully: ${response.data.query}`);
