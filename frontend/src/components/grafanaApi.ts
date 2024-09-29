@@ -1,4 +1,5 @@
 export const createDashboardOnBackend = async (query: string): Promise<string> => {
+    // Send request to the backend to create a Grafana dashboard
     const response = await fetch('http://localhost:7000/api/grafana/create-dashboard', {
         method: 'POST',
         headers: {
