@@ -79,7 +79,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
     e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
   };
 
-  const handleMeasurementDrop = async (e: DragEvent<HTMLDivElement>) => {
+  // Handle drop logic for measurements, resetting fields as necessary
+  const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
