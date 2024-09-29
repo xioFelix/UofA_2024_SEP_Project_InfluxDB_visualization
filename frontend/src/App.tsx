@@ -27,7 +27,7 @@ function App() {
       {/* Render the Header component, passing the handleLoginSuccess function */}
       <Header handleLoginSuccess={handleLoginSuccess} />
 
-      {/* Render DragAndDrop component and pass the buckets as a prop */}
+      {/* Render the DragAndDrop component and pass the buckets and handleDashboardCreated function as props */}
       <div className="mt-16">
         <DragAndDrop buckets={buckets} />
       </div>
