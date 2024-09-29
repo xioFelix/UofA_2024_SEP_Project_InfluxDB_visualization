@@ -7,8 +7,9 @@ const router = express.Router();
 router.post('/display', async (req: Request, res: Response) => {
     const { query } = req.body;
     try {
-        const uid = await handleCreateDashboard(query);
-        res.status(200).json({ uid });
+        // Get both the UID and URL from the Grafana API
+        const { uid, url } = await handleCreateDashboard(query);
+        res.status(200).json({ uid, url }); // Send both UID and URL
     } catch (error) {
         if (error instanceof Error) {
             res.status(500).json({ message: 'Dashboard creation failed', error: error.message });
