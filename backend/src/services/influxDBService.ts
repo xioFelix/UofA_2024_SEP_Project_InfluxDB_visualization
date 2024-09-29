@@ -78,3 +78,35 @@ export const getMeasurements = async (bucket: string): Promise<string[]> => {
     throw new Error('Failed to fetch measurements');
   }
 };
+
+
+// This function fetches fields based on the bucket and measurement
+export const getFieldsForMeasurement = async (bucket: string, measurement: string): Promise<string[]> => {
+  if (!savedToken) {
+    throw new Error('Token is not available. Please verify the token first.');
+  }
+
+  const client = new InfluxDB({ url, token: savedToken });
+  const queryApi = client.getQueryApi(org);
+
+  // InfluxDB query to fetch fields for the specific measurement
+  const query = `
+    import "influxdata/influxdb/schema"
+    schema.measurementFieldKeys(bucket: "${bucket}", measurement: "${measurement}")
+  `;
+
+  try {
+    const fields: string[] = [];
+    const result = await queryApi.collectRows(query);
+
+    result.forEach((row) => {
+      fields.push((row as { _value: string })._value);
+    });
+
+    console.log('Fields fetched:', fields);  // Log the fields fetched for debugging
+    return fields;
+  } catch (error) {
+    console.error('Failed to fetch fields from InfluxDB:', error);
+    throw new Error('Failed to fetch fields');
+  }
+};

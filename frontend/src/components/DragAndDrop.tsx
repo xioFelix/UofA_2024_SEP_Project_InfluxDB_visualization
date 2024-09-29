@@ -79,18 +79,31 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
     e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
   };
 
-  // Handle drop logic for measurements, resetting fields as necessary
-  const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
+  const handleMeasurementDrop = async (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (measurements.includes(data)) {
-      setMeasurement(data);
-      setFields([]); // Reset fields when measurement is changed
-    }
+        setMeasurement(data);
+        setFields([]); // Reset fields when measurement is changed
 
-    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
-  };
+        // Fetch fields for the selected measurement
+        try {
+            const response = await axios.post('http://localhost:7000/api/measurements/fields', {
+                bucket,
+                measurement: data,
+            });
+            console.log('Fetched fields:', response.data.fields);  // Log fetched fields
+            setFields(response.data.fields);
+        } catch (error) {
+            console.error('Error fetching fields:', error);
+        }
+    }
+    if (e.currentTarget) {
+      e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
+  }
+};
+
 
   // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
   const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
@@ -303,25 +316,26 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
         </div>
 
         <div className="available-items">
-          {measurement !== 'Drop Measurement Here' && (
-            <>
-              <h2 style={{ textAlign: 'center' }}>Available Fields</h2>
-              <ul id="fields" style={listStyle}>
-                {fieldsMap[measurement]?.map((field) => (
-                  <li
-                    key={field}
-                    style={listItemStyle}
-                    draggable
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                  >
-                    {field}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-        </div>
+  {measurement !== 'Drop Measurement Here' && fields.length > 0 && (
+    <>
+      <h2 style={{ textAlign: 'center' }}>Available Fields</h2>
+      <ul id="fields" style={listStyle}>
+      {fields.map((field) => (
+          <li
+            key={field}
+            style={listItemStyle}
+            draggable
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            {field}
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</div>
+
 
         <div className="query-builder">
           <h2 style={{ textAlign: 'center' }}>Query Builder</h2>

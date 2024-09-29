@@ -4,6 +4,10 @@ import "dotenv/config";
 import authRoutes from './routes/authRoutes';
 import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
 import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
+import measurementRoutes from './routes/dragAndDrop/measurementRoutes';
+
+
+
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -24,6 +28,10 @@ app.use('/api/query', querySendRoutes);
 // get measurements
 app.use('/api/buckets', bucketRoutes);
 
+app.use('/api/measurements', measurementRoutes);
+
+
+
 
 // Print the registered route
 const listRoutes = (app: express.Express) => {
@@ -43,4 +51,9 @@ const listRoutes = (app: express.Express) => {
 app.listen(7000, () => {
     console.log('Server is running on port 7000');
     listRoutes(app);  
+});
+
+const PORT = process.env.PORT || 7000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
