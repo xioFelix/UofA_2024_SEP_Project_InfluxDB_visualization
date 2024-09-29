@@ -49,7 +49,7 @@ function App() {
             frameBorder="0">
           </iframe>
         ) : (
-          <p>No dashboard to display</p>
+          <p>No dashboard to display</p> // Message when no dashboard URL is set
         )}
       </div>
 
