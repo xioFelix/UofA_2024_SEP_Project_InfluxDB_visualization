@@ -1,10 +1,4 @@
-import React from 'react';
-
-interface GrafanaIframeProps {
-    dashboardUid: string;
-}
-
-const GrafanaIframe: React.FC<GrafanaIframeProps> = ({ dashboardUid }) => {
+const GrafanaIframe: React.FC<{ dashboardUid: string }> = ({ dashboardUid }) => {
     return (
         <iframe
             src={`http://localhost:3000/d/${dashboardUid}?orgId=1&refresh=10s`}
