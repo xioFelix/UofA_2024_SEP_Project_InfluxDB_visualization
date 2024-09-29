@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 export const handleCreateDashboard = async (query: string): Promise<string> => {
     const grafanaToken = 'glsa_YV7vmDRSvgPJXz0GlAIrdipyM4SLLDPq_ec8a2f95';
