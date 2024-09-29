@@ -152,10 +152,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
         setQueryResult(`Query Generated Successfully: ${response.data.query}`);
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
-          console.error('Axios error status:', error.response?.status);
-          console.error('Axios error data:', error.response?.data);
-          console.error('Axios error headers:', error.response?.headers);
-
           setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
         } else if (error instanceof Error) {
           console.error('Error generating query:', error.message);
