@@ -29,7 +29,7 @@ function App() {
 
       {/* Render the DragAndDrop component and pass the buckets and handleDashboardCreated function as props */}
       <div className="mt-16">
-        <DragAndDrop buckets={buckets} />
+        <DragAndDrop buckets={buckets} onDashboardCreated={handleDashboardCreated} />
       </div>
 
       {/* Render QueryDisplay component */}
