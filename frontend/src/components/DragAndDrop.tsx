@@ -3,6 +3,7 @@ import axios from 'axios'; // Axios for HTTP requests
 
 interface DragAndDropProps {
   buckets: string[]; // Buckets data passed as a prop
+  onDashboardCreated: (url: string) => void; // Function to handle when a dashboard is created
 }
 
 const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
