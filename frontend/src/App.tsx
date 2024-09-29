@@ -37,7 +37,7 @@ function App() {
         <QueryDisplay />
       </div>
 
-      {/* Render Grafana iframe if dashboardUid exists, otherwise show a message */}
+      {/* Display the Grafana dashboard in an iframe if a dashboard URL is set */}
       <div className="mt-16">
         <h2>Grafana Dashboard</h2>
         {dashboardUid ? (
