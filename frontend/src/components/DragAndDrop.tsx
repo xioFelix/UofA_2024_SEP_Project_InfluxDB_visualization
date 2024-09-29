@@ -156,7 +156,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
         } else if (error instanceof Error) {
           setQueryResult(`Error: ${error.message}`);
         } else {
-          console.error('An unexpected error occurred:', error);
           setQueryResult('An unknown error occurred.');
         }
       }
