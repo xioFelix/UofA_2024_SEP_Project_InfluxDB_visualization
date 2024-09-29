@@ -3,8 +3,8 @@ import { handleCreateDashboard } from '../services/grafanaService';
 
 const router = express.Router();
 
-// POST /api/grafana/create-dashboard
-router.post('/create-dashboard', async (req: Request, res: Response) => {
+// POST /api/grafana/display
+router.post('/display', async (req: Request, res: Response) => {
     const { query } = req.body;
     try {
         const uid = await handleCreateDashboard(query);
