@@ -10,14 +10,15 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [measurements, setMeasurements] = useState<string[]>([]); // Store actual measurements
   const [fields, setFields] = useState<string[]>([]); // Multi-select fields
+  const [selectedFields, setSelectedFields] = useState<string[]>([]); // Selected fields by drag and drop
   const [queryResult, setQueryResult] = useState<string>(''); // Store the query result
 
-  // Available fields, assumed to be associated with the measurement
-  const fieldsMap: { [key: string]: string[] } = {
-    'Measurement 1': ['Field 1', 'Field 2', 'Field 3'],
-    'Measurement 2': ['Field 4', 'Field 5', 'Field 6'],
-    'Measurement 3': ['Field 7', 'Field 8', 'Field 9'],
-  };
+  // // Available fields, assumed to be associated with the measurement
+  // const fieldsMap: { [key: string]: string[] } = {
+  //   'Measurement 1': ['Field 1', 'Field 2', 'Field 3'],
+  //   'Measurement 2': ['Field 4', 'Field 5', 'Field 6'],
+  //   'Measurement 3': ['Field 7', 'Field 8', 'Field 9'],
+  // };
 
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
@@ -71,6 +72,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
       setBucket(data); // Update selected bucket
       setMeasurement('Drop Measurement Here'); // Reset selected measurement
       setFields([]); // Reset selected fields
+      setSelectedFields([]); // Reset selected fields
 
       // Fetch measurements for the selected bucket
       fetchMeasurements(data);
@@ -80,13 +82,13 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
   };
 
   // Handle drop logic for measurements, resetting fields as necessary
-  const handleMeasurementDrop = (e: DragEvent<HTMLDivElement>) => {
+  const handleMeasurementDrop = async (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (measurements.includes(data)) {
         setMeasurement(data);
-        setFields([]); // Reset fields when measurement is changed
+        setSelectedFields([]); // Reset fields when measurement is changed
 
         // Fetch fields for the selected measurement
         try {
@@ -106,16 +108,18 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
 };
 
 
-  // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
-  const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const data = e.dataTransfer.getData('text/plain');
-    if (fieldsMap[measurement]?.includes(data) && !fields.includes(data)) {
-      setFields([...fields, data]);
-    }
+// Handle drop for fields, ensuring that fields are only added if they match the selected measurement
+const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
+  e.preventDefault();
+  const data = e.dataTransfer.getData('text/plain');
+  
+  // Check if the field is not already selected and is part of the fields array
+  if (fields.includes(data) && !selectedFields.includes(data)) {
+    setSelectedFields([...selectedFields, data]);  // Only add field to selectedFields when it's dragged
+  }
 
-    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
-  };
+  e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
+};
 
   const updateChart = () => {
     // Placeholder function for updating the chart, modify or remove as necessary
@@ -123,9 +127,9 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
 
   // Remove a specific field from the selected fields list
   const removeField = (index: number) => {
-    const updatedFields = fields.filter((_, i) => i !== index);
-    setFields(updatedFields);
-    updateChart();
+    const updatedFields = selectedFields.filter((_, i) => i !== index); // Remove from selectedFields
+    setSelectedFields(updatedFields);
+    updateChart(); // Optional: Update chart after field removal
   };
 
   // Frontend drag-and-drop logic in DragAndDrop.tsx
@@ -369,7 +373,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets }) => {
             onDrop={handleFieldDrop} 
           >
             {fields.length > 0 ? (
-              fields.map((field, index) => (
+              selectedFields.map((field, index) => (
                 <div key={index} style={fieldStyle}>
                   <span style={fieldTextStyle}>{field}</span>
                   <button
