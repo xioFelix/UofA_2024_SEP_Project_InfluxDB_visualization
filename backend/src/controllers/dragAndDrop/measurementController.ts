@@ -12,7 +12,7 @@ export const fetchFieldsByMeasurement = async (req: Request, res: Response) => {
 
   try {
     const fields = await getFieldsForMeasurement(bucket, measurement);
-    console.log('Fetched fields:', fields);  // 添加日志，检查 fields
+    console.log('Fetched fields:', fields);  
     res.status(200).json({ fields });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
