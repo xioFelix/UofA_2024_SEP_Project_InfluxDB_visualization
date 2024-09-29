@@ -138,7 +138,7 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
       setQueryResult('Please select a Bucket.');
     } else if (measurement === 'Drop Measurement Here') {
       setQueryResult('Please select a Measurement.');
-    } else if (fields.length === 0) {
+    } else if (selectedFields.length === 0) {  
       setQueryResult('Please select at least one Field.');
     } else {
       try {
@@ -146,12 +146,12 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
         const requestData = {
           bucket,
           measurement,
-          fields,  // Send fields array
+          fields: selectedFields,  
         };
-
+  
         // Frontend Axios Request (ensure it's a POST request)
         const response = await axios.post('http://localhost:7000/api/query', requestData); // Use POST method
-
+  
         // Display the result from the backend
         setQueryResult(`Query Generated Successfully: ${response.data.query}`);
       } catch (error: unknown) { 
@@ -171,6 +171,7 @@ const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
       }          
     }
   };
+  
   
   // Styles for the container that holds the different drop zones and available items
   const containerStyle: React.CSSProperties = {
