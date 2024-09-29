@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div>
-      {/* Render the Header component, with LogIn button inside */}
+      {/* Render the Header component, passing the handleLoginSuccess function */}
       <Header handleLoginSuccess={handleLoginSuccess} />
 
       {/* Render DragAndDrop component and pass the buckets as a prop */}
