@@ -27,5 +27,8 @@ export const generateQuery = async (req: Request, res: Response) => {
     } else {
       return res.status(500).json({ message: 'Failed to generate query.' });
     }
-  };
-  
+  } catch (error) {
+    console.error('Error in generateQuery:', error);
+    return res.status(500).json({ message: 'Error generating query' });
+  }
+};
