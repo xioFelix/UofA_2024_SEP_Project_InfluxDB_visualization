@@ -14,7 +14,12 @@ function App() {
 
   // Function to handle the event when login is successful and receive bucket names
   const handleLoginSuccess = (bucketNames: string[]) => {
-    setBuckets(bucketNames); // Store bucket names in state
+    setBuckets(bucketNames); // Update the state with the received bucket names
+  };
+
+  // Function to handle the creation of a new dashboard and update the URL
+  const handleDashboardCreated = (url: string) => {
+    setDashboardUrl(url); // Store the dashboard URL when a new dashboard is created
   };
 
   return (
