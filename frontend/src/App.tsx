@@ -32,7 +32,7 @@ function App() {
         <DragAndDrop buckets={buckets} onDashboardCreated={handleDashboardCreated} />
       </div>
 
-      {/* Render QueryDisplay component */}
+      {/* Render the QueryDisplay component to show any query results */}
       <div style={{ marginBottom: '50px', textAlign: 'center' }}>
         <QueryDisplay />
       </div>
