@@ -1,31 +1,18 @@
 import axios, { AxiosError } from 'axios';
 
-export const handleCreateDashboard = async (query: string): Promise<string> => {
-    const grafanaToken = 'glsa_YV7vmDRSvgPJXz0GlAIrdipyM4SLLDPq_ec8a2f95';
-    const response = await axios.post('http://localhost:3000/api/dashboards/db', {
-        dashboard: {
-            title: "Generated Dashboard",
-            panels: [
-                {
-                    title: "Query Results",
-                    type: "graph",
-                    targets: [
-                        {
-                            refId: "A",
-                            expr: query,  // Replace with the actual query
-                            datasource: "InfluxDB",
-                        }
-                    ]
-                }
-            ]
-        },
-        overwrite: true
-    }, {
-        headers: {
-            'Authorization': `Bearer ${grafanaToken}`,
-            'Content-Type': 'application/json'
-        }
-    });
+// Function to handle dashboard creation on Grafana
+export const handleCreateDashboard = async (query: string): Promise<{ uid: string, url: string }> => {
+    const grafanaToken = 'glsa_7bYeH35A4Pl5VfiuzeQhbz2Pim9am1bL_2a72c8d4';
+
+    // Log the start of the function
+    console.log("Starting Grafana dashboard creation...");
+
+    // Log the query being used
+    console.log("Using query: ", query);
+
+    try {
+        // Generate a unique title for each dashboard
+        const dashboardTitle = `Dashboard - ${new Date().toISOString()}`;
 
     return response.data.uid;  // Return the UID of the created dashboard
 };
