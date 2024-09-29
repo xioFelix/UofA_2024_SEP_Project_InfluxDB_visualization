@@ -12,6 +12,7 @@ export const createDashboardOnBackend = async (query: string): Promise<string> =
         throw new Error('Dashboard creation failed');
     }
 
+    // Extract the UID of the created dashboard from the response
     const data = await response.json();
     return data.uid;
 };
