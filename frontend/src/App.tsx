@@ -9,8 +9,8 @@ function App() {
   // State to manage bucket names fetched from InfluxDB
   const [buckets, setBuckets] = useState<string[]>([]);
 
-  // State to store the Grafana dashboard UID, initially null
-  const [dashboardUid, setDashboardUid] = useState<string | null>(null);
+  // State to store the URL of the created Grafana dashboard
+  const [dashboardUrl, setDashboardUrl] = useState<string | null>(null);
 
   // Function to handle login success and receive bucket names
   const handleLoginSuccess = (bucketNames: string[]) => {
