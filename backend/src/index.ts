@@ -6,7 +6,7 @@ import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
 import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
 import queryDisplayRoutes from './routes/queryDisplayRoutes';
 import grafanaRoutes from './routes/grafanaRoutes'; 
-
+import measurementRoutes from './routes/dragAndDrop/measurementRoutes';
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -26,6 +26,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/query', querySendRoutes);
 
 // get measurements
+app.use('/api/buckets', bucketRoutes);
+
+app.use('/api/measurements', measurementRoutes); 
 app.use('/api/buckets', bucketRoutes);
 
 // Route for query display
