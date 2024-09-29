@@ -6,7 +6,7 @@ import InfluxDBAPI from './components/InfluxDBAPI';
 import GrafanaIframe from './components/GrafanaIframe';
 
 function App() {
-  // State to manage bucket names from InfluxDB
+  // State to manage bucket names fetched from InfluxDB
   const [buckets, setBuckets] = useState<string[]>([]);
 
   // State to store the Grafana dashboard UID, initially null
