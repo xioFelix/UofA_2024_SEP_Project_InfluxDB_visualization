@@ -53,7 +53,7 @@ function App() {
         )}
       </div>
 
-      {/* Render InfluxDB API Data */}
+      {/* Render the InfluxDBAPI component to display any InfluxDB data */}
       <div className="mt-16">
         <h2>InfluxDB Data</h2>
         <InfluxDBAPI />
