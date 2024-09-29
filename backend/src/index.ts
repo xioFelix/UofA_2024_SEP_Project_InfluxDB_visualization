@@ -5,6 +5,8 @@ import authRoutes from './routes/authRoutes';
 import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
 import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
 import queryDisplayRoutes from './routes/queryDisplayRoutes';
+import grafanaRoutes from './routes/grafanaRoutes'; 
+
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -27,6 +29,11 @@ app.use('/api/query', querySendRoutes);
 app.use('/api/buckets', bucketRoutes);
 
 // Route for query display
+app.use('/api/query', queryDisplayRoutes);
+
+// Route for Grafana Dashboard
+app.use('/api/grafana', grafanaRoutes);
+
 
 // Print the registered route
 const listRoutes = (app: express.Express) => {
