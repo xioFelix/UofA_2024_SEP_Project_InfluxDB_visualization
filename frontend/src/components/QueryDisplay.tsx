@@ -6,19 +6,24 @@ const QueryDisplay: React.FC = () => {
   const [queryString, setQueryString] = useState('');
   const [isQueryVisible, setIsQueryVisible] = useState(false);
 
+   // State for dynamic bucket, measurement, and fields
+  const [bucket, setBucket] = useState<string>('example_bucket');   
+  const [measurement, setMeasurement] = useState<string>('example_measurement'); 
+  const [fields, setFields] = useState<string[]>(['field1', 'field2']);  
+
   // Function to send POST request and fetch query string from the backend
   const generateQueryString = async () => {
     try {
       // Send POST request to generate query string
-      const response = await fetch('http://localhost:7000/api/query/generate', {
+      const response = await fetch('http://localhost:7000/api/display/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-        bucket: 'example_bucket', 
-        measurement: 'example_measurement',
-        fields: ['field1', 'field2']
+        bucket, 
+        measurement,
+        fields
         }),
       });
 
