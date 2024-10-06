@@ -1,5 +1,7 @@
 import React, { useState, DragEvent } from 'react';
-import axios from 'axios'; // Axios for HTTP requests
+import axios from 'axios';
+import { Box, Button, Typography, Paper, List, ListItem, ListItemText, IconButton, Divider } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface DragAndDropProps {
   buckets: string[]; // Buckets data passed as a prop
@@ -9,17 +11,17 @@ interface DragAndDropProps {
 const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }) => {
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
-  const [measurements, setMeasurements] = useState<string[]>([]); // Store actual measurements
-  const [fields, setFields] = useState<string[]>([]); // Multi-select fields
-  const [selectedFields, setSelectedFields] = useState<string[]>([]); // Selected fields by drag and drop
-  const [queryResult, setQueryResult] = useState<string>(''); // Store the query result
+  const [measurements, setMeasurements] = useState<string[]>([]);
+  const [fields, setFields] = useState<string[]>([]);
+  const [selectedFields, setSelectedFields] = useState<string[]>([]);
+  const [queryResult, setQueryResult] = useState<string>('');
 
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
-      e.dataTransfer.setData('text/plain', target.innerText);
+      e.dataTransfer.setData('text/plain', target.innerText); // Set the dragged text
       setTimeout(() => {
-        target.style.opacity = '0.5';
+        target.style.opacity = '0.5'; // Make the dragged item semi-transparent
       }, 0);
     }
   };
@@ -27,32 +29,29 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
   const handleDragEnd = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
-      target.style.opacity = '1';
+      target.style.opacity = '1'; // Reset the opacity of the dragged item
     }
   };
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Enable drop action
   };
 
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    e.currentTarget.style.backgroundColor = '#e0ffe0';
+    e.currentTarget.style.backgroundColor = '#f0f4f8'; // Light blue background when item is dragged over
   };
 
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
-    e.currentTarget.style.backgroundColor = '#fafafa';
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color
   };
-
 
   const fetchMeasurements = async (bucket: string) => {
     try {
-      console.log('Fetching measurements for bucket:', bucket);  // Log the bucket before making the request
       const response = await axios.post('http://localhost:7000/api/buckets/measurements', { bucket });
-      console.log('Measurements fetched:', response.data.measurements);  // Log the measurements received
-      setMeasurements(response.data.measurements); // Update the state with fetched measurements
+      setMeasurements(response.data.measurements); // Set fetched measurements
     } catch (error) {
-      console.error('Error fetching measurements:', error);  // Log the error
+      console.error('Error fetching measurements:', error); // Log any error
     }
   };
 
@@ -67,10 +66,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
       setFields([]); // Reset selected fields
       setSelectedFields([]); // Reset selected fields
 
-      // Fetch measurements for the selected bucket
-      fetchMeasurements(data);
+      fetchMeasurements(data); // Fetch measurements for the selected bucket
     }
-
     e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
   };
 
@@ -89,15 +86,12 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
           bucket,
           measurement: data,
         });
-        console.log('Fetched fields:', response.data.fields);  // Log fetched fields
         setFields(response.data.fields);
       } catch (error) {
         console.error('Error fetching fields:', error);
       }
     }
-    if (e.currentTarget) {
-      e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
-    }
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color after drop
   };
 
   // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
@@ -105,26 +99,14 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
-    // Check if the field is not already selected and is part of the fields array
     if (fields.includes(data) && !selectedFields.includes(data)) {
       setSelectedFields([...selectedFields, data]);  // Only add field to selectedFields when it's dragged
     }
 
-    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color after drop
   };
 
-  const updateChart = () => {
-    // Placeholder function for updating the chart, modify or remove as necessary
-  };
-
-  // Remove a specific field from the selected fields list
-  const removeField = (index: number) => {
-    const updatedFields = selectedFields.filter((_, i) => i !== index); // Remove from selectedFields
-    setSelectedFields(updatedFields);
-    updateChart(); // Optional: Update chart after field removal
-  };
-
-  // Frontend drag-and-drop logic in DragAndDrop.tsx
+  // Handle complete button
   const handleComplete = async () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
@@ -148,13 +130,10 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
           onDashboardCreated(response.data.dashboardUrl); // Pass the URL to the parent component
         }
 
-        // Set the query result in the state
-        setQueryResult(`Query Generated Successfully: ${response.data.query}`);
+        setQueryResult(`Query Generated Successfully: ${response.data.query}`); // Display success message
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
           setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
-        } else if (error instanceof Error) {
-          setQueryResult(`Error: ${error.message}`);
         } else {
           setQueryResult('An unknown error occurred.');
         }
@@ -162,235 +141,241 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     }
   };
 
-
-  // Styles for the container that holds the different drop zones and available items
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    gap: '20px', // Adding space between the columns
-    maxWidth: '1300px', // Increase occupied page width
-    margin: 'auto',
-  };
-
-  // Styles for the list of available items (buckets, measurements, fields)
-  const listStyle: React.CSSProperties = {
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    padding: '10px',
-    backgroundColor: '#fff',
-    width: '300px', // Fixed width for columns
-    wordWrap: 'break-word', // Ensure long words break and wrap within the box
-    overflowWrap: 'break-word',
-  };
-
-  // Styles for individual list items within the available items
-  const listItemStyle: React.CSSProperties = {
-    padding: '8px',
-    margin: '5px 0',
-    backgroundColor: '#e0e0e0',
-    borderRadius: '3px',
-    cursor: 'pointer',
-  };
-
-  // Styles for the drop zones in the Query Builder section
-  const dropzoneStyle: React.CSSProperties = {
-    border: '2px dashed #ccc',
-    padding: '20px',
-    borderRadius: '5px',
-    backgroundColor: '#fafafa',
-    textAlign: 'center',
-    marginBottom: '20px',
-    width: '200px', // Fixed width for columns
-    wordWrap: 'break-word', // Ensure long words break and wrap within the box
-    overflowWrap: 'break-word',
-  };
-
-  // Styles for the individual fields displayed in the Query Builder
-  const fieldStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    margin: '5px 0',
-    padding: '5px 10px', // Add padding to make the X button easier to click
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    backgroundColor: '#fff',
-    position: 'relative',
-  };
-
-  // Styles for the delete button (X) that appears next to each field in the Query Builder
-  const deleteButtonStyle: React.CSSProperties = {
-    backgroundColor: 'transparent',
-    border: 'none',
-    color: '#ff0000',
-    cursor: 'pointer',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    position: 'absolute',
-    right: '10px', // Position the delete button to the right
-    top: '50%',
-    transform: 'translateY(-50%)',
-  };
-
-  // Styles for the text within the field items, ensuring long text is handled properly
-  const fieldTextStyle: React.CSSProperties = {
-    flexGrow: 1,
-    marginRight: '30px', // Adjust margin for the delete button space
-    whiteSpace: 'nowrap', // Prevent text from wrapping
-    overflow: 'hidden', // Hide overflow text
-    textOverflow: 'ellipsis', // Add ellipsis if text is too long
-  };
-
-  // Styles for the "Complete" button in the Query Builder
-  const buttonStyle: React.CSSProperties = {
-    padding: '10px 20px',
-    backgroundColor: '#ff8c00', // Orange color
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    marginTop: '20px',
-  };
-
-  // Styles for the result text that appears below the "Complete" button, in a fixed position
-  const resultContainerStyle: React.CSSProperties = {
-    position: 'fixed',
-    bottom: '20px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    backgroundColor: '#fff',
-    padding: '10px 20px',
-    borderRadius: '5px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    zIndex: 1000,
-    width: '80%',
-    maxWidth: '600px',
-    textAlign: 'center',
-  };
-
   return (
-    <div id="app">
-      <h1 style={{ textAlign: 'center' }}>InfluxDB & Grafana Query Builder</h1>
-      <div style={containerStyle}>
-        <div className="available-items">
-          <h2 style={{ textAlign: 'center' }}>Available Buckets</h2>
-          <ul id="buckets" style={listStyle}>
-            {buckets.map((bucket) => (
-              <li
-                key={bucket} // Using the bucket name as the key
-                style={listItemStyle}
-                draggable
-                onDragStart={handleDragStart}
-                onDragEnd={handleDragEnd}
-              >
-                {bucket}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <Box sx={{ padding: 4 }}>
+      <Typography variant="h5" align="center" gutterBottom>
+        Query Builder
+      </Typography>
+      <Divider sx={{ mb: 4 }} />
 
-        <div className="available-items">
-          {bucket !== 'Drop Bucket Here' && measurements.length > 0 && (
-            <>
-              <h2 style={{ textAlign: 'center' }}>Available Measurements</h2>
-              <ul id="measurements" style={listStyle}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}>
+        {/* Available Buckets */}
+        <Box sx={{ flex: 1 }}>
+          <Typography variant="h6" align="center" sx={{ mb: 2 }}>
+            Available Buckets
+          </Typography>
+          <Paper
+            sx={{
+              maxHeight: 400,
+              overflow: 'auto', // Enable scrolling if content exceeds height
+              padding: 2,
+              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+              borderRadius: 2,
+            }}
+          >
+            <List>
+              {buckets.map((bucket) => (
+                <ListItem
+                  key={bucket}
+                  draggable
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                  sx={{
+                    cursor: 'grab',
+                    backgroundColor: '#e0e0e0',
+                    mb: 1,
+                    borderRadius: 1,
+                    '&:hover': { backgroundColor: '#cfcfcf' }, // Hover effect
+                  }}
+                >
+                  <ListItemText primary={bucket} />
+                </ListItem>
+              ))}
+            </List>
+          </Paper>
+        </Box>
+
+        {/* Available Measurements */}
+        {bucket !== 'Drop Bucket Here' && measurements.length > 0 && (
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h6" align="center" sx={{ mb: 2 }}>
+              Available Measurements
+            </Typography>
+            <Paper
+              sx={{
+                maxHeight: 400,
+                overflow: 'auto', // Enable scrolling if content exceeds height
+                padding: 2,
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                borderRadius: 2,
+              }}
+            >
+              <List>
                 {measurements.map((measure) => (
-                  <li
+                  <ListItem
                     key={measure}
-                    style={listItemStyle}
                     draggable
                     onDragStart={handleDragStart}
                     onDragEnd={handleDragEnd}
+                    sx={{
+                      cursor: 'grab',
+                      backgroundColor: '#e0e0e0',
+                      mb: 1,
+                      borderRadius: 1,
+                      '&:hover': { backgroundColor: '#cfcfcf' }, // Hover effect
+                    }}
                   >
-                    {measure}
-                  </li>
+                    <ListItemText primary={measure} />
+                  </ListItem>
                 ))}
-              </ul>
-            </>
-          )}
-        </div>
+              </List>
+            </Paper>
+          </Box>
+        )}
 
-        <div className="available-items">
-          {measurement !== 'Drop Measurement Here' && fields.length > 0 && (
-            <>
-              <h2 style={{ textAlign: 'center' }}>Available Fields</h2>
-              <ul id="fields" style={listStyle}>
+        {/* Available Fields */}
+        {measurement !== 'Drop Measurement Here' && fields.length > 0 && (
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h6" align="center" sx={{ mb: 2 }}>
+              Available Fields
+            </Typography>
+            <Paper
+              sx={{
+                maxHeight: 400,
+                overflow: 'auto', // Enable scrolling if content exceeds height
+                padding: 2,
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                borderRadius: 2,
+              }}
+            >
+              <List>
                 {fields.map((field) => (
-                  <li
+                  <ListItem
                     key={field}
-                    style={listItemStyle}
                     draggable
                     onDragStart={handleDragStart}
                     onDragEnd={handleDragEnd}
+                    sx={{
+                      cursor: 'grab',
+                      backgroundColor: '#e0e0e0',
+                      mb: 1,
+                      borderRadius: 1,
+                      '&:hover': { backgroundColor: '#cfcfcf' }, // Hover effect
+                    }}
                   >
-                    {field}
-                  </li>
+                    <ListItemText primary={field} />
+                  </ListItem>
                 ))}
-              </ul>
-            </>
-          )}
-        </div>
+              </List>
+            </Paper>
+          </Box>
+        )}
 
-
-        <div className="query-builder">
-          <h2 style={{ textAlign: 'center' }}>Query Builder</h2>
-          <div
-            id="selected-bucket"
-            style={dropzoneStyle}
+        {/* Query Builder */}
+        <Box sx={{ flex: 1 }}>
+          <Typography variant="h6" align="center" sx={{ mb: 2 }}>
+            Query Builder
+          </Typography>
+          
+          {/* Bucket Drop Zone */}
+          <Paper
             onDragOver={handleDragOver}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
             onDrop={handleBucketDrop}
-          >
-            <p>{bucket}</p>
-          </div>
-          <div
-            id="selected-measurement"
-            style={dropzoneStyle}
-            onDragOver={handleDragOver}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            onDrop={handleMeasurementDrop}
+            sx={{
+              padding: 2,
+              minHeight: 50,
+              mb: 2,
+              backgroundColor: '#fafafa',
+              textAlign: 'center',
+              border: '2px dashed #ccc',
+              borderRadius: 2,
+            }}
           >
-            <p>{measurement}</p>
-          </div>
-          <div
-            id="selected-field"
-            style={dropzoneStyle}
-            onDragOver={handleDragOver}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDrop={handleFieldDrop}
-          >
-            {selectedFields.length > 0 ? (
-              selectedFields.map((field, index) => (
-                <div key={index} style={fieldStyle}>
-                  <span style={fieldTextStyle}>{field}</span>
-                  <button
-                    onClick={() => removeField(index)}
-                    style={deleteButtonStyle}
-                  >
-                    &times;
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>Drop Fields Here</p> // This is the placeholder for fields
-            )}
+            <Typography>{bucket}</Typography>
+          </Paper>
 
-          </div>
-          <button onClick={handleComplete} style={buttonStyle}>
+          {/* Measurement Drop Zone */}
+          <Paper
+            onDragOver={handleDragOver}
+            onDrop={handleMeasurementDrop}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            sx={{
+              padding: 2,
+              minHeight: 50,
+              mb: 2,
+              backgroundColor: '#fafafa',
+              textAlign: 'center',
+              border: '2px dashed #ccc',
+              borderRadius: 2,
+            }}
+          >
+            <Typography>{measurement}</Typography>
+          </Paper>
+
+          {/* Fields Drop Zone */}
+          <Paper
+            onDragOver={handleDragOver}
+            onDrop={handleFieldDrop}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            sx={{
+              padding: 2,
+              minHeight: 50,
+              maxHeight: 235,  // Make this similar to Available Buckets height
+              overflowY: 'auto',  // Enable scrolling for long list of fields
+              backgroundColor: '#fafafa',
+              border: '2px dashed #ccc',
+              borderRadius: 2,
+            }}
+          >
+            <List>
+              {selectedFields.length > 0 ? (
+                selectedFields.map((field, index) => (
+                  <ListItem
+                    key={index}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      backgroundColor: '#e0e0e0',
+                      mb: 1,
+                      borderRadius: 1,
+                      '&:hover': { backgroundColor: '#cfcfcf' },
+                    }}
+                  >
+                    <ListItemText primary={field} />
+                    <IconButton
+                      color="error"
+                      onClick={() => setSelectedFields(selectedFields.filter((_, i) => i !== index))}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </ListItem>
+                ))
+              ) : (
+                <Typography align="center">Drop Fields Here</Typography>
+              )}
+            </List>
+          </Paper>
+
+          {/* Complete Button */}
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{
+              marginTop: 2,
+              backgroundColor: '#f57c00',
+              '&:hover': { backgroundColor: '#ef6c00' },  // Orange color with hover effect
+            }}
+            onClick={handleComplete}
+          >
             Complete
-          </button>
-        </div>
-      </div>
+          </Button>
+        </Box>
+      </Box>
+
+      {/* Query Result Section */}
       {queryResult && (
-        <div style={resultContainerStyle}>
-          <p>{queryResult}</p>
-        </div>
+        <Box sx={{ marginTop: 4, textAlign: 'center' }}>
+          <Typography variant="body1" color="textSecondary">
+            {queryResult}
+          </Typography>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
