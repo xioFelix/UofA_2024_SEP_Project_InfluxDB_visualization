@@ -21,8 +21,5 @@ export const generateQuery = async (req: Request, res: Response) => {
     } else {
       res.status(500).json({ message: 'Failed to create dashboard', error: 'Unknown error' });
     }
-  } catch (error) {
-    console.error('Error in generateQuery:', error);
-    return res.status(500).json({ message: 'Error generating query' });
   }
 };
