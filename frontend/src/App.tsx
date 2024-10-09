@@ -57,7 +57,7 @@ function App() {
       <div className="mt-16">
         <h2>InfluxDB Data</h2>
         <InfluxDBAPI />
-      </div>
+      </div> */}
 
       {/* Footer section for additional spacing */}
       <div className="footer" style={{ marginBottom: '100px' }}>
