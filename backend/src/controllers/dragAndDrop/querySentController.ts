@@ -4,7 +4,7 @@ import { handleCreateDashboard } from '../../services/grafanaService';
 
 // Function to handle query generation and dashboard creation
 export const generateQuery = async (req: Request, res: Response) => {
-  const { bucket, measurement, fields } = req.body;
+  const { bucket, measurement, fields, chartType } = req.body;
 
   if (!bucket || !measurement || !fields || fields.length === 0) {
     return res.status(400).json({ message: 'Bucket, measurement, and at least one field are required.' });
