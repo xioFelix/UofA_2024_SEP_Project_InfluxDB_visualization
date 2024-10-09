@@ -8,7 +8,7 @@ export const handleCreateDashboard = async (
     const grafanaToken = 'glsa_1KcuKQyqk4uBPAN9S3mNi5UGQHS4bEPj_ade072dc';
 
     // Log the start of the function
-    console.log("Starting Grafana dashboard creation...");
+    console.log('Starting Grafana dashboard creation...');
 
     // Log the query being used
     console.log("Using query: ", query);
