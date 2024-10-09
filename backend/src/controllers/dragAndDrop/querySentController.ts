@@ -19,7 +19,7 @@ export const generateQuery = async (req: Request, res: Response) => {
     if (error instanceof Error) {
       res.status(500).json({ message: 'Failed to create dashboard', error: error.message });
     } else {
-      return res.status(500).json({ message: 'Failed to generate query.' });
+      res.status(500).json({ message: 'Failed to create dashboard', error: 'Unknown error' });
     }
   } catch (error) {
     console.error('Error in generateQuery:', error);
