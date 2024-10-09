@@ -90,7 +90,7 @@ export const handleCreateDashboard = async (
             );
         } else if (error instanceof Error) {
             // Log error details from generic JS errors
-            console.error("Generic error creating Grafana dashboard: ", error.message);
+            console.error('Generic error creating Grafana dashboard: ', error.message);
         } else {
             // Log unknown error type
             console.error("Unknown error creating Grafana dashboard");
