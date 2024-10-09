@@ -74,7 +74,7 @@ export const handleCreateDashboard = async (
         );
 
         // Log the response from Grafana
-        console.log("Grafana response data: ", response.data);
+        console.log('Grafana response data: ', response.data);
 
         // Return UID and URL from the response
         return {
