@@ -79,7 +79,7 @@ export const handleCreateDashboard = async (
         // Return UID and URL from the response
         return {
             uid: response.data.uid, // Return the UID of the created dashboard
-            url: response.data.url  // Return the URL of the created dashboard
+            url: response.data.url, // Return the URL of the created dashboard
         };
     } catch (error) {
         if (axios.isAxiosError(error)) {
