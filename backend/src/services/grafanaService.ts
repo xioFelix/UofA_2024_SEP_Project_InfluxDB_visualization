@@ -1,8 +1,11 @@
 import axios from 'axios';
 
 // Function to handle dashboard creation on Grafana
-export const handleCreateDashboard = async (query: string): Promise<{ uid: string, url: string }> => {
-    const grafanaToken = 'glsa_7bYeH35A4Pl5VfiuzeQhbz2Pim9am1bL_2a72c8d4';
+export const handleCreateDashboard = async (
+    query: string,
+    chartType: string
+): Promise<{ uid: string; url: string }> => {
+    const grafanaToken = 'glsa_1KcuKQyqk4uBPAN9S3mNi5UGQHS4bEPj_ade072dc';
 
     // Log the start of the function
     console.log("Starting Grafana dashboard creation...");
