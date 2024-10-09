@@ -13,16 +13,11 @@ export const generateQuery = async (req: Request, res: Response) => {
     // Create the Grafana dashboard, passing the query and chart type
     const { uid, url } = await handleCreateDashboard(query, chartType);
 
-    if (query) {
-      // Create Grafana dashboard with the query
-      const { uid, url } = await handleCreateDashboard(query);
-
-      return res.status(200).json({
-        message: 'Query generated and dashboard created successfully!',
-        query,
-        dashboardUid: uid, // Grafana UID
-        dashboardUrl: url, // Grafana URL
-      });
+    // Return the dashboard URL and the query used
+    res.status(200).json({ dashboardUrl: url, query });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ message: 'Failed to create dashboard', error: error.message });
     } else {
       return res.status(500).json({ message: 'Failed to generate query.' });
     }
