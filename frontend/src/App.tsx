@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import QueryDisplay from './components/QueryDisplay';
-import InfluxDBAPI from './components/InfluxDBAPI';
-import GrafanaIframe from './components/GrafanaIframe';
+// import InfluxDBAPI from './components/InfluxDBAPI';
+// import GrafanaIframe from './components/GrafanaIframe';
 
 function App() {
   // State to manage bucket names fetched from InfluxDB
