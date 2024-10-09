@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 // Function to handle dashboard creation on Grafana
 export const handleCreateDashboard = async (query: string): Promise<{ uid: string, url: string }> => {
