@@ -10,8 +10,8 @@ export const generateQuery = async (req: Request, res: Response) => {
   const query = generateQueryForSelection(bucket, measurement, fields);
 
   try {
-    // Generate the query
-    const query = generateQueryForSelection(bucket, measurement, fields);
+    // Create the Grafana dashboard, passing the query and chart type
+    const { uid, url } = await handleCreateDashboard(query, chartType);
 
     if (query) {
       // Create Grafana dashboard with the query
