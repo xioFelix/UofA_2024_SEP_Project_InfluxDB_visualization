@@ -11,7 +11,7 @@ export const handleCreateDashboard = async (
     console.log('Starting Grafana dashboard creation...');
 
     // Log the query being used
-    console.log("Using query: ", query);
+    console.log('Using query: ', query);
 
     try {
         // Generate a unique title for each dashboard
