@@ -377,6 +377,25 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
             </List>
           </Paper>
 
+          {/* Chart Type Selection */}
+          <FormControl fullWidth sx={{ mt: 2 }}>
+            <InputLabel id="chart-type-label">Chart Type</InputLabel>
+            <Select
+              labelId="chart-type-label"
+              value={chartType}
+              label="Chart Type"
+              onChange={handleChartTypeChange}
+            >
+              <MenuItem value="graph">Graph</MenuItem>
+              <MenuItem value="table">Table</MenuItem>
+              <MenuItem value="stat">Stat</MenuItem>
+              <MenuItem value="gauge">Gauge</MenuItem>
+              <MenuItem value="bargauge">Bar Gauge</MenuItem>
+              {/* <MenuItem value="piechart">Pie Chart</MenuItem> // Not support */}
+              {/* Add more chart types as needed */}
+            </Select>
+          </FormControl>
+
           {/* Complete Button */}
           <Button
             variant="contained"
