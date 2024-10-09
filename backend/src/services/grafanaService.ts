@@ -17,24 +17,22 @@ export const handleCreateDashboard = async (
         // Generate a unique title for each dashboard
         const dashboardTitle = `Dashboard - ${new Date().toISOString()}`;
 
-        // Axios request to create a new dashboard with the given query
-        const response = await axios.post('http://localhost:3000/api/dashboards/db', {
-            dashboard: {
-                id: null,  // Use null if creating a new dashboard
-                title: dashboardTitle, // Unique title for each dashboard
-                panels: [
-                    {
-                        type: 'graph',
-                        title: 'Query Results',
-                        datasource: 'InfluxDB',
-                        targets: [
-                            {
-                                refId: 'A',
-                                query: query  // Ensure the query is properly structured
-                            }
-                        ]
-                    }
-                ]
+        // Configure the panel based on the selected chart type
+        let panel: any = {
+            type: chartType, // Use the chart type provided
+            title: 'Query Results',
+            datasource: 'InfluxDB',
+            targets: [
+                {
+                    refId: 'A',
+                    query: query, // Ensure the query is properly structured
+                },
+            ],
+            gridPos: {
+                x: 0,
+                y: 0,
+                w: 24,
+                h: 9,
             },
             folderId: 0,  // Set the folder ID to 0 if you're not using folders
             overwrite: false  // Disable overwriting existing dashboards
