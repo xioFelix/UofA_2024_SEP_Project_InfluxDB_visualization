@@ -3,9 +3,9 @@ import { handleCreateDashboard } from '../services/grafanaService';
 
 const router = express.Router();
 
-// POST /api/grafana/display
-router.post('/display', async (req: Request, res: Response) => {
-    const { query } = req.body;
+// POST /api/grafana/create-dashboard
+router.post('/create-dashboard', async (req: Request, res: Response) => {
+    const { query, chartType } = req.body; // Destructure chartType from the request body
     try {
         // Get both the UID and URL from the Grafana API
         const { uid, url } = await handleCreateDashboard(query);
