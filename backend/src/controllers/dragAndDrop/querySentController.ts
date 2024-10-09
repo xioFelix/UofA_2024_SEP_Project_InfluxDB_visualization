@@ -6,9 +6,8 @@ import { handleCreateDashboard } from '../../services/grafanaService';
 export const generateQuery = async (req: Request, res: Response) => {
   const { bucket, measurement, fields, chartType } = req.body;
 
-  if (!bucket || !measurement || !fields || fields.length === 0) {
-    return res.status(400).json({ message: 'Bucket, measurement, and at least one field are required.' });
-  }
+  // Generate the InfluxDB query based on the selections
+  const query = generateQueryForSelection(bucket, measurement, fields);
 
   try {
     // Generate the query
