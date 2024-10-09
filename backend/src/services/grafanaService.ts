@@ -34,12 +34,42 @@ export const handleCreateDashboard = async (
                 w: 24,
                 h: 9,
             },
-            folderId: 0,  // Set the folder ID to 0 if you're not using folders
-            overwrite: false  // Disable overwriting existing dashboards
-        }, {
-            headers: {
-                Authorization: `Bearer ${grafanaToken}`,
-                'Content-Type': 'application/json'
+        };
+
+        // Add specific configurations for certain chart types
+        if (chartType === 'piechart') {
+            panel.type = 'grafana-piechart-panel'; // Use the plugin's panel type
+            panel.options = {
+                // Add pie chart specific options here
+            };
+        }
+        // Add more conditions for other chart types if necessary
+
+        // Axios request to create a new dashboard with the given query and panel configuration
+        const response = await axios.post(
+            'http://localhost:3000/api/dashboards/db',
+            {
+                dashboard: {
+                    id: null, // Use null if creating a new dashboard
+                    uid: null,
+                    title: dashboardTitle, // Unique title for each dashboard
+                    timezone: 'browser',
+                    panels: [panel],
+                    schemaVersion: 27,
+                    version: 0,
+                    time: {
+                        from: 'now-1h',
+                        to: 'now',
+                    },
+                },
+                folderId: 0, // Set the folder ID to 0 if you're not using folders
+                overwrite: false, // Disable overwriting existing dashboards
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${grafanaToken}`,
+                    'Content-Type': 'application/json',
+                },
             }
         });
 
