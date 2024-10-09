@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { generateQueryForSelection } from '../../services/influxDBService';
 import { handleCreateDashboard } from '../../services/grafanaService';
 
-// POST /api/query
+// Function to handle query generation and dashboard creation
 export const generateQuery = async (req: Request, res: Response) => {
   const { bucket, measurement, fields } = req.body;
 
