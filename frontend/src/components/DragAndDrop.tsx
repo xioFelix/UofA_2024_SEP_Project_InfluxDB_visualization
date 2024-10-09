@@ -147,6 +147,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
           bucket,
           measurement,
           fields: selectedFields,
+          chartType, // Include chart type in the request data
         };
 
         // Send the query request to the backend
@@ -404,7 +405,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
             sx={{
               marginTop: 2,
               backgroundColor: '#f57c00',
-              '&:hover': { backgroundColor: '#ef6c00' },  // Orange color with hover effect
+              '&:hover': { backgroundColor: '#ef6c00' }, // Orange color with hover effect
             }}
             onClick={handleComplete}
           >
