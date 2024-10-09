@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import QueryDisplay from './components/QueryDisplay';
-import InfluxDBAPI from './components/InfluxDBAPI';
-import GrafanaIframe from './components/GrafanaIframe';
+// import InfluxDBAPI from './components/InfluxDBAPI';
+// import GrafanaIframe from './components/GrafanaIframe';
 
 function App() {
   // State to manage bucket names fetched from InfluxDB
@@ -53,11 +53,11 @@ function App() {
         )}
       </div>
 
-      {/* Render the InfluxDBAPI component to display any InfluxDB data */}
+      {/* Render the InfluxDBAPI component to display any InfluxDB data
       <div className="mt-16">
         <h2>InfluxDB Data</h2>
         <InfluxDBAPI />
-      </div>
+      </div> */}
 
       {/* Footer section for additional spacing */}
       <div className="footer" style={{ marginBottom: '100px' }}>

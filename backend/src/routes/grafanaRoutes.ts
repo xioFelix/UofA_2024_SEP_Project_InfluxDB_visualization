@@ -3,12 +3,12 @@ import { handleCreateDashboard } from '../services/grafanaService';
 
 const router = express.Router();
 
-// POST /api/grafana/display
-router.post('/display', async (req: Request, res: Response) => {
-    const { query } = req.body;
+// POST /api/grafana/create-dashboard
+router.post('/create-dashboard', async (req: Request, res: Response) => {
+    const { query, chartType } = req.body; // Destructure chartType from the request body
     try {
-        // Get both the UID and URL from the Grafana API
-        const { uid, url } = await handleCreateDashboard(query);
+        // Pass both query and chartType to handleCreateDashboard
+        const { uid, url } = await handleCreateDashboard(query, chartType);
         res.status(200).json({ uid, url }); // Send both UID and URL
     } catch (error) {
         if (error instanceof Error) {
