@@ -23,6 +23,7 @@ interface DragAndDropProps {
 }
 
 const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }) => {
+  // State variables to manage selections and data
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [measurements, setMeasurements] = useState<string[]>([]);
