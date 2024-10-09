@@ -84,7 +84,10 @@ export const handleCreateDashboard = async (
     } catch (error) {
         if (axios.isAxiosError(error)) {
             // Log error details from Axios errors
-            console.error("Axios error creating Grafana dashboard: ", error.response ? error.response.data : error.message);
+            console.error(
+                'Axios error creating Grafana dashboard: ',
+                error.response ? error.response.data : error.message
+            );
         } else if (error instanceof Error) {
             // Log error details from generic JS errors
             console.error("Generic error creating Grafana dashboard: ", error.message);
