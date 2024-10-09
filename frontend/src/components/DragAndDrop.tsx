@@ -48,6 +48,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     }
   };
 
+  // Handle drag end event
   const handleDragEnd = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
@@ -55,19 +56,23 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     }
   };
 
+  // Handle drag over event
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault(); // Enable drop action
   };
 
+  // Handle drag enter event
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.currentTarget.style.backgroundColor = '#f0f4f8'; // Light blue background when item is dragged over
   };
 
+  // Handle drag leave event
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
     e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color
   };
 
+  // Fetch measurements for a selected bucket
   const fetchMeasurements = async (bucket: string) => {
     try {
       const response = await axios.post('http://localhost:7000/api/buckets/measurements', { bucket });
@@ -85,7 +90,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     if (buckets.includes(data)) {
       setBucket(data); // Update selected bucket
       setMeasurement('Drop Measurement Here'); // Reset selected measurement
-      setFields([]); // Reset selected fields
+      setFields([]); // Reset fields
       setSelectedFields([]); // Reset selected fields
 
       fetchMeasurements(data); // Fetch measurements for the selected bucket
@@ -99,8 +104,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     const data = e.dataTransfer.getData('text/plain');
 
     if (measurements.includes(data)) {
-      setMeasurement(data);
-      setSelectedFields([]); // Reset fields when measurement is changed
+      setMeasurement(data); // Update selected measurement
+      setSelectedFields([]); // Reset selected fields
 
       // Fetch fields for the selected measurement
       try {
@@ -108,7 +113,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
           bucket,
           measurement: data,
         });
-        setFields(response.data.fields);
+        setFields(response.data.fields); // Set fetched fields
       } catch (error) {
         console.error('Error fetching fields:', error);
       }
@@ -122,13 +127,13 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     const data = e.dataTransfer.getData('text/plain');
 
     if (fields.includes(data) && !selectedFields.includes(data)) {
-      setSelectedFields([...selectedFields, data]);  // Only add field to selectedFields when it's dragged
+      setSelectedFields([...selectedFields, data]); // Add field to selectedFields
     }
 
     e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color after drop
   };
 
-  // Handle complete button
+  // Handle the "Complete" button click
   const handleComplete = async () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
@@ -288,7 +293,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
           <Typography variant="h6" align="center" sx={{ mb: 2 }}>
             Query Builder
           </Typography>
-          
+
           {/* Bucket Drop Zone */}
           <Paper
             onDragOver={handleDragOver}
@@ -336,8 +341,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
             sx={{
               padding: 2,
               minHeight: 50,
-              maxHeight: 235,  // Make this similar to Available Buckets height
-              overflowY: 'auto',  // Enable scrolling for long list of fields
+              maxHeight: 235, // Make this similar to Available Buckets height
+              overflowY: 'auto', // Enable scrolling for long list of fields
               backgroundColor: '#fafafa',
               border: '2px dashed #ccc',
               borderRadius: 2,
