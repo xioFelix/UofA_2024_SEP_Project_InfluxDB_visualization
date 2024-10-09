@@ -50,11 +50,11 @@ const listRoutes = (app: express.Express) => {
     });
   };
 
-// start the server at port 7000
-app.listen(7000, () => {
-    console.log('Server is running on port 7000');
-    listRoutes(app);  
-});
+// // start the server at port 7000
+// app.listen(7000, () => {
+//     console.log('Server is running on port 7000');
+//     listRoutes(app);  
+// });
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
