@@ -71,7 +71,7 @@ export const handleCreateDashboard = async (
                     'Content-Type': 'application/json',
                 },
             }
-        });
+        );
 
         // Log the response from Grafana
         console.log("Grafana response data: ", response.data);
