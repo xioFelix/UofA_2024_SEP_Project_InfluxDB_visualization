@@ -427,7 +427,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
               <MenuItem value="stat">Stat</MenuItem>
               <MenuItem value="gauge">Gauge</MenuItem>
               <MenuItem value="bargauge">Bar Gauge</MenuItem>
-              {/* <MenuItem value="piechart">Pie Chart</MenuItem> // Not support */}
               {/* Add more chart types as needed */}
             </Select>
           </FormControl>
