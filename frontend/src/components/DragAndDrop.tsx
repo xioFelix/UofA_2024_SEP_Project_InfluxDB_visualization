@@ -14,6 +14,7 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  SelectChangeEvent,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
