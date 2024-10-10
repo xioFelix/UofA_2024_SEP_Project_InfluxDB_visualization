@@ -28,6 +28,11 @@ function App() {
     setDashboardUrl(url); // Store the dashboard URL when a new dashboard is created
   };
 
+  // Function to handle the creation of a new snapshot and update the URL
+  const handleSnapshotCreated = (url: string) => {
+    setSnapshotUrl(url); // Store the snapshot URL when a new snapshot is created
+  };
+
   return (
     <div>
       {/* Render the Header component, passing the handleLoginSuccess function */}
