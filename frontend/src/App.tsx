@@ -1,9 +1,12 @@
-import { useState } from 'react';
+// frontend/src/App.tsx
+
+import React, { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import QueryDisplay from './components/QueryDisplay';
-// import InfluxDBAPI from './components/InfluxDBAPI';
-// import GrafanaIframe from './components/GrafanaIframe';
+import GrafanaIframe from './components/GrafanaIframe';
+import SnapshotPreview from './components/SnapshotPreview'; // Import SnapshotPreview component
+import { Box } from '@mui/material';
 
 function App() {
   // State to manage bucket names fetched from InfluxDB
@@ -12,7 +15,10 @@ function App() {
   // State to store the URL of the created Grafana dashboard
   const [dashboardUrl, setDashboardUrl] = useState<string | null>(null);
 
-  // Function to handle the event when login is successful and receive bucket names
+  // State to store the URL of the snapshot
+  const [snapshotUrl, setSnapshotUrl] = useState<string | null>(null);
+
+  // Function to handle login success and receive bucket names
   const handleLoginSuccess = (bucketNames: string[]) => {
     setBuckets(bucketNames); // Update the state with the received bucket names
   };
@@ -22,46 +28,38 @@ function App() {
     setDashboardUrl(url); // Store the dashboard URL when a new dashboard is created
   };
 
+  // Function to handle the creation of a new snapshot and update the URL
+  const handleSnapshotCreated = (url: string) => {
+    setSnapshotUrl(url); // Store the snapshot URL when a new snapshot is created
+  };
+
   return (
     <div>
       {/* Render the Header component, passing the handleLoginSuccess function */}
       <Header handleLoginSuccess={handleLoginSuccess} />
 
-      {/* Render the DragAndDrop component and pass the buckets and handleDashboardCreated function as props */}
-      <div className="mt-16">
-        <DragAndDrop buckets={buckets} onDashboardCreated={handleDashboardCreated} />
-      </div>
+      {/* Render the DragAndDrop component and pass the buckets and handler functions as props */}
+      <Box sx={{ mt: 4 }}>
+        <DragAndDrop
+          buckets={buckets}
+          onDashboardCreated={handleDashboardCreated}
+          onSnapshotCreated={handleSnapshotCreated} // Pass the snapshot handler
+        />
+      </Box>
 
       {/* Render the QueryDisplay component to show any query results */}
-      <div style={{ marginBottom: '50px', textAlign: 'center' }}>
+      <Box sx={{ mb: 4, textAlign: 'center' }}>
         <QueryDisplay />
-      </div>
+      </Box>
 
-      {/* Display the Grafana dashboard in an iframe if a dashboard URL is set */}
-      <div className="mt-16">
-        <h2>Grafana Dashboard</h2>
-        {dashboardUrl ? (
-          // Display the Grafana dashboard using the provided URL inside an iframe
-          <iframe
-            src={`http://localhost:3000${dashboardUrl}?orgId=1&refresh=1s&viewPanel=1`}
-            width="100%"
-            height="600"
-            frameBorder="0">
-          </iframe>
-        ) : (
-          <p>No dashboard to display</p> // Message when no dashboard URL is set
-        )}
-      </div>
+      {/* Render the GrafanaIframe component, passing the dashboardUrl */}
+      <GrafanaIframe dashboardUrl={dashboardUrl} />
 
-      {/* Render the InfluxDBAPI component to display any InfluxDB data
-      <div className="mt-16">
-        <h2>InfluxDB Data</h2>
-        <InfluxDBAPI />
-      </div> */}
+      {/* Render the SnapshotPreview component, passing the snapshotUrl */}
+      <SnapshotPreview snapshotUrl={snapshotUrl} />
 
       {/* Footer section for additional spacing */}
-      <div className="footer" style={{ marginBottom: '100px' }}>
-      </div>
+      <Box sx={{ mb: 10 }}></Box>
     </div>
   );
 }

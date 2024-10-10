@@ -1,22 +1,22 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-interface GrafanaIframeProps {
-    dashboardUrl: string | null;
+interface SnapshotPreviewProps {
+    snapshotUrl: string | null;
 }
 
-const GrafanaIframe: React.FC<GrafanaIframeProps> = ({ dashboardUrl }) => {
+const SnapshotPreview: React.FC<SnapshotPreviewProps> = ({ snapshotUrl }) => {
     return (
         <>
-            {dashboardUrl ? (
+            {snapshotUrl && (
                 <Box sx={{ marginTop: 4, textAlign: 'center' }}>
                     {/* Title */}
                     <Typography variant="h6" align="center">
-                        Grafana Dashboard
+                        Snapshot Preview
                     </Typography>
-                    {/* Embedded Grafana iframe */}
+                    {/* Embedded Snapshot iframe */}
                     <iframe
-                        src={`http://localhost:3000${dashboardUrl}?orgId=1&refresh=1s&viewPanel=1`}
+                        src={snapshotUrl}
                         width="100%"
                         height="600"
                         frameBorder="0"
@@ -26,13 +26,9 @@ const GrafanaIframe: React.FC<GrafanaIframeProps> = ({ dashboardUrl }) => {
                         }}
                     ></iframe>
                 </Box>
-            ) : (
-                <Typography variant="body1" align="center" color="textSecondary">
-                    No dashboard to display
-                </Typography>
             )}
         </>
     );
 };
 
-export default GrafanaIframe;
+export default SnapshotPreview;

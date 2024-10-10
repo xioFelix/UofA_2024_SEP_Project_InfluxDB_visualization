@@ -14,15 +14,17 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  SelectChangeEvent,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface DragAndDropProps {
   buckets: string[]; // Buckets data passed as a prop
   onDashboardCreated: (url: string) => void; // Function to handle when a dashboard is created
+  onSnapshotCreated: (url: string) => void; // Function to handle when a snapshot is created
 }
 
-const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }) => {
+const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, onSnapshotCreated }) => {
   // State variables to manage selections and data
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
@@ -33,7 +35,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
   const [chartType, setChartType] = useState<string>('graph'); // State to store selected chart type
 
   // Handle chart type change
-  const handleChartTypeChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChartTypeChange = (event: SelectChangeEvent) => {
     setChartType(event.target.value as string); // Update chart type state
   };
 
@@ -169,8 +171,41 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
     }
   };
 
+  // Function to handle snapshot creation
+  const handleCreateSnapshot = async () => {
+    if (bucket === 'Drop Bucket Here') {
+      setQueryResult('Please select a Bucket.');
+    } else if (measurement === 'Drop Measurement Here') {
+      setQueryResult('Please select a Measurement.');
+    } else if (selectedFields.length === 0) {
+      setQueryResult('Please select at least one Field.');
+    } else {
+      try {
+        const requestData = {
+          bucket,
+          measurement,
+          fields: selectedFields,
+          chartType, // Include chartType if needed
+        };
+
+        // Send a request to the backend to create a snapshot
+        const response = await axios.post('http://localhost:7000/api/snapshot', requestData);
+
+        if (response.data.snapshotUrl) {
+          // Use the handler to pass the snapshot URL to the parent component
+          onSnapshotCreated(response.data.snapshotUrl);
+        } else {
+          console.error('Snapshot URL not received from server.');
+        }
+      } catch (error) {
+        console.error('Error creating snapshot:', error);
+      }
+    }
+  };
+
   return (
     <Box sx={{ padding: 4 }}>
+      {/* Page Title */}
       <Typography variant="h5" align="center" gutterBottom>
         Query Builder
       </Typography>
@@ -392,7 +427,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
               <MenuItem value="stat">Stat</MenuItem>
               <MenuItem value="gauge">Gauge</MenuItem>
               <MenuItem value="bargauge">Bar Gauge</MenuItem>
-              {/* <MenuItem value="piechart">Pie Chart</MenuItem> // Not support */}
               {/* Add more chart types as needed */}
             </Select>
           </FormControl>
@@ -402,14 +436,21 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
             variant="contained"
             color="primary"
             fullWidth
-            sx={{
-              marginTop: 2,
-              backgroundColor: '#f57c00',
-              '&:hover': { backgroundColor: '#ef6c00' }, // Orange color with hover effect
-            }}
+            sx={{ marginTop: 2 }}
             onClick={handleComplete}
           >
             Complete
+          </Button>
+
+          {/* Create Snapshot Button */}
+          <Button
+            variant="contained"
+            color="secondary"
+            fullWidth
+            sx={{ marginTop: 2 }}
+            onClick={handleCreateSnapshot}
+          >
+            Create Snapshot
           </Button>
         </Box>
       </Box>
@@ -422,6 +463,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }
           </Typography>
         </Box>
       )}
+
+      {/* Remove the SnapshotPreview component from here */}
     </Box>
   );
 };

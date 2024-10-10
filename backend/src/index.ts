@@ -7,6 +7,7 @@ import bucketRoutes from './routes/dragAndDrop/bucketRoutes';
 import queryDisplayRoutes from './routes/queryDisplayRoutes';
 import grafanaRoutes from './routes/grafanaRoutes'; 
 import measurementRoutes from './routes/dragAndDrop/measurementRoutes';
+import snapshotRoutes from './routes/snapshotRoutes';
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -35,6 +36,8 @@ app.use('/api/display', queryDisplayRoutes);
 // Route for Grafana Dashboard
 app.use('/api/grafana', grafanaRoutes);
 
+// Route for Snapshot Function
+app.use('/api/snapshot', snapshotRoutes);
 
 // Print the registered route
 const listRoutes = (app: express.Express) => {
