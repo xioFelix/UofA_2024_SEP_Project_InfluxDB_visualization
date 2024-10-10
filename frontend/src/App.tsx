@@ -50,7 +50,7 @@ function App() {
       {/* Render the QueryDisplay component to show any query results */}
       <Box sx={{ mb: 4, textAlign: 'center' }}>
         <QueryDisplay />
-      </div>
+      </Box>
 
       {/* Display the Grafana dashboard in an iframe if a dashboard URL is set */}
       <div className="mt-16">
