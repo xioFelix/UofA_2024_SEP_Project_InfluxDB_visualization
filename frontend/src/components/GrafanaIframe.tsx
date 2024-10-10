@@ -5,6 +5,7 @@ interface GrafanaIframeProps {
     dashboardUrl: string | null;
 }
 
+const GrafanaIframe: React.FC<GrafanaIframeProps> = ({ dashboardUrl }) => {
     return (
         <>
             {dashboardUrl ? (
