@@ -36,6 +36,8 @@ app.use('/api/display', queryDisplayRoutes);
 // Route for Grafana Dashboard
 app.use('/api/grafana', grafanaRoutes);
 
+// Route for Snapshot Function
+app.use('/api/snapshot', snapshotRoutes);
 
 // Print the registered route
 const listRoutes = (app: express.Express) => {
