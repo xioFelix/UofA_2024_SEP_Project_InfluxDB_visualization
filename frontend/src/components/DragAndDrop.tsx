@@ -205,6 +205,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
 
   return (
     <Box sx={{ padding: 4 }}>
+      {/* Page Title */}
       <Typography variant="h5" align="center" gutterBottom>
         Query Builder
       </Typography>
