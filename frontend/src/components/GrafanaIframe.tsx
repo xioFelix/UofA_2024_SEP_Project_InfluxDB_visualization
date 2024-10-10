@@ -31,7 +31,7 @@ const GrafanaIframe: React.FC<GrafanaIframeProps> = ({ dashboardUrl }) => {
                     No dashboard to display
                 </Typography>
             )}
-        </div>
+        </>
     );
 };
 
