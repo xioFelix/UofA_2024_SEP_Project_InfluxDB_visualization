@@ -1,4 +1,6 @@
-import { useState } from 'react';
+// frontend/src/App.tsx
+
+import React, { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import QueryDisplay from './components/QueryDisplay';
