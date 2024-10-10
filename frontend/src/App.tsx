@@ -4,8 +4,9 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import QueryDisplay from './components/QueryDisplay';
-// import InfluxDBAPI from './components/InfluxDBAPI';
-// import GrafanaIframe from './components/GrafanaIframe';
+import GrafanaIframe from './components/GrafanaIframe';
+import SnapshotPreview from './components/SnapshotPreview'; // Import SnapshotPreview component
+import { Box } from '@mui/material';
 
 function App() {
   // State to manage bucket names fetched from InfluxDB
