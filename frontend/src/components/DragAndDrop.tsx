@@ -21,6 +21,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 interface DragAndDropProps {
   buckets: string[]; // Buckets data passed as a prop
   onDashboardCreated: (url: string) => void; // Function to handle when a dashboard is created
+  onSnapshotCreated: (url: string) => void; // Function to handle when a snapshot is created
 }
 
 const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }) => {
