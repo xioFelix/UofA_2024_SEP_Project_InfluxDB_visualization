@@ -27,7 +27,9 @@ const GrafanaIframe: React.FC<GrafanaIframeProps> = ({ dashboardUrl }) => {
                     ></iframe>
                 </Box>
             ) : (
-                <p>No dashboard to display</p> // Message when no dashboard URL is set
+                <Typography variant="body1" align="center" color="textSecondary">
+                    No dashboard to display
+                </Typography>
             )}
         </div>
     );
