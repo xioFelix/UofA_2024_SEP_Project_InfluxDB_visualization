@@ -38,10 +38,14 @@ function App() {
       {/* Render the Header component, passing the handleLoginSuccess function */}
       <Header handleLoginSuccess={handleLoginSuccess} />
 
-      {/* Render the DragAndDrop component and pass the buckets and handleDashboardCreated function as props */}
-      <div className="mt-16">
-        <DragAndDrop buckets={buckets} onDashboardCreated={handleDashboardCreated} />
-      </div>
+      {/* Render the DragAndDrop component and pass the buckets and handler functions as props */}
+      <Box sx={{ mt: 4 }}>
+        <DragAndDrop
+          buckets={buckets}
+          onDashboardCreated={handleDashboardCreated}
+          onSnapshotCreated={handleSnapshotCreated} // Pass the snapshot handler
+        />
+      </Box>
 
       {/* Render the QueryDisplay component to show any query results */}
       <div style={{ marginBottom: '50px', textAlign: 'center' }}>
