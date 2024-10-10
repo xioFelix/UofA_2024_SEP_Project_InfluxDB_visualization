@@ -15,7 +15,10 @@ function App() {
   // State to store the URL of the created Grafana dashboard
   const [dashboardUrl, setDashboardUrl] = useState<string | null>(null);
 
-  // Function to handle the event when login is successful and receive bucket names
+  // State to store the URL of the snapshot
+  const [snapshotUrl, setSnapshotUrl] = useState<string | null>(null);
+
+  // Function to handle login success and receive bucket names
   const handleLoginSuccess = (bucketNames: string[]) => {
     setBuckets(bucketNames); // Update the state with the received bucket names
   };
