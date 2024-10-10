@@ -463,6 +463,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           </Typography>
         </Box>
       )}
+
+      {/* Remove the SnapshotPreview component from here */}
     </Box>
   );
 };
