@@ -24,7 +24,7 @@ interface DragAndDropProps {
   onSnapshotCreated: (url: string) => void; // Function to handle when a snapshot is created
 }
 
-const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated }) => {
+const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, onSnapshotCreated }) => {
   // State variables to manage selections and data
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
