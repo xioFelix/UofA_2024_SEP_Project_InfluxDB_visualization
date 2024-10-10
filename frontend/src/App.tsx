@@ -55,11 +55,8 @@ function App() {
       {/* Render the GrafanaIframe component, passing the dashboardUrl */}
       <GrafanaIframe dashboardUrl={dashboardUrl} />
 
-      {/* Render the InfluxDBAPI component to display any InfluxDB data
-      <div className="mt-16">
-        <h2>InfluxDB Data</h2>
-        <InfluxDBAPI />
-      </div> */}
+      {/* Render the SnapshotPreview component, passing the snapshotUrl */}
+      <SnapshotPreview snapshotUrl={snapshotUrl} />
 
       {/* Footer section for additional spacing */}
       <div className="footer" style={{ marginBottom: '100px' }}>
