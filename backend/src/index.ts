@@ -4,7 +4,6 @@ import "dotenv/config";
 import authRoutes from './routes/authRoutes';
 import querySendRoutes from './routes/dragAndDrop/querySendRoutes';
 import bucketRoutes from './routes/dragAndDrop/bucketRoutes'; 
-import queryDisplayRoutes from './routes/queryDisplayRoutes';
 import grafanaRoutes from './routes/grafanaRoutes'; 
 import measurementRoutes from './routes/dragAndDrop/measurementRoutes';
 import snapshotRoutes from './routes/snapshotRoutes';
@@ -29,9 +28,6 @@ app.use('/api/buckets', bucketRoutes);
 
 // Route for query generation 
 app.use('/api/query', querySendRoutes);
-
-// Route for query display
-app.use('/api/display', queryDisplayRoutes);
 
 // Route for Grafana Dashboard
 app.use('/api/grafana', grafanaRoutes);

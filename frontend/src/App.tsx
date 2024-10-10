@@ -1,9 +1,7 @@
 // frontend/src/App.tsx
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
-import QueryDisplay from './components/QueryDisplay';
 import GrafanaIframe from './components/GrafanaIframe';
 import SnapshotPreview from './components/SnapshotPreview'; // Import SnapshotPreview component
 import { Box } from '@mui/material';
@@ -45,11 +43,6 @@ function App() {
           onDashboardCreated={handleDashboardCreated}
           onSnapshotCreated={handleSnapshotCreated} // Pass the snapshot handler
         />
-      </Box>
-
-      {/* Render the QueryDisplay component to show any query results */}
-      <Box sx={{ mb: 4, textAlign: 'center' }}>
-        <QueryDisplay />
       </Box>
 
       {/* Render the GrafanaIframe component, passing the dashboardUrl */}
