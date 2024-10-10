@@ -1,14 +1,9 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-const GrafanaIframe: React.FC = () => {
-    // State to store the URL of the created Grafana dashboard
-    const [dashboardUrl, setDashboardUrl] = useState<string | null>(null);
-
-    // Function to handle the creation of a new dashboard and update the URL
-    const handleDashboardCreated = (url: string) => {
-        setDashboardUrl(url); // Store the dashboard URL when a new dashboard is created
-    };
+interface GrafanaIframeProps {
+    dashboardUrl: string | null;
+}
 
     return (
         <div className="mt-16">
