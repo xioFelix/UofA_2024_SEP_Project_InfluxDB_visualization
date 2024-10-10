@@ -1,5 +1,5 @@
-// components/GrafanaIframe.tsx
-import React, { useState } from 'react';
+import React from 'react';
+import { Typography, Box } from '@mui/material';
 
 const GrafanaIframe: React.FC = () => {
     // State to store the URL of the created Grafana dashboard
