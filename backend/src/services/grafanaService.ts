@@ -98,3 +98,95 @@ export const handleCreateDashboard = async (
         throw new Error('Failed to create Grafana dashboard');
     }
 };
+
+// Handle snapshot creation
+export const handleCreateSnapshot = async (
+    dashboard: any
+): Promise<{ url: string }> => {
+    const grafanaToken = 'glsa_1KcuKQyqk4uBPAN9S3mNi5UGQHS4bEPj_ade072dc';
+    const grafanaApiUrl = 'http://localhost:3000';
+
+    try {
+        // Send a POST request to Grafana's Snapshot API
+        const response = await axios.post(
+            `${grafanaApiUrl}/api/snapshots`,
+            {
+                dashboard: dashboard,
+                expires: 3600, // Snapshot expiration time in seconds (e.g., 1 hour)
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${grafanaToken}`,
+                },
+            }
+        );
+
+        // Return the snapshot URL
+        return {
+            url: response.data.url,
+        };
+    } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+            console.error(
+                'Axios error creating Grafana snapshot: ',
+                error.response ? error.response.data : error.message
+            );
+        } else if (error instanceof Error) {
+            console.error('Generic error creating Grafana snapshot: ', error.message);
+        } else {
+            console.error('Unknown error creating Grafana snapshot');
+        }
+        throw new Error('Failed to create Grafana snapshot');
+    }
+};
+
+// Build the dashboard model based on user selections
+export const buildDashboardModel = (
+    bucket: string,
+    measurement: string,
+    fields: string[],
+    chartType: string
+) => {
+    const fieldFilters = fields.map((field) => `r._field == "${field}"`).join(' or ');
+
+    const query = `
+        from(bucket: "${bucket}")
+          |> range(start: -1h)
+          |> filter(fn: (r) => r._measurement == "${measurement}" and (${fieldFilters}))
+    `;
+
+    const panel = {
+        type: chartType,
+        title: 'Data Preview',
+        datasource: 'InfluxDB',
+        targets: [
+            {
+                refId: 'A',
+                query: query,
+            },
+        ],
+        gridPos: {
+            x: 0,
+            y: 0,
+            w: 24,
+            h: 9,
+        },
+    };
+
+    const dashboard = {
+        id: null,
+        uid: null,
+        title: 'Snapshot Dashboard',
+        timezone: 'browser',
+        panels: [panel],
+        schemaVersion: 27,
+        version: 0,
+        time: {
+            from: 'now-1h',
+            to: 'now',
+        },
+    };
+
+    return dashboard;
+};
