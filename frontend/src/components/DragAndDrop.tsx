@@ -436,11 +436,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
             variant="contained"
             color="primary"
             fullWidth
-            sx={{
-              marginTop: 2,
-              backgroundColor: '#f57c00',
-              '&:hover': { backgroundColor: '#ef6c00' }, // Orange color with hover effect
-            }}
+            sx={{ marginTop: 2 }}
             onClick={handleComplete}
           >
             Complete
