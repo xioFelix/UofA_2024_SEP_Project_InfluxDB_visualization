@@ -441,6 +441,17 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           >
             Complete
           </Button>
+
+          {/* Create Snapshot Button */}
+          <Button
+            variant="contained"
+            color="secondary"
+            fullWidth
+            sx={{ marginTop: 2 }}
+            onClick={handleCreateSnapshot}
+          >
+            Create Snapshot
+          </Button>
         </Box>
       </Box>
 
