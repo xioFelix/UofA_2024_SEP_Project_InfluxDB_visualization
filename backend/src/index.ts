@@ -7,6 +7,7 @@ import bucketRoutes from './routes/dragAndDrop/bucketRoutes';
 import queryDisplayRoutes from './routes/queryDisplayRoutes';
 import grafanaRoutes from './routes/grafanaRoutes'; 
 import measurementRoutes from './routes/dragAndDrop/measurementRoutes';
+import snapshotRoutes from './routes/snapshotRoutes';
 
 const app = express();
 // Configure CORS to allow requests from your frontend
