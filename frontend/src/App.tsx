@@ -59,8 +59,7 @@ function App() {
       <SnapshotPreview snapshotUrl={snapshotUrl} />
 
       {/* Footer section for additional spacing */}
-      <div className="footer" style={{ marginBottom: '100px' }}>
-      </div>
+      <Box sx={{ mb: 10 }}></Box>
     </div>
   );
 }
