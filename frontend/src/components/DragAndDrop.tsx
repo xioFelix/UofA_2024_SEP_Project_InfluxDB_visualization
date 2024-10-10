@@ -171,6 +171,38 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
     }
   };
 
+  // Function to handle snapshot creation
+  const handleCreateSnapshot = async () => {
+    if (bucket === 'Drop Bucket Here') {
+      setQueryResult('Please select a Bucket.');
+    } else if (measurement === 'Drop Measurement Here') {
+      setQueryResult('Please select a Measurement.');
+    } else if (selectedFields.length === 0) {
+      setQueryResult('Please select at least one Field.');
+    } else {
+      try {
+        const requestData = {
+          bucket,
+          measurement,
+          fields: selectedFields,
+          chartType, // Include chartType if needed
+        };
+
+        // Send a request to the backend to create a snapshot
+        const response = await axios.post('http://localhost:7000/api/snapshot', requestData);
+
+        if (response.data.snapshotUrl) {
+          // Use the handler to pass the snapshot URL to the parent component
+          onSnapshotCreated(response.data.snapshotUrl);
+        } else {
+          console.error('Snapshot URL not received from server.');
+        }
+      } catch (error) {
+        console.error('Error creating snapshot:', error);
+      }
+    }
+  };
+
   return (
     <Box sx={{ padding: 4 }}>
       <Typography variant="h5" align="center" gutterBottom>
