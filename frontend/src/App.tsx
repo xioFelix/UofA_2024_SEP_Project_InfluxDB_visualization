@@ -48,7 +48,7 @@ function App() {
       </Box>
 
       {/* Render the QueryDisplay component to show any query results */}
-      <div style={{ marginBottom: '50px', textAlign: 'center' }}>
+      <Box sx={{ mb: 4, textAlign: 'center' }}>
         <QueryDisplay />
       </div>
 
