@@ -35,7 +35,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
   const [chartType, setChartType] = useState<string>('graph'); // State to store selected chart type
 
   // Handle chart type change
-  const handleChartTypeChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChartTypeChange = (event: SelectChangeEvent) => {
     setChartType(event.target.value as string); // Update chart type state
   };
 
