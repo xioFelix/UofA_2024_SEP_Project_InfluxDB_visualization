@@ -23,123 +23,110 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface DragAndDropProps {
-  buckets: string[]; // Buckets data passed as a prop
-  onDashboardCreated: (url: string) => void; // Function to handle when a dashboard is created
-  onSnapshotCreated: (url: string) => void; // Function to handle when a snapshot is created
+  buckets: string[];
+  onDashboardCreated: (url: string) => void;
+  onSnapshotCreated: (url: string) => void;
 }
 
 const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, onSnapshotCreated }) => {
-  // State variables to manage selections and data
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [measurements, setMeasurements] = useState<string[]>([]);
   const [fields, setFields] = useState<string[]>([]);
   const [selectedFields, setSelectedFields] = useState<string[]>([]);
   const [queryResult, setQueryResult] = useState<string>('');
-  const [chartType, setChartType] = useState<string>('graph'); // State to store selected chart type
+  const [chartType, setChartType] = useState<string>('graph');
 
-  // Handle chart type change
   const handleChartTypeChange = (event: SelectChangeEvent) => {
-    setChartType(event.target.value as string); // Update chart type state
+    setChartType(event.target.value as string);
   };
 
-  // Handle drag start event
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
-      e.dataTransfer.setData('text/plain', target.innerText); // Set the dragged text
+      e.dataTransfer.setData('text/plain', target.innerText);
       setTimeout(() => {
-        target.style.opacity = '0.5'; // Make the dragged item semi-transparent
+        target.style.opacity = '0.5';
       }, 0);
     }
   };
 
-  // Handle drag end event
   const handleDragEnd = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
-      target.style.opacity = '1'; // Reset the opacity of the dragged item
+      target.style.opacity = '1';
     }
   };
 
-  // Handle drag over event
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault(); // Enable drop action
+    e.preventDefault();
   };
 
-  // Handle drag enter event
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    e.currentTarget.style.backgroundColor = '#f0f4f8'; // Light blue background when item is dragged over
+    e.currentTarget.style.backgroundColor = '#f0f4f8';
   };
 
-  // Handle drag leave event
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
-    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color
+    e.currentTarget.style.backgroundColor = '#fafafa';
   };
 
-  // Fetch measurements for a selected bucket
   const fetchMeasurements = async (bucket: string) => {
     try {
       const response = await axios.post('http://localhost:7000/api/buckets/measurements', { bucket });
-      setMeasurements(response.data.measurements); // Set fetched measurements
+      setMeasurements(response.data.measurements);
     } catch (error) {
-      console.error('Error fetching measurements:', error); // Log any error
+      console.error('Error fetching measurements:', error);
     }
   };
 
-  // Handle drop logic for buckets, resetting measurements and fields as necessary
   const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (buckets.includes(data)) {
-      setBucket(data); // Update selected bucket
-      setMeasurement('Drop Measurement Here'); // Reset selected measurement
-      setFields([]); // Reset fields
-      setSelectedFields([]); // Reset selected fields
+      setBucket(data);
+      setMeasurement('Drop Measurement Here');
+      setFields([]);
+      setSelectedFields([]);
 
-      fetchMeasurements(data); // Fetch measurements for the selected bucket
+      fetchMeasurements(data);
     }
-    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
+    e.currentTarget.style.backgroundColor = '#fafafa';
   };
 
-  // Handle drop logic for measurements, resetting fields as necessary
   const handleMeasurementDrop = async (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (measurements.includes(data)) {
-      setMeasurement(data); // Update selected measurement
-      setSelectedFields([]); // Reset selected fields
+      setMeasurement(data);
+      setSelectedFields([]);
 
-      // Fetch fields for the selected measurement
       try {
         const response = await axios.post('http://localhost:7000/api/measurements/fields', {
           bucket,
           measurement: data,
         });
-        setFields(response.data.fields); // Set fetched fields
+        setFields(response.data.fields);
       } catch (error) {
         console.error('Error fetching fields:', error);
       }
     }
-    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color after drop
+    e.currentTarget.style.backgroundColor = '#fafafa';
   };
 
-  // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
   const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (fields.includes(data) && !selectedFields.includes(data)) {
-      setSelectedFields([...selectedFields, data]); // Add field to selectedFields
+      setSelectedFields([...selectedFields, data]);
     }
 
-    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color after drop
+    e.currentTarget.style.backgroundColor = '#fafafa';
   };
 
-  // Handle the "Complete" button click
   const handleComplete = async () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
@@ -153,18 +140,16 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           bucket,
           measurement,
           fields: selectedFields,
-          chartType, // Include chart type in the request data
+          chartType,
         };
 
-        // Send the query request to the backend
         const response = await axios.post('http://localhost:7000/api/query', requestData);
 
-        // Check if the dashboard URL is included in the response
         if (response.data.dashboardUrl) {
-          onDashboardCreated(response.data.dashboardUrl); // Pass the URL to the parent component
+          onDashboardCreated(response.data.dashboardUrl);
         }
 
-        setQueryResult(`${response.data.query}`); // Display success message
+        setQueryResult(`${response.data.query}`);
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
           setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
@@ -175,7 +160,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
     }
   };
 
-  // Function to handle snapshot creation
   const handleCreateSnapshot = async () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
@@ -189,14 +173,12 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           bucket,
           measurement,
           fields: selectedFields,
-          chartType, // Include chartType if needed
+          chartType,
         };
 
-        // Send a request to the backend to create a snapshot
         const response = await axios.post('http://localhost:7000/api/snapshot', requestData);
 
         if (response.data.snapshotUrl) {
-          // Use the handler to pass the snapshot URL to the parent component
           onSnapshotCreated(response.data.snapshotUrl);
         } else {
           console.error('Snapshot URL not received from server.');
@@ -213,46 +195,28 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
         Query Builder
       </Typography>
       <Divider sx={{ mb: 4 }} />
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}>
+
+      {/* Main layout structure */}
+      <Box sx={{ display: 'flex', gap: 4 }}>
         {/* Available Buckets */}
         <Box sx={{ flex: 1 }}>
           <Typography variant="h6" align="center" sx={{ mb: 2 }}>
             Available Buckets
           </Typography>
-          <Paper
-            sx={{
-              height: 400,
-              padding: 2,
-              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-              borderRadius: 2,
-              overflow: 'auto',
-            }}
-          >
-            {buckets.length > 0 ? (
-              <List>
-                {buckets.map((bucket) => (
-                  <ListItem
-                    key={bucket}
-                    draggable
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                    sx={{
-                      cursor: 'grab',
-                      backgroundColor: '#e0e0e0',
-                      mb: 1,
-                      borderRadius: 1,
-                      '&:hover': { backgroundColor: '#cfcfcf' },
-                    }}
-                  >
-                    <ListItemText primary={bucket} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <Typography align="center" color="textSecondary">
-                Log in to display buckets
-              </Typography>
-            )}
+          <Paper sx={{ height: 400, padding: 2, overflow: 'auto' }}>
+            <List>
+              {buckets.map((bucket) => (
+                <ListItem
+                  key={bucket}
+                  draggable
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                  sx={{ cursor: 'grab', backgroundColor: '#e0e0e0', mb: 1 }}
+                >
+                  <ListItemText primary={bucket} />
+                </ListItem>
+              ))}
+            </List>
           </Paper>
         </Box>
 
@@ -261,40 +225,20 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           <Typography variant="h6" align="center" sx={{ mb: 2 }}>
             Available Measurements
           </Typography>
-          <Paper
-            sx={{
-              height: 400,
-              padding: 2,
-              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-              borderRadius: 2,
-              overflow: 'auto',
-            }}
-          >
-            {bucket !== 'Drop Bucket Here' && measurements.length > 0 ? (
-              <List>
-                {measurements.map((measure) => (
-                  <ListItem
-                    key={measure}
-                    draggable
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                    sx={{
-                      cursor: 'grab',
-                      backgroundColor: '#e0e0e0',
-                      mb: 1,
-                      borderRadius: 1,
-                      '&:hover': { backgroundColor: '#cfcfcf' },
-                    }}
-                  >
-                    <ListItemText primary={measure} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <Typography align="center" color="textSecondary">
-                Drag a bucket to display measurements
-              </Typography>
-            )}
+          <Paper sx={{ height: 400, padding: 2, overflow: 'auto' }}>
+            <List>
+              {measurements.map((measurement) => (
+                <ListItem
+                  key={measurement}
+                  draggable
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                  sx={{ cursor: 'grab', backgroundColor: '#e0e0e0', mb: 1 }}
+                >
+                  <ListItemText primary={measurement} />
+                </ListItem>
+              ))}
+            </List>
           </Paper>
         </Box>
 
@@ -303,40 +247,20 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           <Typography variant="h6" align="center" sx={{ mb: 2 }}>
             Available Fields
           </Typography>
-          <Paper
-            sx={{
-              height: 400,
-              padding: 2,
-              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-              borderRadius: 2,
-              overflow: 'auto',
-            }}
-          >
-            {measurement !== 'Drop Measurement Here' && fields.length > 0 ? (
-              <List>
-                {fields.map((field) => (
-                  <ListItem
-                    key={field}
-                    draggable
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                    sx={{
-                      cursor: 'grab',
-                      backgroundColor: '#e0e0e0',
-                      mb: 1,
-                      borderRadius: 1,
-                      '&:hover': { backgroundColor: '#cfcfcf' },
-                    }}
-                  >
-                    <ListItemText primary={field} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <Typography align="center" color="textSecondary">
-                Drag a measurement to display fields
-              </Typography>
-            )}
+          <Paper sx={{ height: 400, padding: 2, overflow: 'auto' }}>
+            <List>
+              {fields.map((field) => (
+                <ListItem
+                  key={field}
+                  draggable
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                  sx={{ cursor: 'grab', backgroundColor: '#e0e0e0', mb: 1 }}
+                >
+                  <ListItemText primary={field} />
+                </ListItem>
+              ))}
+            </List>
           </Paper>
         </Box>
 
@@ -465,35 +389,24 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
         </Box>
       </Box>
 
-      {queryResult && (
-        <Accordion sx={{ marginTop: 4}}>
+      {/* Query Code Display */}
+      <Box sx={{ mt: 4 }}>
+        <Accordion>
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
-            aria-controls="query-content"
-            id="query-header"
-            sx={{
-              backgroundColor: '#D95023', // The background color of the title
-              color: '#fff', // Title text color
-            }}
+            expandIcon={<ExpandMoreIcon />}
+            sx={{ backgroundColor: '#D95023', color: '#fff' }}
           >
-            <Typography sx={{ marginBottom: 0 }}>Query code display</Typography>
+            <Typography>Query code display</Typography>
           </AccordionSummary>
-          <AccordionDetails
-            sx={{
-              maxHeight: '200px', // content
-              overflowY: 'auto', // scrollbar
-            }}>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              sx={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}
-            >
+          <AccordionDetails sx={{ maxHeight: 200, overflowY: 'auto' }}>
+            <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
               {queryResult}
             </Typography>
           </AccordionDetails>
         </Accordion>
-      )}
+      </Box>
     </Box>
   );
 };
+
 export default DragAndDrop;
