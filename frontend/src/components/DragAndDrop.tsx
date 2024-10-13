@@ -17,6 +17,10 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface DragAndDropProps {
   buckets: string[]; // Buckets data passed as a prop
@@ -160,7 +164,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           onDashboardCreated(response.data.dashboardUrl); // Pass the URL to the parent component
         }
 
-        setQueryResult(`Query Generated Successfully: ${response.data.query}`); // Display success message
+        setQueryResult(`${response.data.query}`); // Display success message
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
           setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
@@ -462,11 +466,32 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
       </Box>
 
       {queryResult && (
-        <Box sx={{ marginTop: 4, textAlign: 'center' }}>
-          <Typography variant="body1" color="textSecondary">
-            {queryResult}
-          </Typography>
-        </Box>
+        <Accordion sx={{ marginTop: 4}}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
+            aria-controls="query-content"
+            id="query-header"
+            sx={{
+              backgroundColor: '#2C6E49', // The background color of the title
+              color: '#fff', // Title text color
+            }}
+          >
+            <Typography sx={{ marginBottom: 0 }}>Query code display</Typography>
+          </AccordionSummary>
+          <AccordionDetails
+            sx={{
+              maxHeight: '200px', // content
+              overflowY: 'auto', // scrollbar
+            }}>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              sx={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}
+            >
+              {queryResult}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
       )}
     </Box>
   );
