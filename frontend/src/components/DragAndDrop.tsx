@@ -58,18 +58,18 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
     }
   };
 
-  // Handle drag over event to allow drop
+  // Handle drag over event
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault(); // Enable drop action
   };
 
-  // Handle drag enter event to visually indicate a valid drop zone
+  // Handle drag enter event
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.currentTarget.style.backgroundColor = '#f0f4f8'; // Light blue background when item is dragged over
   };
 
-  // Handle drag leave event to reset the background when item is dragged away
+  // Handle drag leave event
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
     e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color
   };
@@ -149,16 +149,18 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           bucket,
           measurement,
           fields: selectedFields,
-          chartType,
+          chartType, // Include chart type in the request data
         };
 
+        // Send the query request to the backend
         const response = await axios.post('http://localhost:7000/api/query', requestData);
 
+        // Check if the dashboard URL is included in the response
         if (response.data.dashboardUrl) {
-          onDashboardCreated(response.data.dashboardUrl);
+          onDashboardCreated(response.data.dashboardUrl); // Pass the URL to the parent component
         }
 
-        setQueryResult(`Query Generated Successfully: ${response.data.query}`);
+        setQueryResult(`Query Generated Successfully: ${response.data.query}`); // Display success message
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
           setQueryResult(`Error: ${error.response?.data?.message || 'An error occurred.'}`);
@@ -183,12 +185,14 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           bucket,
           measurement,
           fields: selectedFields,
-          chartType,
+          chartType, // Include chartType if needed
         };
 
+        // Send a request to the backend to create a snapshot
         const response = await axios.post('http://localhost:7000/api/snapshot', requestData);
 
         if (response.data.snapshotUrl) {
+          // Use the handler to pass the snapshot URL to the parent component
           onSnapshotCreated(response.data.snapshotUrl);
         } else {
           console.error('Snapshot URL not received from server.');
@@ -205,7 +209,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
         Query Builder
       </Typography>
       <Divider sx={{ mb: 4 }} />
-
       <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 4 }}>
         {/* Available Buckets */}
         <Box sx={{ flex: 1 }}>
@@ -214,7 +217,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           </Typography>
           <Paper
             sx={{
-              maxHeight: 400,
+              height: 400,
               padding: 2,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               borderRadius: 2,
@@ -256,7 +259,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           </Typography>
           <Paper
             sx={{
-              maxHeight: 400,
+              height: 400,
               padding: 2,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               borderRadius: 2,
@@ -298,7 +301,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           </Typography>
           <Paper
             sx={{
-              maxHeight: 400,
+              height: 400,
               padding: 2,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               borderRadius: 2,
@@ -338,7 +341,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           <Typography variant="h6" align="center" sx={{ mb: 2 }}>
             Query Builder
           </Typography>
-
           {/* Bucket Drop Zone */}
           <Paper
             onDragOver={handleDragOver}
@@ -357,7 +359,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           >
             <Typography>{bucket}</Typography>
           </Paper>
-
           {/* Measurement Drop Zone */}
           <Paper
             onDragOver={handleDragOver}
@@ -376,7 +377,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           >
             <Typography>{measurement}</Typography>
           </Paper>
-
           {/* Fields Drop Zone */}
           <Paper
             onDragOver={handleDragOver}
@@ -421,7 +421,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
               )}
             </List>
           </Paper>
-
           {/* Chart Type Selection */}
           <FormControl fullWidth sx={{ mt: 2 }}>
             <InputLabel id="chart-type-label">Chart Type</InputLabel>
@@ -449,7 +448,6 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           >
             Complete
           </Button>
-
           {/* Create Snapshot Button */}
           <Button
             variant="contained"
@@ -473,5 +471,4 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
     </Box>
   );
 };
-
 export default DragAndDrop;
