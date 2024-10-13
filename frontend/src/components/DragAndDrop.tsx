@@ -19,110 +19,123 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface DragAndDropProps {
-  buckets: string[];
-  onDashboardCreated: (url: string) => void;
-  onSnapshotCreated: (url: string) => void;
+  buckets: string[]; // Buckets data passed as a prop
+  onDashboardCreated: (url: string) => void; // Function to handle when a dashboard is created
+  onSnapshotCreated: (url: string) => void; // Function to handle when a snapshot is created
 }
 
 const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, onSnapshotCreated }) => {
+  // State variables to manage selections and data
   const [bucket, setBucket] = useState<string>('Drop Bucket Here');
   const [measurement, setMeasurement] = useState<string>('Drop Measurement Here');
   const [measurements, setMeasurements] = useState<string[]>([]);
   const [fields, setFields] = useState<string[]>([]);
   const [selectedFields, setSelectedFields] = useState<string[]>([]);
   const [queryResult, setQueryResult] = useState<string>('');
-  const [chartType, setChartType] = useState<string>('graph');
+  const [chartType, setChartType] = useState<string>('graph'); // State to store selected chart type
 
+  // Handle chart type change
   const handleChartTypeChange = (event: SelectChangeEvent) => {
-    setChartType(event.target.value as string);
+    setChartType(event.target.value as string); // Update chart type state
   };
 
+  // Handle drag start event
   const handleDragStart = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
-      e.dataTransfer.setData('text/plain', target.innerText);
+      e.dataTransfer.setData('text/plain', target.innerText); // Set the dragged text
       setTimeout(() => {
-        target.style.opacity = '0.5';
+        target.style.opacity = '0.5'; // Make the dragged item semi-transparent
       }, 0);
     }
   };
 
+  // Handle drag end event
   const handleDragEnd = (e: DragEvent<HTMLLIElement>) => {
     const target = e.currentTarget;
     if (target) {
-      target.style.opacity = '1';
+      target.style.opacity = '1'; // Reset the opacity of the dragged item
     }
   };
 
+  // Handle drag over event to allow drop
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Enable drop action
   };
 
+  // Handle drag enter event to visually indicate a valid drop zone
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    e.currentTarget.style.backgroundColor = '#f0f4f8';
+    e.currentTarget.style.backgroundColor = '#f0f4f8'; // Light blue background when item is dragged over
   };
 
+  // Handle drag leave event to reset the background when item is dragged away
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
-    e.currentTarget.style.backgroundColor = '#fafafa';
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color
   };
 
+  // Fetch measurements for a selected bucket
   const fetchMeasurements = async (bucket: string) => {
     try {
       const response = await axios.post('http://localhost:7000/api/buckets/measurements', { bucket });
-      setMeasurements(response.data.measurements);
+      setMeasurements(response.data.measurements); // Set fetched measurements
     } catch (error) {
-      console.error('Error fetching measurements:', error);
+      console.error('Error fetching measurements:', error); // Log any error
     }
   };
 
+  // Handle drop logic for buckets, resetting measurements and fields as necessary
   const handleBucketDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (buckets.includes(data)) {
-      setBucket(data);
-      setMeasurement('Drop Measurement Here');
-      setFields([]);
-      setSelectedFields([]);
+      setBucket(data); // Update selected bucket
+      setMeasurement('Drop Measurement Here'); // Reset selected measurement
+      setFields([]); // Reset fields
+      setSelectedFields([]); // Reset selected fields
 
-      fetchMeasurements(data);
+      fetchMeasurements(data); // Fetch measurements for the selected bucket
     }
-    e.currentTarget.style.backgroundColor = '#fafafa';
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Restore background color
   };
 
+  // Handle drop logic for measurements, resetting fields as necessary
   const handleMeasurementDrop = async (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (measurements.includes(data)) {
-      setMeasurement(data);
-      setSelectedFields([]);
+      setMeasurement(data); // Update selected measurement
+      setSelectedFields([]); // Reset selected fields
 
+      // Fetch fields for the selected measurement
       try {
         const response = await axios.post('http://localhost:7000/api/measurements/fields', {
           bucket,
           measurement: data,
         });
-        setFields(response.data.fields);
+        setFields(response.data.fields); // Set fetched fields
       } catch (error) {
         console.error('Error fetching fields:', error);
       }
     }
-    e.currentTarget.style.backgroundColor = '#fafafa';
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color after drop
   };
 
+  // Handle drop for fields, ensuring that fields are only added if they match the selected measurement
   const handleFieldDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
 
     if (fields.includes(data) && !selectedFields.includes(data)) {
-      setSelectedFields([...selectedFields, data]);
+      setSelectedFields([...selectedFields, data]); // Add field to selectedFields
     }
 
-    e.currentTarget.style.backgroundColor = '#fafafa';
+    e.currentTarget.style.backgroundColor = '#fafafa'; // Reset background color after drop
   };
 
+  // Handle the "Complete" button click
   const handleComplete = async () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
@@ -156,6 +169,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
     }
   };
 
+  // Function to handle snapshot creation
   const handleCreateSnapshot = async () => {
     if (bucket === 'Drop Bucket Here') {
       setQueryResult('Please select a Bucket.');
@@ -200,10 +214,11 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           </Typography>
           <Paper
             sx={{
-              height: 400,
+              maxHeight: 400,
               padding: 2,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               borderRadius: 2,
+              overflow: 'auto',
             }}
           >
             {buckets.length > 0 ? (
@@ -241,10 +256,11 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           </Typography>
           <Paper
             sx={{
-              height: 400,
+              maxHeight: 400,
               padding: 2,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               borderRadius: 2,
+              overflow: 'auto',
             }}
           >
             {bucket !== 'Drop Bucket Here' && measurements.length > 0 ? (
@@ -282,10 +298,11 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ buckets, onDashboardCreated, 
           </Typography>
           <Paper
             sx={{
-              height: 400,
+              maxHeight: 400,
               padding: 2,
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               borderRadius: 2,
+              overflow: 'auto',
             }}
           >
             {measurement !== 'Drop Measurement Here' && fields.length > 0 ? (
