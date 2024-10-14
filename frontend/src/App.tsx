@@ -47,11 +47,9 @@ function App() {
         />
       </Box>
 
-      {/* Render the GrafanaIframe component, passing the dashboardUrl */}
-      <GrafanaIframe dashboardUrl={dashboardUrl} />
-
-      {/* Render the SnapshotPreview component, passing the snapshotUrl */}
-      <SnapshotPreview snapshotUrl={snapshotUrl} />
+      {/* Conditionally render either the GrafanaIframe or SnapshotPreview based on which URL is available */}
+      {dashboardUrl && <GrafanaIframe dashboardUrl={dashboardUrl} />}
+      {snapshotUrl && <SnapshotPreview snapshotUrl={snapshotUrl} />}
 
       {/* Footer section for additional spacing */}
       <Box sx={{ mb: 10 }}></Box>
