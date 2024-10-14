@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import GrafanaIframe from './components/GrafanaIframe';
-import SnapshotPreview from './components/SnapshotPreview'; // Import SnapshotPreview component
+import SnapshotPreview from './components/SnapshotPreview';
 import { Box } from '@mui/material';
 
 function App() {
