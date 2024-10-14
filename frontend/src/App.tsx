@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import GrafanaIframe from './components/GrafanaIframe';
-import SnapshotPreview from './components/SnapshotPreview'; // Import SnapshotPreview component
+import SnapshotPreview from './components/SnapshotPreview';
 import { Box } from '@mui/material';
 
 function App() {
@@ -24,11 +24,13 @@ function App() {
   // Function to handle the creation of a new dashboard and update the URL
   const handleDashboardCreated = (url: string) => {
     setDashboardUrl(url); // Store the dashboard URL when a new dashboard is created
+    setSnapshotUrl(null); // Clear the snapshot URL to ensure only one iframe is displayed
   };
 
   // Function to handle the creation of a new snapshot and update the URL
   const handleSnapshotCreated = (url: string) => {
     setSnapshotUrl(url); // Store the snapshot URL when a new snapshot is created
+    setDashboardUrl(null); // Clear the dashboard URL to ensure only one iframe is displayed
   };
 
   return (
@@ -45,11 +47,9 @@ function App() {
         />
       </Box>
 
-      {/* Render the GrafanaIframe component, passing the dashboardUrl */}
-      <GrafanaIframe dashboardUrl={dashboardUrl} />
-
-      {/* Render the SnapshotPreview component, passing the snapshotUrl */}
-      <SnapshotPreview snapshotUrl={snapshotUrl} />
+      {/* Conditionally render either the GrafanaIframe or SnapshotPreview based on which URL is available */}
+      {dashboardUrl && <GrafanaIframe dashboardUrl={dashboardUrl} />}
+      {snapshotUrl && <SnapshotPreview snapshotUrl={snapshotUrl} />}
 
       {/* Footer section for additional spacing */}
       <Box sx={{ mb: 10 }}></Box>
