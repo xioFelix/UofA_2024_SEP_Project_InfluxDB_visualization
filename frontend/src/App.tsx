@@ -4,7 +4,8 @@ import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import GrafanaIframe from './components/GrafanaIframe';
 import SnapshotPreview from './components/SnapshotPreview';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import axios from 'axios';
 
 function App() {
   // State to manage bucket names fetched from InfluxDB
@@ -33,6 +34,31 @@ function App() {
     setDashboardUrl(null); // Clear the dashboard URL to ensure only one iframe is displayed
   };
 
+  // Function to take a screenshot of the snapshot
+  const handleTakeScreenshot = async () => {
+    try {
+      const url = snapshotUrl;
+      if (!url) return;
+  
+        // Send a POST request to the backend to take a screenshot
+      const response = await axios.post(
+        'http://localhost:7000/api/puppeteer/screenshot',
+        { url },
+        { responseType: 'blob' }    // Set the response type to 'blob' to receive binary data
+      );
+      
+      // Create a Blob object from the binary data and download it as a PNG file
+      const blob = new Blob([response.data], { type: 'image/png' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'grafana-screenshot.png';
+      link.click();
+    } catch (error) {
+      console.error('Error taking screenshot:', error);
+    }
+  };
+
+
   return (
     <div>
       {/* Render the Header component, passing the handleLoginSuccess function */}
@@ -50,6 +76,11 @@ function App() {
       {/* Conditionally render either the GrafanaIframe or SnapshotPreview based on which URL is available */}
       {dashboardUrl && <GrafanaIframe dashboardUrl={dashboardUrl} />}
       {snapshotUrl && <SnapshotPreview snapshotUrl={snapshotUrl} />}
+
+      {/* Button to trigger screenshot */}
+      <Button onClick={handleTakeScreenshot} variant="contained" color="primary" sx={{ mt: 2 }}>
+        Export as PNG
+      </Button>
 
       {/* Footer section for additional spacing */}
       <Box sx={{ mb: 10 }}></Box>

@@ -7,6 +7,7 @@ import bucketRoutes from './routes/dragAndDrop/bucketRoutes';
 import grafanaRoutes from './routes/grafanaRoutes'; 
 import measurementRoutes from './routes/dragAndDrop/measurementRoutes';
 import snapshotRoutes from './routes/snapshotRoutes';
+import puppeteerRoutes from './routes/puppeteerRoutes';
 
 const app = express();
 // Configure CORS to allow requests from your frontend
@@ -34,6 +35,9 @@ app.use('/api/grafana', grafanaRoutes);
 
 // Route for Snapshot Function
 app.use('/api/snapshot', snapshotRoutes);
+
+// Route for Puppeteer
+app.use('/api/puppeteer', puppeteerRoutes);
 
 // Print the registered route
 const listRoutes = (app: express.Express) => {

@@ -14,7 +14,8 @@
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^5.0.0"
+    "express": "^5.0.0",
+    "puppeteer": "^23.5.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
