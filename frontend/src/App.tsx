@@ -30,6 +30,7 @@ function App() {
   // Function to handle the creation of a new snapshot and update the URL
   const handleSnapshotCreated = (url: string) => {
     setSnapshotUrl(url); // Store the snapshot URL when a new snapshot is created
+    setDashboardUrl(null); // Clear the dashboard URL to ensure only one iframe is displayed
   };
 
   return (
