@@ -4,7 +4,7 @@ import Header from './components/Header';
 import DragAndDrop from './components/DragAndDrop';
 import GrafanaIframe from './components/GrafanaIframe';
 import SnapshotPreview from './components/SnapshotPreview';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Alert, Snackbar } from '@mui/material';
 import axios from 'axios';
 
 function App() {
@@ -16,6 +16,9 @@ function App() {
 
   // State to store the URL of the snapshot
   const [snapshotUrl, setSnapshotUrl] = useState<string | null>(null);
+
+  // State to manage the Snackbar open state
+  const [open, setOpen] = useState(false);
 
   // Function to handle login success and receive bucket names
   const handleLoginSuccess = (bucketNames: string[]) => {
@@ -53,11 +56,21 @@ function App() {
       link.href = window.URL.createObjectURL(blob);
       link.download = 'grafana-screenshot.png';
       link.click();
+
+      // Display a success message using a Snackbar
+      setOpen(true);
     } catch (error) {
       console.error('Error taking screenshot:', error);
     }
   };
 
+  // Function to handle the Snackbar close event
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -78,9 +91,21 @@ function App() {
       {snapshotUrl && <SnapshotPreview snapshotUrl={snapshotUrl} />}
 
       {/* Button to trigger screenshot */}
-      <Button onClick={handleTakeScreenshot} variant="contained" color="primary" sx={{ mt: 2 }}>
+      <Button onClick={handleTakeScreenshot} 
+      variant="contained" 
+      color="primary" 
+      style={{
+      position: 'absolute',
+      right: '10px',
+    }} sx={{ marginTop: 2 }}>
         Export as PNG
       </Button>
+
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+        The snapshot has been successfully exported as a PNG file.
+        </Alert>
+      </Snackbar>
 
       {/* Footer section for additional spacing */}
       <Box sx={{ mb: 10 }}></Box>
