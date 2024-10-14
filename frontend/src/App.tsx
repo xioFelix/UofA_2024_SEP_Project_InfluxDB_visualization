@@ -24,6 +24,7 @@ function App() {
   // Function to handle the creation of a new dashboard and update the URL
   const handleDashboardCreated = (url: string) => {
     setDashboardUrl(url); // Store the dashboard URL when a new dashboard is created
+    setSnapshotUrl(null); // Clear the snapshot URL to ensure only one iframe is displayed
   };
 
   // Function to handle the creation of a new snapshot and update the URL
